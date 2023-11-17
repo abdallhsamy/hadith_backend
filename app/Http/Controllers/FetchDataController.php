@@ -13,7 +13,7 @@ class FetchDataController extends Controller
 {
     public function __invoke()
     {
-//        $this->getLangs();
+        $this->getLangs();
 
         $this->getHadiths();
         $this->translateAllHadiths();
@@ -59,7 +59,7 @@ class FetchDataController extends Controller
 
     private function getHadiths(string $language = 'ar')
     {
-        $id = 2986;
+        $id = 2996;
 
         while (true) {
             if(!  $this->getOneHadith($id , $language)) {
@@ -67,6 +67,10 @@ class FetchDataController extends Controller
             }
 
             $id++;
+
+            if ($id > 3000) {
+                break;
+            }
         }
     }
 
@@ -84,6 +88,7 @@ class FetchDataController extends Controller
 
         $data = $response->json();
 
+//        dd($data);
         $arrayKeys = [
             'title',
             'hadeeth',
@@ -97,12 +102,12 @@ class FetchDataController extends Controller
 
         foreach ($data as $key => $val) {
 
-            if (! in_array($key,$arrayKeys)) {
+            if (!in_array($key, $arrayKeys, true)) {
                 $hadith->$key = $val;
             }
         }
         foreach ($arrayKeys as $arrayKey) {
-            if (! in_array($arrayKey, $data)) {
+            if (! array_key_exists($arrayKey, $data)) {
                 continue;
             }
             if ($hadith->$arrayKey) {
@@ -111,6 +116,7 @@ class FetchDataController extends Controller
                 $hadith->$arrayKey = [$language => $data[$arrayKey]];
             }
         }
+
 
         $hadith->save();
 
@@ -129,7 +135,5 @@ class FetchDataController extends Controller
                 $this->getOneHadith($hadith->id,$language);
             }
         }
-
-//        return $allArabic;
     }
 }

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/','mobile.home');
 
-//Route::get('/', \App\Http\Controllers\FetchDataController::class);
+Route::get('generate', \App\Http\Controllers\FetchDataController::class);
 
 Route::get('/m', function () {
 //    return \App\Models\Category::first()->title['ar'];
