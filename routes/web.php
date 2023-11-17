@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/','mobile.home');
+Route::get('/',[\App\Http\Controllers\Mobile\V1\HomeController::class, 'index']);
 
 Route::get('generate', \App\Http\Controllers\FetchDataController::class);
 

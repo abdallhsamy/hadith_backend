@@ -4,14 +4,14 @@
                     <span class="block h-8 text-3xl leading-8">
                         <i class="mdi mdi-newspaper-variant-outline"></i>
                     </span>
-            <span class="block text-xs leading-none">Today</span>
+            <span class="block text-xs leading-none">{{ __('general.today') }}</span>
         </div>
     </a>    <a href="#" class="flex flex-grow items-center justify-center p-2 text-gray-500 hover:text-indigo-500">
         <div class="text-center">
                     <span class="block h-8 text-3xl leading-8">
                         <i class="mdi mdi-newspaper"></i>
                     </span>
-            <span class="block text-xs leading-none">All</span>
+            <span class="block text-xs leading-none">{{ __('general.all') }}</span>
         </div>
     </a>
     <a href="#" class="flex flex-grow items-center justify-center p-2 text-gray-500 hover:text-indigo-500">
@@ -19,7 +19,7 @@
                     <span class="block h-8 text-3xl leading-8">
                         <i class="mdi mdi-apps"></i>
                     </span>
-            <span class="block text-xs leading-none">Categories</span>
+            <span class="block text-xs leading-none">{{ __('general.categories') }}</span>
         </div>
     </a>
     <a href="#" class="flex flex-grow items-center justify-center p-2 text-gray-500 hover:text-indigo-500">
@@ -27,7 +27,7 @@
                     <span class="block h-8 text-3xl leading-8">
                         <i class="mdi mdi-star-outline"></i>
                     </span>
-            <span class="block text-xs leading-none">Favorites</span>
+            <span class="block text-xs leading-none">{{ __('general.favorites') }}</span>
         </div>
     </a>
     <a href="#" class="flex flex-grow items-center justify-center p-2 text-gray-500 hover:text-indigo-500">
@@ -35,7 +35,7 @@
                     <span class="block h-8 text-3xl leading-8">
                         <i class="mdi mdi-magnify"></i>
                     </span>
-            <span class="block text-xs leading-none">Search</span>
+            <span class="block text-xs leading-none">{{ __('general.search') }}</span>
         </div>
     </a>
 </div>

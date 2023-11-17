@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html>
+<html lang="{{ app()->getLocale() }}" dir="{{ getHtmlDirection() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
         <div class="mb-3 flex items-center justify-between">
             <x-logo class="w-24"/>
             @guest()
-                <a href="#login" class="text-white bg-primary px-2 py-1 rounded-lg">login</a>
+                <a href="#login" class="text-white bg-primary px-2 py-1 rounded-lg">{{ __('general.login') }}</a>
             @endguest
         </div>
         {{ $slot }}

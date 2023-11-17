@@ -1,36 +1,40 @@
 <x-layouts.mobile.default>
-    <div class="mb-5">
-        <a href="#" class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1484876065684-b683cf17d276?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80) center; background-size: cover;">
-            <div class="absolute top-0 right-0 -mt-3 mr-3">
-                <div class="rounded-full bg-indigo-500 text-white text-xs py-1 pl-2 pr-3 leading-none"><i class="mdi mdi-fire text-base align-middle"></i> <span class="align-middle">FRESH</span></div>
-            </div>
-            <div class="h-48"></div>
-            <h2 class="text-white text-2xl font-bold leading-tight mb-3 pr-5">Tasnim Lacey New Album Out&nbsp;Now</h2>
-            <div class="flex w-full items-center text-sm text-gray-300 font-medium">
-                <div class="flex-1 flex items-center">
-                    <div class="rounded-full w-8 h-8 mr-3" style="background: url(https://randomuser.me/api/portraits/women/74.jpg) center; background-size: cover;"></div>
-                    <div>Gwen Thomson</div>
-                </div>
-                <div><i class="mdi mdi-eye"></i> 18</div>
-            </div>
-        </a>
-    </div>
-    <div class="mb-5">
-        <a href="#" class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1470337458703-46ad1756a187?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1649&q=80) center; background-size: cover;">
-            <div class="h-48"></div>
-            <h2 class="text-white text-2xl font-bold leading-tight mb-3 pr-5">Top 5 Cocktail Bars in&nbsp;NYC</h2>
-            <div class="flex w-full items-center text-sm text-gray-300 font-medium">
-                <div class="flex-1 flex items-center">
-                    <div class="rounded-full w-8 h-8 mr-3" style="background: url(https://randomuser.me/api/portraits/women/55.jpg) center; background-size: cover;"></div>
-                    <div>Kayden Buckley</div>
-                </div>
-                <div><i class="mdi mdi-thumb-up"></i> 7</div>
-            </div>
-        </a>
-    </div>
+
     <div class="mb-3">
-        <h1 class="text-3xl font-bold">Yesterday</h1>
-        <p class="text-sm text-gray-500 uppercase font-bold">WEDNESDAY 5 AUGUST</p>
+        <h1 class="text-3xl font-bold">{{ __('general.today') }}</h1>
+        <p class="text-sm text-gray-500 uppercase font-bold">{{ \Carbon\Carbon::today()->translatedFormat('D d, M') }}</p>
+    </div>
+    @foreach($today as  $todayItem)
+        <div class="mb-5">
+            <a href="#" class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1484876065684-b683cf17d276?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80) center; background-size: cover;">
+                <div class="absolute top-0 right-0 -mt-3 me-3 flex gap-4">
+
+                    @foreach($todayItem->categoriesRel as $cat)
+                        <div class="rounded-full bg-primary text-white text-xs py-1 pl-2 pr-3 leading-none">
+                                                    <i class="mdi mdi-fire text-base align-middle"></i>
+                            <span class="align-middle">{{ $cat->translation()->title }}</span>
+                        </div>
+
+                    @endforeach
+                </div>
+                <div class="h-48"></div>
+                <h2 class="text-white text-2xl font-bold leading-tight mb-3 pr-5">
+                    {{ $todayItem->translation()->title }}
+                </h2>
+                <div class="flex w-full items-center text-sm text-gray-300 font-medium">
+                    <div class="flex-1 flex items-center">
+{{--                        <div class="rounded-full w-8 h-8 mr-3" style="background: url(https://randomuser.me/api/portraits/women/74.jpg) center; background-size: cover;"></div>--}}
+{{--                        <div>Gwen Thomson</div>--}}
+                    </div>
+                    <div><i class="mdi mdi-eye"></i> 18</div>
+                </div>
+            </a>
+
+        </div>
+    @endforeach
+    <div class="mb-3">
+        <h1 class="text-3xl font-bold">{{ __('general.yesterday') }}</h1>
+        <p class="text-sm text-gray-500 uppercase font-bold">{{ \Carbon\Carbon::yesterday()->translatedFormat('D d, M') }}</p>
     </div>
     <div class="flex -mx-1 mb-5">
         <div class="w-1/2 px-1">
@@ -55,7 +59,7 @@
         </div>
     </div>
     <div class="mb-3">
-        <h1 class="text-3xl font-bold">Previous</h1>
+        <h1 class="text-3xl font-bold">{{ __('general.previous') }}</h1>
     </div>
     <div>
         <a href="#" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
