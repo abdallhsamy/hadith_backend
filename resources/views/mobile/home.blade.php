@@ -86,59 +86,29 @@
     <div class="mb-3">
         <h1 class="text-3xl font-bold">{{ __('general.previous') }}</h1>
     </div>
-    <div>
-        <a href="#" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
-            <div class="block h-24 w-2/5 rounded overflow-hidden" style="background: url(https://images.unsplash.com/photo-1530549387789-4c1017266635?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;"></div>
-            <div class="pl-3 w-3/5">
-                <p class="text-xs text-gray-500 uppercase font-semibold">SPORTS</p>
-                <h3 class="text-md font-semibold leading-tight mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit</h3>
-                <div class="flex w-full items-center text-xs text-gray-500 font-medium">
-                    <div class="rounded-full w-5 h-5 mr-3" style="background: url(https://randomuser.me/api/portraits/men/41.jpg) center; background-size: cover;"></div>
-                    <div>Jack Ryan</div>
+    @foreach($old as $item)
+        <div>
+            <a href="#" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
+                <div class="block h-24 w-2/5 rounded overflow-hidden" style="background: url(https://images.unsplash.com/photo-1530549387789-4c1017266635?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;"></div>
+                <div class="ps-3 w-3/5">
+                    <div class="text-xs text-gray-500 uppercase font-semibold flex gap-1 @if($item->categoriesRel->count() > 0) mb-2 @endif">
+                        @foreach($item->categoriesRel as $cat)
+                            <span class="bg-gray-200 px-2 rounded-lg">
+                                {{ $cat->translation()->title }}
+                            </span>
+                        @endforeach
+                    </div>
+                    <h3 class="text-md font-semibold leading-tight mb-3">{{ $item->translation()->title }}</h3>
+{{--                    <div class="flex w-full items-center text-xs text-gray-500 font-medium">--}}
+{{--                        <div class="rounded-full w-5 h-5 me-3" style="background: url(https://randomuser.me/api/portraits/men/41.jpg) center; background-size: cover;"></div>--}}
+{{--                        <div>Jack Ryan</div>--}}
+{{--                    </div>--}}
                 </div>
-            </div>
-        </a>
-    </div>
-    <hr class="border-gray-200 my-3">
-    <div>
-        <a href="#" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
-            <div class="block h-24 w-2/5 rounded overflow-hidden" style="background: url(https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;"></div>
-            <div class="pl-3 w-3/5">
-                <p class="text-xs text-gray-500 uppercase font-semibold">ART</p>
-                <h3 class="text-md font-semibold leading-tight mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit</h3>
-                <div class="flex w-full items-center text-xs text-gray-500 font-medium">
-                    <div class="rounded-full w-5 h-5 mr-3" style="background: url(https://randomuser.me/api/portraits/men/63.jpg) center; background-size: cover;"></div>
-                    <div>Kevin Jackson</div>
-                </div>
-            </div>
-        </a>
-    </div>
-    <hr class="border-gray-200 my-3">
-    <div>
-        <a href="#" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
-            <div class="block h-24 w-2/5 rounded overflow-hidden" style="background: url(https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;"></div>
-            <div class="pl-3 w-3/5">
-                <p class="text-xs text-gray-500 uppercase font-semibold">MUSIC</p>
-                <h3 class="text-md font-semibold leading-tight mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit</h3>
-                <div class="flex w-full items-center text-xs text-gray-500 font-medium">
-                    <div class="rounded-full w-5 h-5 mr-3" style="background: url(https://randomuser.me/api/portraits/women/11.jpg) center; background-size: cover;"></div>
-                    <div>Rowena Wheeler</div>
-                </div>
-            </div>
-        </a>
-    </div>
-    <hr class="border-gray-200 my-3">
-    <div>
-        <a href="#" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
-            <div class="block h-24 w-2/5 rounded overflow-hidden" style="background: url(https://images.unsplash.com/photo-1511068797325-6083f0f872b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;"></div>
-            <div class="pl-3 w-3/5">
-                <p class="text-xs text-gray-500 uppercase font-semibold">WORLD</p>
-                <h3 class="text-md font-semibold leading-tight mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit</h3>
-                <div class="flex w-full items-center text-xs text-gray-500 font-medium">
-                    <div class="rounded-full w-5 h-5 mr-3" style="background: url(https://randomuser.me/api/portraits/women/74.jpg) center; background-size: cover;"></div>
-                    <div>Gwen Thomson</div>
-                </div>
-            </div>
-        </a>
-    </div>
+            </a>
+        </div>
+        @if(! $loop->last)
+            <hr class="border-gray-200 my-3">
+
+        @endif
+    @endforeach
 </x-layouts.mobile.default>

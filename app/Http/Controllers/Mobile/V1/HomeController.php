@@ -26,6 +26,8 @@ class HomeController extends Controller
             ->select('*')->take(4)->get();
         $yesterday = Hadith::query()
             ->select('*')->skip(4)->take(4)->get();
+        $old = Hadith::query()
+            ->select('*')->skip(4)->take(4)->get();
 
 //        foreach ($top as $t) {
 //            return $t->translation();
@@ -34,6 +36,6 @@ class HomeController extends Controller
 //        return response()->json($top);
 //        dd($top);
 
-        return view('mobile.home', compact('today', 'yesterday'));
+        return view('mobile.home', compact('today', 'yesterday','old'));
     }
 }
