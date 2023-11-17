@@ -1,5 +1,7 @@
 services:
-    laravel.test:
+    app:
+        container_name: '${APP_NAME:-hadith}_app'
+        restart: '${DOCKER_RESTART:-always}'
         build:
             context: ./docker/8.2
             dockerfile: Dockerfile
@@ -22,84 +24,132 @@ services:
         networks:
             - sail
         depends_on:
-            - mysql
-            - redis
-            - meilisearch
-            - mailpit
-            - selenium
-    mysql:
-        image: 'mysql/mysql-server:8.0'
-        ports:
-            - '${FORWARD_DB_PORT:-3306}:3306'
-        environment:
-            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ROOT_HOST: '%'
-            MYSQL_DATABASE: '${DB_DATABASE}'
-            MYSQL_USER: '${DB_USERNAME}'
-            MYSQL_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ALLOW_EMPTY_PASSWORD: 1
-        volumes:
-            - 'sail-mysql:/var/lib/mysql'
-            - './docker/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
-        networks:
-            - sail
-        healthcheck:
-            test:
-                - CMD
-                - mysqladmin
-                - ping
-                - '-p${DB_PASSWORD}'
-            retries: 3
-            timeout: 5s
-    redis:
-        image: 'redis:alpine'
-        ports:
-            - '${FORWARD_REDIS_PORT:-6379}:6379'
-        volumes:
-            - 'sail-redis:/data'
-        networks:
-            - sail
-        healthcheck:
-            test:
-                - CMD
-                - redis-cli
-                - ping
-            retries: 3
-            timeout: 5s
-    meilisearch:
-        image: 'getmeili/meilisearch:latest'
-        ports:
-            - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
-        environment:
-            MEILI_NO_ANALYTICS: '${MEILISEARCH_NO_ANALYTICS:-false}'
-        volumes:
-            - 'sail-meilisearch:/meili_data'
-        networks:
-            - sail
-        healthcheck:
-            test:
-                - CMD
-                - wget
-                - '--no-verbose'
-                - '--spider'
-                - 'http://localhost:7700/health'
-            retries: 3
-            timeout: 5s
+            - mongodb
+    #            - mysql
+    #            - redis
+    #            - meilisearch
+    #            - mailpit
+    #            - selenium
+    #    mysql:
+    #        container_name: '${APP_NAME:-hadith}_mysql'
+    #        restart: '${DOCKER_RESTART:-always}'
+    #        image: 'mysql/mysql-server:8.0'
+    #        ports:
+    #            - '${FORWARD_DB_PORT:-3306}:3306'
+    #        environment:
+    #            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD:-secret}'
+    #            MYSQL_ROOT_HOST: '%'
+    #            MYSQL_DATABASE: '${DB_DATABASE:-hadith}'
+    #            MYSQL_USER: '${DB_USERNAME:-hadith}'
+    #            MYSQL_PASSWORD: '${DB_PASSWORD:-secret}'
+    #            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    #        volumes:
+    #            - 'sail-mysql:/var/lib/mysql'
+    #            - './docker/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
+    #        networks:
+    #            - sail
+    #        healthcheck:
+    #            test:
+    #                - CMD
+    #                - mysqladmin
+    #                - ping
+    #                - '-p${DB_PASSWORD:-secret}'
+    #            retries: 3
+    #            timeout: 5s
+    #    redis:
+    #        container_name: '${APP_NAME:-hadith}_redis'
+    #        restart: '${DOCKER_RESTART:-always}'
+    #        image: 'redis:alpine'
+    #        ports:
+    #            - '${FORWARD_REDIS_PORT:-6379}:6379'
+    #        volumes:
+    #            - 'sail-redis:/data'
+    #        networks:
+    #            - sail
+    #        healthcheck:
+    #            test:
+    #                - CMD
+    #                - redis-cli
+    #                - ping
+    #            retries: 3
+    #            timeout: 5s
+    #    meilisearch:
+    #        container_name: '${APP_NAME:-hadith}_meilisearch'
+    #        restart: '${DOCKER_RESTART:-always}'
+    #        image: 'getmeili/meilisearch:latest'
+    #        ports:
+    #            - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
+    #        volumes:
+    #            - 'sail-meilisearch:/meili_data'
+    #        networks:
+    #            - sail
+    #        healthcheck:
+    #            test:
+    #                - CMD
+    #                - wget
+    #                - '--no-verbose'
+    #                - '--spider'
+    #                - 'http://localhost:7700/health'
+    #            retries: 3
+    #            timeout: 5s
     mailpit:
+        container_name: '${APP_NAME:-hadith}_mailpit'
+        restart: '${DOCKER_RESTART:-always}'
         image: 'axllent/mailpit:latest'
         ports:
             - '${FORWARD_MAILPIT_PORT:-1025}:1025'
             - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
         networks:
             - sail
-    selenium:
-        image: selenium/standalone-chrome
-        extra_hosts:
-            - 'host.docker.internal:host-gateway'
+    #    selenium:
+    #        container_name: '${APP_NAME:-hadith}_seleniarm'
+    #        restart: '${DOCKER_RESTART:-always}'
+    #        image: seleniarm/standalone-chromium
+    #        extra_hosts:
+    #            - 'host.docker.internal:host-gateway'
+    #        volumes:
+    #            - '/dev/shm:/dev/shm'
+    #        networks:
+    #            - sail
+    #    phpmyadmin:
+    #        container_name: '${APP_NAME:-hadith}_phpmyadmin'
+    #        restart: '${DOCKER_RESTART:-always}'
+    #        platform: linux/x86_64
+    #        image: phpmyadmin/phpmyadmin
+    #        links:
+    #            - mysql:mysql
+    #        ports:
+    #            - "${PHPMYADMIN_PORT:-8080}:80"
+    #        environment:
+    #            MYSQL_USERNAME: "${DB_USERNAME:-hadith}"
+    #            MYSQL_ROOT_PASSWORD: "${DB_PASSWORD:-secret}"
+    #            PMA_HOST: mysql
+    #        networks:
+    #            - sail
+
+    mongodb:
+        container_name: '${APP_NAME:-hadith}_mongodb'
+        restart: '${DOCKER_RESTART:-always}'
         volumes:
-            - '/dev/shm:/dev/shm'
+            - './docker/data/mongodb:/data/db'
+            - './docker/mongodb/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro'
         networks:
             - sail
+        image: mongo:6.0
+        ports:
+            - '${DB_PORT-27017}:27017'
+        environment:
+            PUID: 1000
+            PGID: 1000
+            MONGO_INITDB_DATABASE: '${DB_DATABASE:-hadith}'
+            MONGO_INITDB_ROOT_USERNAME: '${DB_USERNAME:-hadith}'
+            MONGO_INITDB_ROOT_PASSWORD: '${DB_DATABASE:-hadith}'
+            MONGO_REPLICA_SET_NAME: 'rs0'
+            MONGODB_REPLICA_SET_KEY: 'key'
+        command: [ "--auth" ]  # Enable authentication
+        healthcheck:
+            test: test $$(echo "rs.initiate().ok || rs.status().ok" | mongo -u $${MONGO_INITDB_ROOT_USERNAME} -p $${MONGO_INITDB_ROOT_PASSWORD} --quiet) -eq 1
+            interval: 10s
 networks:
     sail:
         driver: bridge
@@ -110,3 +160,4 @@ volumes:
         driver: local
     sail-meilisearch:
         driver: local
+    sail-mongodb:
