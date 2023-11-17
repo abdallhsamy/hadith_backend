@@ -36,26 +36,51 @@
         <h1 class="text-3xl font-bold">{{ __('general.yesterday') }}</h1>
         <p class="text-sm text-gray-500 uppercase font-bold">{{ \Carbon\Carbon::yesterday()->translatedFormat('D d, M') }}</p>
     </div>
+
     <div class="flex -mx-1 mb-5">
+        @php
+            $odds = [];
+            $evens = [];
+        @endphp
+        @foreach($yesterday as $yesterdayItem)
+{{--            @dd($loop)--}}
+            @if($loop->iteration <= $loop->count /2)
+                @php($odds[] = $yesterdayItem)
+            @else
+                @php($evens[] = $yesterdayItem)
+            @endif
+        @endforeach
         <div class="w-1/2 px-1">
-            <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;">
-                <div class="h-24"></div>
-                <h3 class="text-lg font-bold text-white leading-tight">DJ Dan Spins The Wheels</h3>
-            </a>
-            <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1534329539061-64caeb388c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;">
-                <div class="h-32"></div>
-                <h3 class="text-lg font-bold text-white leading-tight">Top Travels Destinations For 2020</h3>
-            </a>
+            @foreach($odds as $item)
+                <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;">
+                    <div class="{{ $loop->iteration % 2 == 0  ? 'h-32' : 'h-24' }}"></div>
+                    <h3 class="text-lg font-bold text-white leading-tight">{{ $item->translation()->title }}</h3>
+                </a>
+            @endforeach
+{{--            <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;">--}}
+{{--                <div class="h-24"></div>--}}
+{{--                <h3 class="text-lg font-bold text-white leading-tight">DJ Dan Spins The Wheels</h3>--}}
+{{--            </a>--}}
+{{--            <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1534329539061-64caeb388c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;">--}}
+{{--                <div class="h-32"></div>--}}
+{{--                <h3 class="text-lg font-bold text-white leading-tight">Top Travels Destinations For 2020</h3>--}}
+{{--            </a>--}}
         </div>
         <div class="w-1/2 px-1">
-            <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1526661934280-676cef25bc9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;">
-                <div class="h-32"></div>
-                <h3 class="text-lg font-bold text-white leading-tight">M&S Launches New Makeup Range!</h3>
-            </a>
-            <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1558365849-6ebd8b0454b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;">
-                <div class="h-24"></div>
-                <h3 class="text-lg font-bold text-white leading-tight">APT Set To Be A&nbsp;Ripper</h3>
-            </a>
+            @foreach($evens as $item)
+                <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;">
+                    <div class="{{ $loop->iteration % 2 == 0  ? 'h-24' : 'h-32' }}"></div>
+                    <h3 class="text-lg font-bold text-white leading-tight">{{ $item->translation()->title }}</h3>
+                </a>
+            @endforeach
+{{--            <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1526661934280-676cef25bc9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;">--}}
+{{--                <div class="h-32"></div>--}}
+{{--                <h3 class="text-lg font-bold text-white leading-tight">M&S Launches New Makeup Range!</h3>--}}
+{{--            </a>--}}
+{{--            <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1558365849-6ebd8b0454b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;">--}}
+{{--                <div class="h-24"></div>--}}
+{{--                <h3 class="text-lg font-bold text-white leading-tight">APT Set To Be A&nbsp;Ripper</h3>--}}
+{{--            </a>--}}
         </div>
     </div>
     <div class="mb-3">
