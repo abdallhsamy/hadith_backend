@@ -6,7 +6,7 @@
     </div>
     @foreach($today as  $todayItem)
         <div class="mb-5">
-            <a href="#" class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1484876065684-b683cf17d276?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80) center; background-size: cover;">
+            <a href="#" class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95" style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
                 <div class="absolute top-0 right-0 -mt-3 me-3 flex gap-4">
 
                     @foreach($todayItem->categoriesRel as $cat)
@@ -52,7 +52,7 @@
         @endforeach
         <div class="w-1/2 px-1">
             @foreach($odds as $item)
-                <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;">
+                <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95" style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
                     <div class="{{ $loop->iteration % 2 == 0  ? 'h-32' : 'h-24' }}"></div>
                     <h3 class="text-lg font-bold text-white leading-tight">{{ $item->translation()->title }}</h3>
                 </a>
@@ -68,7 +68,7 @@
         </div>
         <div class="w-1/2 px-1">
             @foreach($evens as $item)
-                <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95" style="background: url(https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;">
+                <a href="#" class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95" style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
                     <div class="{{ $loop->iteration % 2 == 0  ? 'h-24' : 'h-32' }}"></div>
                     <h3 class="text-lg font-bold text-white leading-tight">{{ $item->translation()->title }}</h3>
                 </a>
@@ -89,7 +89,7 @@
     @foreach($old as $item)
         <div>
             <a href="#" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
-                <div class="block h-24 w-2/5 rounded overflow-hidden" style="background: url(https://images.unsplash.com/photo-1530549387789-4c1017266635?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) center; background-size: cover;"></div>
+                <div class="block h-24 w-2/5 rounded overflow-hidden" style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;"></div>
                 <div class="ps-3 w-3/5">
                     <div class="text-xs text-gray-500 uppercase font-semibold flex gap-1 @if($item->categoriesRel->count() > 0) mb-2 @endif">
                         @foreach($item->categoriesRel as $cat)
