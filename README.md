@@ -1,4 +1,7 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="#" width="400" alt="Hadith Logo"></a></p>
+<p align="center">
+    <a href="[https://laravel.com](https://github.com/abdallhsamy/hadith_backend)" target="_blank"><img src="https://github.com/abdallhsamy/hadith_backend/assets/8833767/2d38d3b4-4c0e-4f8b-8208-1645c34e491f" width="400" alt="Hadith Logo">
+    </a>
+</p>
 
 
 
