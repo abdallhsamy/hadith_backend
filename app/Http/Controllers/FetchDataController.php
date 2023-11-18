@@ -67,9 +67,9 @@ class FetchDataController extends Controller
 
             $id++;
 
-//            if ($id > 3000) {
-//                break;
-//            }
+            if ($id > 999999) {
+                break;
+            }
         }
     }
 
