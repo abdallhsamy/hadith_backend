@@ -3,23 +3,87 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\GrabbedCatHadith;
 use App\Models\Hadith;
 use App\Models\HadithKey;
 use App\Models\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Support\Facades\Log;
 
 
 class FetchDataController extends Controller
 {
     public function __invoke()
     {
-        $this->getLangs();
-
-        $this->getHadiths();
-        $this->translateAllHadiths();
+//        $this->getLangs();
+//
+//        $this->getHadiths();
+//        $this->translateAllHadiths();
+        return $this->getCatHadiths();
         return 'ok';
+
+    }
+
+    private function getWithRateLimit(string $url, array|null $params = []) {
+        try {
+            return Http::get($url, $params);
+        } catch (ConnectionException $e) {
+            Log::channel('fetch')->debug($e->getMessage());
+            sleep(120);
+            return $this->getWithRateLimit($url, $params);
+        } catch (\Illuminate\Http\Client\RequestException $e) {
+
+            Log::channel('fetch')->debug($e->getMessage());
+            sleep(120);
+            return $this->getWithRateLimit($url, $params);
+
+            // Handle request exceptions
+
+            if ($e->getCode() === 35) {
+                // Handle cURL error 35: unexpected eof while reading
+                // Log the error, display a message, or take appropriate action
+                Log::error('cURL error 35: ' . $e->getMessage());
+                // You can also throw a custom exception if needed
+                throw new \Exception('Custom error message for cURL error 35');
+            } else {
+                // Handle other request exceptions
+                // Log the error, display a message, or take appropriate action
+                Log::error('Request exception: ' . $e->getMessage());
+            }
+        } catch (\Exception $e) {
+            return $this->getWithRateLimit($url, $params);
+
+            // Handle other generic exceptions
+            // Log the error, display a message, or take appropriate action
+            Log::error('Exception: ' . $e->getMessage());
+        }
+    }
+
+    public function getCatHadiths()
+    {
+        foreach (Category::all() as $category) {
+
+//            $response = Http::get("https://hadeethenc.com/api/v1/hadeeths/list/", [
+//                "language"=>"ar",
+//                "category_id"=> $category->id,
+//                "page"=>1,
+//                "per_page"=>2000000000000000,
+//            ]);
+            $response = $this->getWithRateLimit("https://hadeethenc.com/api/v1/hadeeths/list/", [
+                "language"=>"ar",
+                "category_id"=> $category->id,
+                "page"=>1,
+                "per_page"=>2000000000000000,
+            ]);
+
+            foreach ($response->json('data') as $item) {
+
+                GrabbedCatHadith::firstOrCreate(['id' => $item['id']], ['translations' => $item['translations']]);
+
+            }
+        }
     }
 
 
