@@ -2,18 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::redirect('/', '/today');
 
-Route::get('/', [\App\Http\Controllers\Mobile\V1\HomeController::class, 'index']);
+Route::get('today', [\App\Http\Controllers\Mobile\V1\HomeController::class, 'today'])->name('mobile.today');
+Route::get('all', [\App\Http\Controllers\Mobile\V1\HomeController::class, 'all'])->name('mobile.all');
 
 Route::get('generate', \App\Http\Controllers\FetchDataController::class);
 

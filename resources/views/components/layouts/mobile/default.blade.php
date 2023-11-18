@@ -23,5 +23,7 @@
 
     <x-layouts.mobile.app-bar/>
 </div>
+
+@yield('scripts')
 </body>
 </html>

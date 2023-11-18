@@ -9,7 +9,7 @@ use App\Models\Language;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function today()
     {
 
         //        return Language::pluck('code');
@@ -36,6 +36,16 @@ class HomeController extends Controller
         //        return response()->json($top);
         //        dd($top);
 
-        return view('mobile.home', compact('today', 'yesterday', 'old'));
+        return view('mobile.today', compact('today', 'yesterday', 'old'));
+    }
+
+    public function all()
+    {
+        $hadiths = Hadith::query()
+            ->select()
+            ->paginate()
+            ->withQueryString();
+
+        return view('mobile.all', compact('hadiths'));
     }
 }
