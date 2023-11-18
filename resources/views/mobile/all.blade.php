@@ -1,16 +1,12 @@
 <x-layouts.mobile.default>
 
-    <div class="mb-3 flex items-center justify-between">
+    <div class="mb-3 flex items-center justify-between pb-2 border-b">
         <h1 class="text-3xl font-bold">{{ __('general.all') }}</h1>
 {{--        <p class="text-sm text-gray-500 uppercase font-bold">{{ \Carbon\Carbon::today()->translatedFormat('D d, M') }}</p>--}}
 
-        <div class="display-icons flex items-center justify-between gap-2">
-{{--            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 64 64"><title>grid-interface</title><g fill="#006837"><rect x="4" y="4" width="24" height="24" rx="2" fill="#006837"></rect><rect x="36" y="4" width="24" height="24" rx="2"></rect><rect x="4" y="36" width="24" height="24" rx="2"></rect><rect x="36" y="36" width="24" height="24" rx="2" fill="#006837"></rect></g></svg>--}}
-            <svg class="display-icon" data-type="grid_container" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>grid-interface</title><g fill="#006837"><rect x="1" y="1" width="9" height="9" rx="1" ry="1" fill="#006837"></rect> <rect x="14" y="1" width="9" height="9" rx="1" ry="1"></rect> <rect x="1" y="14" width="9" height="9" rx="1" ry="1"></rect> <rect x="14" y="14" width="9" height="9" rx="1" ry="1" fill="#006837"></rect></g></svg>
-{{--            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>grid-interface</title><g stroke-width="2" fill="#006837" stroke="#006837"><rect x="2" y="2" width="7" height="7" fill="none" stroke="#006837" stroke-linecap="square" stroke-miterlimit="10"></rect> <rect x="15" y="2" width="7" height="7" fill="none" stroke-linecap="square" stroke-miterlimit="10"></rect> <rect x="2" y="15" width="7" height="7" fill="none" stroke-linecap="square" stroke-miterlimit="10"></rect> <rect x="15" y="15" width="7" height="7" fill="none" stroke="#006837" stroke-linecap="square" stroke-miterlimit="10"></rect></g></svg>--}}
-            <svg class="display-icon" data-type="list_container" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><title>view_list</title><g fill="none"><path d="M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z" fill="#006837"></path></g></svg>
-{{--            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><title>format_list_bulleted</title><g fill="none"><path d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5 5.5 6.83 5.5 6 4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5 1.5-.68 1.5-1.5-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z" fill="#006837"></path></g></svg>--}}
-
+        <div class="display-icons flex items-center justify-between gap-1 border px-2 rounded-md">
+            <svg class="display-icon" data-type="grid_container" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>{{ __('general.grid_display') }}</title><g fill="#006837"><rect x="1" y="1" width="9" height="9" rx="1" ry="1" fill="#006837"></rect> <rect x="14" y="1" width="9" height="9" rx="1" ry="1"></rect> <rect x="1" y="14" width="9" height="9" rx="1" ry="1"></rect> <rect x="14" y="14" width="9" height="9" rx="1" ry="1" fill="#006837"></rect></g></svg>
+            <svg class="display-icon -me-1" data-type="list_container" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><title>{{ __('general.list_display') }}</title><g fill="none"><path d="M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z" fill="#6B7280"></path></g></svg>
         </div>
     </div>
 
@@ -84,6 +80,7 @@
                     } else {
                         container.classList.add('hidden');
                     }
+
                 })
             }
 
@@ -97,6 +94,7 @@
                     toggleDisplayContainers(icon.getAttribute('data-type'))
                 })
             })
+
         </script>
     @endsection
 

@@ -9,4 +9,6 @@ return [
     'favourites' => 'Favourites',
     'categories' => 'Categories',
     'search' => 'Search',
+    'grid_display' => 'Grid Display',
+    'list_display' => 'List Display',
 ];

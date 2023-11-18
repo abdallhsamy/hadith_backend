@@ -9,4 +9,6 @@ return [
     'favorites' => 'المفضلة',
     'categories' => 'الأقسام',
     'search' => 'بحث',
+    'grid_display' => 'grid display',
+    'list_display' => 'list display',
 ];
