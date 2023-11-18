@@ -21,21 +21,35 @@ class FetchDataController extends Controller
 //
 //        $this->getHadiths();
 //        $this->translateAllHadiths();
-        return $this->getCatHadiths();
+        $this->getCatHadiths();
         return 'ok';
 
     }
 
     private function getWithRateLimit(string $url, array|null $params = []) {
         try {
-            return Http::get($url, $params);
+            $res =  Http::get($url, $params);
+
+            if ($res->notFound()) {
+                return null;
+            }
+
+            return $res;
         } catch (ConnectionException $e) {
             Log::channel('fetch')->debug($e->getMessage());
             sleep(120);
             return $this->getWithRateLimit($url, $params);
         } catch (\Illuminate\Http\Client\RequestException $e) {
 
-            Log::channel('fetch')->debug($e->getMessage());
+            $qp = '';
+            foreach ($params as $key => $val) {
+                $qp .= "$key=$val";
+
+            }
+            Log::channel('exception')->debug($url . $qp !== '' ? "?$url" : '');
+
+
+            Log::channel('exception')->debug($e->getMessage());
             sleep(120);
             return $this->getWithRateLimit($url, $params);
 
@@ -53,17 +67,31 @@ class FetchDataController extends Controller
                 Log::error('Request exception: ' . $e->getMessage());
             }
         } catch (\Exception $e) {
+            $qp = '';
+            foreach ($params as $key => $val) {
+                $qp .= "$key=$val";
+
+            }
+            Log::channel('exception')->debug($url . $qp !== '' ? "?{$url}" : '');
+
+
+            Log::channel('exception')->debug($e->getMessage());
+            sleep(120);
             return $this->getWithRateLimit($url, $params);
 
             // Handle other generic exceptions
             // Log the error, display a message, or take appropriate action
             Log::error('Exception: ' . $e->getMessage());
-        }
+        } finally {
+          }
     }
 
     public function getCatHadiths()
     {
+        $loop = 0;
         foreach (Category::all() as $category) {
+
+            Log::channel('fetch')->info($loop . ' : start : category :' . $category->id);
 
             $response = $this->getWithRateLimit("https://hadeethenc.com/api/v1/hadeeths/list/", [
                 "language"=>"ar",
@@ -72,11 +100,19 @@ class FetchDataController extends Controller
                 "per_page"=>2000000000000000,
             ]);
 
-            foreach ($response->json('data') as $item) {
+            Log::channel('fetch')->info($loop . ' : get response  : category :' . $category->id);
 
-                GrabbedCatHadith::firstOrCreate(['id' => $item['id']], ['translations' => $item['translations']]);
+            if ($response) {
+                foreach ($response->json('data') as $item) {
 
+                    GrabbedCatHadith::firstOrCreate(['id' => $item['id']], ['translations' => $item['translations']]);
+
+                }
             }
+
+            Log::channel('fetch')->info($loop . ' : end : category :' . $category->id);
+
+            $loop++;
         }
     }
 
