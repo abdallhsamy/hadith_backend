@@ -8,32 +8,32 @@ class Hadith extends Model
 {
     use HasTranslations;
 
-//    protected $fillable =[
-//        'id',
-//        'title',
-//        'hadeeth',
-//        'attribution',
-//        'grade',
-//        'explanation',
-//        'hints',
-//        'categories',
-//        'translations',
-//        'words_meanings',
-//        'reference',
-//    ];
+    //    protected $fillable =[
+    //        'id',
+    //        'title',
+    //        'hadeeth',
+    //        'attribution',
+    //        'grade',
+    //        'explanation',
+    //        'hints',
+    //        'categories',
+    //        'translations',
+    //        'words_meanings',
+    //        'reference',
+    //    ];
 
-        protected $guarded = [];
+    protected $guarded = [];
 
-        protected $translatableValues = [
-            'title',
-            'hadeeth',
-            'attribution',
-            'grade',
-            'explanation',
-            'hints',
-            'words_meanings',
-            'reference',
-        ];
+    protected $translatableValues = [
+        'title',
+        'hadeeth',
+        'attribution',
+        'grade',
+        'explanation',
+        'hints',
+        'words_meanings',
+        'reference',
+    ];
 
     public function categoriesRel()
     {
@@ -41,5 +41,4 @@ class Hadith extends Model
             Category::class, null, 'category_ids', 'group_ids'
         );
     }
-
 }

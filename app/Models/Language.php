@@ -6,6 +6,6 @@ class Language extends Model
 {
     protected $fillable = [
         'code',
-        'native'
+        'native',
     ];
 }

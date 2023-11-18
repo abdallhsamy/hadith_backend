@@ -1,13 +1,13 @@
 <?php
 
-if(! function_exists('getHtmlDirection')) {
-    function getHtmlDirection (): string
+if (! function_exists('getHtmlDirection')) {
+    function getHtmlDirection(): string
     {
         $rtlLanguages = [
             'ar', // Arabic
-            'ur',// Urdu
+            'ur', // Urdu
             'fa', // Persian
-//            'he', Hebrew is not in list
+            //            'he', Hebrew is not in list
         ];
         if (in_array(app()->getLocale(), $rtlLanguages, true)) {
             return 'rtl';

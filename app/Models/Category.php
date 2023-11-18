@@ -7,6 +7,7 @@ use App\Traits\Models\HasTranslations;
 class Category extends Model
 {
     use HasTranslations;
+
     protected $fillable = [
         'id',
         'title',
@@ -19,9 +20,8 @@ class Category extends Model
     ];
 
     protected $casts = [
-//        'title' => 'array'
+        //        'title' => 'array'
     ];
-
 
     public function hadiths()
     {

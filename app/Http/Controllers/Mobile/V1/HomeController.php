@@ -6,22 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Hadith;
 use App\Models\Language;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index() {
+    public function index()
+    {
 
-//        return Language::pluck('code');
-//        foreach (Hadith::all() as $item ) {
-//            $cats = Category::whereIn('id', $item->categories)->get();
-//            if (count($item->categories) > 0) {
-////                return response()->json($cats);
-//                $item->categoriesRel()->attach($cats);
-//
-//            }
-//
-//        }
+        //        return Language::pluck('code');
+        //        foreach (Hadith::all() as $item ) {
+        //            $cats = Category::whereIn('id', $item->categories)->get();
+        //            if (count($item->categories) > 0) {
+        ////                return response()->json($cats);
+        //                $item->categoriesRel()->attach($cats);
+        //
+        //            }
+        //
+        //        }
         $today = Hadith::query()
             ->select('*')->take(4)->get();
         $yesterday = Hadith::query()
@@ -29,13 +29,13 @@ class HomeController extends Controller
         $old = Hadith::query()
             ->select('*')->skip(4)->take(4)->get();
 
-//        foreach ($top as $t) {
-//            return $t->translation();
-//        }
+        //        foreach ($top as $t) {
+        //            return $t->translation();
+        //        }
 
-//        return response()->json($top);
-//        dd($top);
+        //        return response()->json($top);
+        //        dd($top);
 
-        return view('mobile.home', compact('today', 'yesterday','old'));
+        return view('mobile.home', compact('today', 'yesterday', 'old'));
     }
 }
