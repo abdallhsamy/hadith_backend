@@ -65,12 +65,6 @@ class FetchDataController extends Controller
     {
         foreach (Category::all() as $category) {
 
-//            $response = Http::get("https://hadeethenc.com/api/v1/hadeeths/list/", [
-//                "language"=>"ar",
-//                "category_id"=> $category->id,
-//                "page"=>1,
-//                "per_page"=>2000000000000000,
-//            ]);
             $response = $this->getWithRateLimit("https://hadeethenc.com/api/v1/hadeeths/list/", [
                 "language"=>"ar",
                 "category_id"=> $category->id,
