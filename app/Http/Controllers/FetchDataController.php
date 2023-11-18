@@ -23,7 +23,6 @@ class FetchDataController extends Controller
 
     public function getLangs()
     {
-        Language::query()->truncate();
         $langUrls = 'https://hadeethenc.com/api/v1/languages';
 
         $response = Http::get($langUrls);
@@ -59,7 +58,7 @@ class FetchDataController extends Controller
 
     private function getHadiths(string $language = 'ar')
     {
-        $id = 2996;
+        $id = 1;
 
         while (true) {
             if(!  $this->getOneHadith($id , $language)) {
@@ -68,9 +67,9 @@ class FetchDataController extends Controller
 
             $id++;
 
-            if ($id > 3000) {
-                break;
-            }
+//            if ($id > 3000) {
+//                break;
+//            }
         }
     }
 
