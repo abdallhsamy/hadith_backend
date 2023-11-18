@@ -69,7 +69,7 @@
         @endforeach
     </div>
 
-        @section('scripts')
+        @push('scripts')
             <script>
                 const toggleDisplayContainers = (type) => {
                     ['grid_container', 'list_container'].forEach(function (containerId) {
@@ -115,6 +115,6 @@
                 });
 
             </script>
-        @endsection
+    @endpush
 
 </x-layouts.mobile.default>
