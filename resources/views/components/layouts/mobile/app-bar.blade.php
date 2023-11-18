@@ -1,12 +1,12 @@
 <div class="bg-white absolute bottom-0 w-full border-t border-gray-200 flex">
-    <a href="#" class="flex flex-grow items-center justify-center p-2 text-indigo-500 hover:text-indigo-500">
+    <a href="#" class="flex flex-grow items-center justify-center p-2 text-primary hover:text-primary">
         <div class="text-center">
                     <span class="block h-8 text-3xl leading-8">
                         <i class="mdi mdi-newspaper-variant-outline"></i>
                     </span>
             <span class="block text-xs leading-none">{{ __('general.today') }}</span>
         </div>
-    </a>    <a href="#" class="flex flex-grow items-center justify-center p-2 text-gray-500 hover:text-indigo-500">
+    </a>    <a href="#" class="flex flex-grow items-center justify-center p-2 text-gray-500 hover:text-primary">
         <div class="text-center">
                     <span class="block h-8 text-3xl leading-8">
                         <i class="mdi mdi-newspaper"></i>
@@ -14,7 +14,7 @@
             <span class="block text-xs leading-none">{{ __('general.all') }}</span>
         </div>
     </a>
-    <a href="#" class="flex flex-grow items-center justify-center p-2 text-gray-500 hover:text-indigo-500">
+    <a href="#" class="flex flex-grow items-center justify-center p-2 text-gray-500 hover:text-primary">
         <div class="text-center">
                     <span class="block h-8 text-3xl leading-8">
                         <i class="mdi mdi-apps"></i>
@@ -22,7 +22,7 @@
             <span class="block text-xs leading-none">{{ __('general.categories') }}</span>
         </div>
     </a>
-    <a href="#" class="flex flex-grow items-center justify-center p-2 text-gray-500 hover:text-indigo-500">
+    <a href="#" class="flex flex-grow items-center justify-center p-2 text-gray-500 hover:text-primary">
         <div class="text-center">
                     <span class="block h-8 text-3xl leading-8">
                         <i class="mdi mdi-star-outline"></i>
@@ -30,7 +30,7 @@
             <span class="block text-xs leading-none">{{ __('general.favorites') }}</span>
         </div>
     </a>
-    <a href="#" class="flex flex-grow items-center justify-center p-2 text-gray-500 hover:text-indigo-500">
+    <a href="#" class="flex flex-grow items-center justify-center p-2 text-gray-500 hover:text-primary">
         <div class="text-center">
                     <span class="block h-8 text-3xl leading-8">
                         <i class="mdi mdi-magnify"></i>
