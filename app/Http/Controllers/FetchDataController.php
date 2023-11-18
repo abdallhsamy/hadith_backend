@@ -21,7 +21,8 @@ class FetchDataController extends Controller
 //
 //        $this->getHadiths();
 //        $this->translateAllHadiths();
-        $this->getCatHadiths();
+//        $this->getCatHadiths();
+        return $this->getHadiths();
         return 'ok';
 
     }
@@ -152,74 +153,81 @@ class FetchDataController extends Controller
         }
     }
 
-    private function getHadiths(string $language = 'ar')
+    private function getHadiths()
     {
-        $id = 1;
+//        GrabbedCatHadith::query()->update(['is_grabbed' => false]);
+//        return false;
+        $grabbed = GrabbedCatHadith::query()
+            ->get();
 
-        while (true) {
-            if(!  $this->getOneHadith($id , $language)) {
-                break;
-            }
+        $loop = 1;
+        foreach ($grabbed as $item) {
 
-            $id++;
+            Log::channel('fetch')->info($loop . ' : start : grabbed hadith :' . $item->id);
+            $this->getOneHadith($item);
+            Log::channel('fetch')->info($loop . ' : end : grabbed hadith :' . $item->id);
 
-            if ($id > 999999) {
-                break;
-            }
+            $loop++;
         }
     }
 
-    public function getOneHadith($id , $language)
+    public function getOneHadith(GrabbedCatHadith $item)
     {
-        $url = "https://hadeethenc.com/api/v1/hadeeths/one/";
+        if (! $item->is_grabbed) {
+            foreach ($item->translations as $language) {
+                $response = $this->getWithRateLimit( "https://hadeethenc.com/api/v1/hadeeths/one/", [
+                    'language' => $language,
+                    'id' => $item->id
+                ]);
 
-        $response = Http::get($url, compact('language', 'id'));
+                if (! $response ||$response->notFound() || $response->failed()) {
+                    return null;
+                }
 
-        if ($response->notFound() || $response->failed()) {
-            return null;
-        }
+                $hadith = Hadith::firstOrCreate(['id' => $response->json('id')]);
 
-        $hadith = Hadith::firstOrCreate(['id' => $response->json('id')]);
+                $data = $response->json();
 
-        $data = $response->json();
+                $arrayKeys = [
+                    'title',
+                    'hadeeth',
+                    'attribution',
+                    'grade',
+                    'explanation',
+                    'hints',
+                    'words_meanings',
+                    'reference',
+                ];
 
-//        dd($data);
-        $arrayKeys = [
-            'title',
-            'hadeeth',
-            'attribution',
-            'grade',
-            'explanation',
-            'hints',
-            'words_meanings',
-            'reference',
-        ];
+                foreach ($data as $key => $val) {
 
-        foreach ($data as $key => $val) {
+                    if (!in_array($key, $arrayKeys, true)) {
+                        $hadith->$key = $val;
+                    }
+                }
+                foreach ($arrayKeys as $arrayKey) {
+                    if (! array_key_exists($arrayKey, $data)) {
+                        continue;
+                    }
+                    if ($hadith->$arrayKey) {
+                        $hadith->$arrayKey = [...$hadith->$arrayKey , $language => $data[$arrayKey]];
+                    } else {
+                        $hadith->$arrayKey = [$language => $data[$arrayKey]];
+                    }
+                }
 
-            if (!in_array($key, $arrayKeys, true)) {
-                $hadith->$key = $val;
+
+                $hadith->save();
+
+                foreach ($response->json() as $name => $value) {
+                    HadithKey::firstOrCreate(compact('name'));
+                }
+
+//            return $hadith;
             }
+
+            $item->update(['is_grabbed' => true]);
         }
-        foreach ($arrayKeys as $arrayKey) {
-            if (! array_key_exists($arrayKey, $data)) {
-                continue;
-            }
-            if ($hadith->$arrayKey) {
-                $hadith->$arrayKey = [...$hadith->$arrayKey , $language => $data[$arrayKey]];
-            } else {
-                $hadith->$arrayKey = [$language => $data[$arrayKey]];
-            }
-        }
-
-
-        $hadith->save();
-
-        foreach ($response->json() as $name => $value) {
-            HadithKey::firstOrCreate(compact('name'));
-        }
-
-        return $hadith;
     }
 
     public function translateAllHadiths()

@@ -9,6 +9,9 @@ class GrabbedCatHadith extends Model
 //    use HasTranslations;
     protected $guarded = [];
 
+    protected $casts = [
+        'id' => 'integer',
+    ];
 //    protected $casts = [
 ////        'title' => 'array'
 //    ];
