@@ -69,33 +69,52 @@
         @endforeach
     </div>
 
-    @section('scripts')
-        <script>
-            const toggleDisplayContainers = (type) =>{
-                ['grid_container', 'list_container'].forEach(function (containerId) {
-                    const container = document.getElementById(containerId);
-                    if (containerId === type) {
-                        container.classList.remove('hidden');
-                        localStorage.setItem('__CONFIG_ALL_DISPLAY_TYPE__', containerId)
-                    } else {
-                        container.classList.add('hidden');
-                    }
+        @section('scripts')
+            <script>
+                const toggleDisplayContainers = (type) => {
+                    ['grid_container', 'list_container'].forEach(function (containerId) {
+                        const container = document.getElementById(containerId);
+                        if (containerId === type) {
+                            container.classList.remove('hidden');
+                            localStorage.setItem('__CONFIG_ALL_DISPLAY_TYPE__', containerId);
+                        } else {
+                            container.classList.add('hidden');
+                        }
+                    });
+                };
 
-                })
-            }
+                const updateDisplayIcons = (selectedIcon) => {
+                    document.querySelectorAll('.display-icon').forEach(function (icon) {
+                        ['g', 'path', 'rect'].forEach(function (shape) {
+                            if (icon === selectedIcon) {
+                                icon.querySelectorAll(shape).forEach(function (g) {
+                                    g.setAttribute('fill', '#006837');
+                                })
+                            } else {
+                                icon.querySelectorAll(shape).forEach(function (g) {
+                                    g.setAttribute('fill', '#6B7280');
+                                })
+                            }
+                        })
 
-            addEventListener('DOMContentLoaded',() => {
-                const type = localStorage.getItem('__CONFIG_ALL_DISPLAY_TYPE__') ?? 'grid_container'
-                toggleDisplayContainers(type)
-            })
+                    });
+                };
 
-            document.querySelectorAll('.display-icon').forEach(function (icon) {
-                icon.addEventListener('click', function() {
-                    toggleDisplayContainers(icon.getAttribute('data-type'))
-                })
-            })
+                addEventListener('DOMContentLoaded', () => {
+                    const type = localStorage.getItem('__CONFIG_ALL_DISPLAY_TYPE__') ?? 'grid_container';
+                    toggleDisplayContainers(type);
+                    updateDisplayIcons(document.querySelector(`[data-type="${type}"]`));
+                });
 
-        </script>
-    @endsection
+                document.querySelectorAll('.display-icon').forEach(function (icon) {
+                    icon.addEventListener('click', function () {
+                        const type = icon.getAttribute('data-type');
+                        toggleDisplayContainers(type);
+                        updateDisplayIcons(icon);
+                    });
+                });
+
+            </script>
+        @endsection
 
 </x-layouts.mobile.default>
