@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Mobile\V1\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,6 @@ Route::get('/m', function () {
     //    return \App\Models\Category::first()->title['ar'];
     return \App\Models\Category::where('title.fa', 'like', '%علوم آن%')->get();
 });
+
+
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
