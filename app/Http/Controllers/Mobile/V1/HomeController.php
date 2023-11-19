@@ -42,10 +42,21 @@ class HomeController extends Controller
     public function all()
     {
         $hadiths = Hadith::query()
-            ->select()
+            ->select('*')
             ->paginate()
             ->withQueryString();
 
         return view('mobile.all', compact('hadiths'));
+    }
+
+    public function categories()
+    {
+        $categories = Category::query()
+            ->select('*')
+//            ->paginate()
+//            ->withQueryString();
+            ->get();
+
+        return view('mobile.categories', compact('categories'));
     }
 }
