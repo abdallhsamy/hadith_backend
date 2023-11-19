@@ -17,7 +17,7 @@
                     <div class="absolute top-0 right-0 -mt-3 me-3 flex gap-4">
 
 {{--                        @foreach($item->categoriesRel as $cat)--}}
-{{--                            <div class="rounded-full bg-primary text-white text-xs py-1 pl-2 pr-3 leading-none">--}}
+{{--                            <div class="rounded-full bg-primary text-white text-xs py-1 ps-2 pe-3 leading-none">--}}
 {{--                                <i class="mdi mdi-fire text-base align-middle"></i>--}}
 {{--                                <span class="align-middle">{{ $cat->translation()->title }}</span>--}}
 {{--                            </div>--}}
@@ -30,7 +30,7 @@
                     </h2>
                     <div class="flex w-full items-center text-sm text-gray-300 font-medium">
                         <div class="flex-1 flex items-center">
-{{--                                                    <div class="rounded-full w-8 h-8 mr-3" >--}}
+{{--                                                    <div class="rounded-full w-8 h-8 me-3" >--}}
 {{--                                                        --}}
 {{--                                                    </div>--}}
 

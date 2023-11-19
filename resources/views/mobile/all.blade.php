@@ -17,7 +17,7 @@
                     <div class="absolute top-0 right-0 -mt-3 me-3 flex gap-4">
 
                         @foreach($item->categoriesRel as $cat)
-                            <div class="rounded-full bg-primary text-white text-xs py-1 pl-2 pr-3 leading-none">
+                            <div class="rounded-full bg-primary text-white text-xs py-1 ps-2 pe-3 leading-none">
                                 <i class="mdi mdi-fire text-base align-middle"></i>
                                 <span class="align-middle">{{ $cat->translation()->title }}</span>
                             </div>
@@ -25,12 +25,12 @@
                         @endforeach
                     </div>
                     <div class="h-48"></div>
-                    <h2 class="text-white text-2xl font-bold leading-tight mb-3 pr-5">
+                    <h2 class="text-white text-2xl font-bold leading-tight mb-3 pe-5">
                         {{ $item->translation()->title }}
                     </h2>
                     <div class="flex w-full items-center text-sm text-gray-300 font-medium">
                         <div class="flex-1 flex items-center">
-                            {{--                        <div class="rounded-full w-8 h-8 mr-3" style="background: url(https://randomuser.me/api/portraits/women/74.jpg) center; background-size: cover;"></div>--}}
+                            {{--                        <div class="rounded-full w-8 h-8 me-3" style="background: url(https://randomuser.me/api/portraits/women/74.jpg) center; background-size: cover;"></div>--}}
                             {{--                        <div>Gwen Thomson</div>--}}
                         </div>
                         <div><i class="mdi mdi-eye"></i> 18</div>
