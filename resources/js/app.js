@@ -1,4 +1,7 @@
 import './bootstrap';
+import feather from 'feather-icons';
+
+feather.replace();
 
 
 addEventListener('DOMContentLoaded', function() {
