@@ -15,7 +15,8 @@
 <div class="w-full h-screen bg-primary flex">
     <x-layouts.dashboard.sidebar/>
     <div class="bg-shade rounded-xl w-full my-4 me-4 flex flex-col divide-y relative">
-        <nav class="h-12">navbar</nav>
+        <x-layouts.dashboard.topnav/>
+
         <main>
             <div class="text-white">dddddddddddd</div>
             {{ $slot }}
