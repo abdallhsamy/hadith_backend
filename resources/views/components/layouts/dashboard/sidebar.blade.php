@@ -15,6 +15,16 @@
                     'icon' => '<i data-feather="globe"></i>'
                 ],
                 (object) [
+                    'title' => __('general.categories'),
+                    'url' => '#',
+                    'icon' => '<i data-feather="archive"></i>'
+                ],
+                (object) [
+                    'title' => __('general.hadith_list'),
+                    'url' => '#',
+                    'icon' => '<i data-feather="file-text"></i>'
+                ],
+                (object) [
                     'title' => __('general.searches'),
                     'url' => '#',
                     'icon' => '<i data-feather="search"></i>'
