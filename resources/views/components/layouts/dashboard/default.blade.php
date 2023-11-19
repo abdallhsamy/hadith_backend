@@ -10,11 +10,11 @@
     @stack('css')
 </head>
 <body>
-<div class="w-full h-screen bg-primary flex">
+<div class="w-full min-h-screen bg-primary flex">
     <x-layouts.dashboard.sidebar/>
     <div class="bg-shade rounded-xl w-full my-4 me-4 flex flex-col divide-y relative">
         <x-layouts.dashboard.topnav/>
-        <main class="p-4">
+        <main class="p-4 mb-12">
             {{ $slot }}
         </main>
         <footer class="h-12 w-full absolute bottom-0 text-center">footer</footer>

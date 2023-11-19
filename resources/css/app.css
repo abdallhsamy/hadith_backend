@@ -55,3 +55,7 @@
     right: 0px;
     /*margin-right: -1.25rem;*/
 }
+
+.panel {
+    @apply bg-white p-4 rounded-xl
+}

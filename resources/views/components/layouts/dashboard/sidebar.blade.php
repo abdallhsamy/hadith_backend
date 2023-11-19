@@ -16,7 +16,7 @@
                 ],
                 (object) [
                     'title' => __('general.categories'),
-                    'url' => '#',
+                    'url' => route('dashboard.categories.index'),
                     'icon' => '<i data-feather="archive"></i>'
                 ],
                 (object) [

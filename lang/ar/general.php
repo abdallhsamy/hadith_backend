@@ -22,4 +22,10 @@ return [
     'users' => 'Users',
     'comments' => 'Comments',
     'statistics' => 'Statistics',
+
+    'title' => 'Title',
+    'hadiths_count' => 'Hadiths Count',
+    'actions' => 'Actions',
+    'category_list' => 'Category List',
+    'add_new_category' => 'Add New Category',
 ];
