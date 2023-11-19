@@ -21,5 +21,4 @@ Route::get('/m', function () {
     return \App\Models\Category::where('title.fa', 'like', '%علوم آن%')->get();
 });
 
-
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');

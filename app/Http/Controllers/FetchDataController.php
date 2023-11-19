@@ -176,7 +176,7 @@ class FetchDataController extends Controller
         if (! $item->is_grabbed) {
             foreach ($item->translations as $language) {
 
-                if (! $language || $language == "") {
+                if (! $language || $language == '') {
                     continue;
                 }
 
