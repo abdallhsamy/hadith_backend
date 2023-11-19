@@ -8,9 +8,10 @@ Route::redirect('/', '/today');
 Route::get('today', [HomeController::class, 'today'])->name('mobile.today');
 Route::get('all', [HomeController::class, 'all'])->name('mobile.all');
 Route::get('categories', [HomeController::class, 'categories'])->name('mobile.categories');
-Route::get('favorites', [HomeController::class, 'all'])->name('mobile.favorites');
+Route::get('favorites', [HomeController::class, 'all'])->name('mobile.favorites')->middleware('auth:web');
 Route::get('search', [HomeController::class, 'all'])->name('mobile.search');
 Route::get('login', [HomeController::class, 'all'])->name('mobile.login');
+Route::get('login', [HomeController::class, 'all'])->name('login');
 
 Route::get('generate', \App\Http\Controllers\FetchDataController::class);
 
