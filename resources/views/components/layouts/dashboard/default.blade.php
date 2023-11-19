@@ -17,7 +17,8 @@
         <main class="p-4 mb-12">
             {{ $slot }}
         </main>
-        <footer class="h-12 w-full absolute bottom-0 text-center">footer</footer>
+        <x-layouts.dashboard.footer/>
+
     </div>
 </div>
 @stack('scripts')

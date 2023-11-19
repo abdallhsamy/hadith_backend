@@ -28,4 +28,7 @@ return [
     'actions' => 'Actions',
     'category_list' => 'Category List',
     'add_new_category' => 'Add New Category',
-];
+
+    'all_rights_reserved' => 'All Rights Reserved',
+    'abdallah_samy' => 'Abdallah Samy',
+    'designed_and_developed_by' => 'Designed and Developed by',];
