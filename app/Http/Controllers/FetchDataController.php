@@ -175,6 +175,11 @@ class FetchDataController extends Controller
     {
         if (! $item->is_grabbed) {
             foreach ($item->translations as $language) {
+
+                if (! $language || $language == "") {
+                    continue;
+                }
+
                 $response = $this->getWithRateLimit('https://hadeethenc.com/api/v1/hadeeths/one/', [
                     'language' => $language,
                     'id' => $item->id,
@@ -201,10 +206,15 @@ class FetchDataController extends Controller
 
                 foreach ($data as $key => $val) {
 
+                    Log::channel('exception')->debug($key);
+
+
                     if (! in_array($key, $arrayKeys, true)) {
+
                         $hadith->$key = $val;
                     }
                 }
+
                 foreach ($arrayKeys as $arrayKey) {
                     if (! array_key_exists($arrayKey, $data)) {
                         continue;
@@ -222,6 +232,7 @@ class FetchDataController extends Controller
                     HadithKey::firstOrCreate(compact('name'));
                 }
 
+//                dd('here');
                 //            return $hadith;
             }
 
