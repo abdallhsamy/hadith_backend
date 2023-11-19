@@ -227,9 +227,6 @@ class FetchDataController extends Controller
                 foreach ($response->json() as $name => $value) {
                     HadithKey::firstOrCreate(compact('name'));
                 }
-
-//                dd('here');
-                //            return $hadith;
             }
 
             $item->update(['is_grabbed' => true]);
