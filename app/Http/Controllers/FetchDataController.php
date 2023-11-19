@@ -205,10 +205,6 @@ class FetchDataController extends Controller
                 ];
 
                 foreach ($data as $key => $val) {
-
-                    Log::channel('exception')->debug($key);
-
-
                     if (! in_array($key, $arrayKeys, true)) {
 
                         $hadith->$key = $val;
