@@ -14,11 +14,11 @@ class CategoryCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-        return $this->collection->transform(fn($item) => [
-            '_id'               => $item->_id,
-            'id'                => $item->id,
-            'title'             => $item->translation()->title,
-            'hadeeths_count'    => $item->hadeeths_count,
+        return $this->collection->transform(fn ($item) => [
+            '_id' => $item->_id,
+            'id' => $item->id,
+            'title' => $item->translation()->title,
+            'hadeeths_count' => $item->hadeeths_count,
         ])->toArray();
     }
 }
