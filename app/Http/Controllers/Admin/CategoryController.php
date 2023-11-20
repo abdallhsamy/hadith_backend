@@ -3,27 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Dashboard\Category\CategoryCollection;
 use App\Models\Category;
+use Illuminate\Support\Facades\Request;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(Request $request, $offset = 0, $limit = 10)
     {
         $categories = Category::query()
-            ->select('*')
-            ->paginate()
-            ->withQueryString();
+            ->select(
+                '_id',
+                'id',
+                'title',
+                'hadeeths_count'
+            )
+            ->get();
 
         if (request()->wantsJson()) {
-//            return response()->json($categories);
-            return response()->json($categories->map(function (Category $category) {
-                return [
-                    '_id' => $category->_id,
-                    'id' => $category->id,
-                    'title' => $category->translation()->title,
-                    'hadeeths_count' => $category->hadeeths_count,
-                ];
-            }));
+            return new CategoryCollection($categories);
         }
 
         return view('dashboard.categories.index', compact('categories'));

@@ -64,7 +64,7 @@
                     search: true,
                     sort: true,
                     pagination: {
-                        limit: 2,
+                        limit: 10,
                         summary: true
                     },
                     columns: [
@@ -74,7 +74,6 @@
                         {
                             name: "{{ __('general.actions') }}",
                             formatter: (_, row) => gridHtml(`<i class="mdi mdi-eye" data-id="${row.cells[3].data}"></i>`),
-
                         }
                     ],
                     server: {
@@ -87,12 +86,14 @@
 
                             throw Error('oh no :(');
                         },
-                        then: data => data.map(item => [
+                        then: data => data.data.map(item => [
                             item.id,
                             item.title,
                             item.hadeeths_count,
                             item._id,
                         ]),
+                        // total: data => data.total,
+
                     }
                 }).render(document.getElementById("wrapper"));
             })
