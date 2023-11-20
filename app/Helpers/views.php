@@ -16,3 +16,11 @@ if (! function_exists('getHtmlDirection')) {
         return 'ltr';
     }
 }
+
+
+if (! function_exists('isHtmlDirection')) {
+    function isHtmlDirection(string|null $dir = null): bool
+    {
+        return getHtmlDirection() === $dir;
+    }
+}
