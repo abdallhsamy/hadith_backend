@@ -15,7 +15,7 @@ class CategoryController extends Controller
             ->withQueryString();
 
         if (request()->wantsJson()) {
-//            return response()->json($categories);
+            //            return response()->json($categories);
             return response()->json($categories->map(function (Category $category) {
                 return [
                     '_id' => $category->_id,
