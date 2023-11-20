@@ -1,11 +1,17 @@
 import './bootstrap';
 import feather from 'feather-icons';
 import Alpine from 'alpinejs'
+import { Grid } from "gridjs";
+// import { ar_SA, en_US } from "gridjs/l10n";
+import {html} from "gridjs";
+
 
 feather.replace();
 
-
+window.Grid = Grid
+// window.ar_SA = ar_SA
 window.Alpine = Alpine
+window.gridHtml = html
 Alpine.start()
 
 
@@ -22,8 +28,6 @@ addEventListener('DOMContentLoaded', function() {
     })
 
     document.querySelectorAll('.sidenav > ul > li > a').forEach(function (item) {
-        console.log('item.getAttribute(\'href\') :', item.getAttribute('href'))
-        console.log('window.location.href : ', window.location.href)
         if (item.getAttribute('href') === window.location.href) {
             item.parentElement.classList.add('active')
         }

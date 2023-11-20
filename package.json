@@ -15,6 +15,7 @@
     },
     "dependencies": {
         "alpinejs": "^3.13.3",
-        "feather-icons": "^4.29.1"
+        "feather-icons": "^4.29.1",
+        "gridjs": "^6.0.6"
     }
 }
