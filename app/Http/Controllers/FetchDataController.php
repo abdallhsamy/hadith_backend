@@ -16,12 +16,14 @@ class FetchDataController extends Controller
 {
     public function __invoke()
     {
+        set_time_limit(-1);
+
         //        $this->getLangs();
         //
         //        $this->getHadiths();
         //        $this->translateAllHadiths();
         //        $this->getCatHadiths();
-        return $this->getHadiths();
+        $this->getHadiths();
 
         return 'ok';
 
