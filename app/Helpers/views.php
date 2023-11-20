@@ -17,9 +17,8 @@ if (! function_exists('getHtmlDirection')) {
     }
 }
 
-
 if (! function_exists('isHtmlDirection')) {
-    function isHtmlDirection(string|null $dir = null): bool
+    function isHtmlDirection(string $dir = null): bool
     {
         return getHtmlDirection() === $dir;
     }
