@@ -18,7 +18,8 @@ class CategoryController extends Controller
                 'title',
                 'hadeeths_count'
             )
-            ->get();
+            ->paginate()
+            ->withQueryString();
 
         if (request()->wantsJson()) {
             return new CategoryCollection($categories);
