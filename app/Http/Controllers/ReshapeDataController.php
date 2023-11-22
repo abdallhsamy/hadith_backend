@@ -20,6 +20,7 @@ class ReshapeDataController extends Controller
 
         $this->setPrentCategories();
         $this->setCategoryLanguage();
+        $this->setHadithLanguage();
         return 'ok';
     }
 
@@ -50,6 +51,20 @@ class ReshapeDataController extends Controller
 
                 $category->languages()->attach($languages);
                 $category->save();
+            }
+        }
+    }
+
+    private function setHadithLanguage(): void
+    {
+        $hadiths = Hadith::all();
+
+        foreach ($hadiths as $hadith) {
+            if ($hadith->hadeeth && count($hadith->hadeeth) > 0) {
+                $languages = Language::whereIn('code', array_keys($hadith->hadeeth))->get();
+
+                $hadith->languages()->attach($languages);
+                $hadith->save();
             }
         }
     }

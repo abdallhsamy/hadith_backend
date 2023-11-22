@@ -8,21 +8,27 @@ class Hadith extends Model
 {
     use HasTranslations;
 
-    //    protected $fillable =[
-    //        'id',
-    //        'title',
-    //        'hadeeth',
-    //        'attribution',
-    //        'grade',
-    //        'explanation',
-    //        'hints',
-    //        'categories',
-    //        'translations',
-    //        'words_meanings',
-    //        'reference',
-    //    ];
+    protected $fillable =[
+        'id',
+        'title',
+        'hadeeth',
+        'attribution',
+        'grade',
+        'explanation',
+        'hints',
+        'categories',
+        'translations',
+        'words_meanings',
+        'reference',
 
-    protected $guarded = [];
+        'views'
+    ];
+
+    protected $casts = [
+        'views' => 'integer'
+    ];
+
+//    protected $guarded = [];
 
     protected $translatableValues = [
         'title',
@@ -39,6 +45,13 @@ class Hadith extends Model
     {
         return $this->belongsToMany(
             Category::class, null, 'category_ids', 'hadith_ids'
+        );
+    }
+
+    public function languages(): \MongoDB\Laravel\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(
+            Language::class, null, 'hadith_ids','language_ids',
         );
     }
 }
