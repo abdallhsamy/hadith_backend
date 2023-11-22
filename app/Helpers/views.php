@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('getHtmlDirection')) {
+if (! function_exists('getHtmlDirection')) {
     function getHtmlDirection(): string
     {
         $rtlLanguages = [
@@ -17,7 +17,7 @@ if (!function_exists('getHtmlDirection')) {
     }
 }
 
-if (!function_exists('isHtmlDirection')) {
+if (! function_exists('isHtmlDirection')) {
     function isHtmlDirection(string $dir = null): bool
     {
         return getHtmlDirection() === $dir;

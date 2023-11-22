@@ -6,11 +6,11 @@ trait HasTranslations
 {
     public function translation(string $lang = null): object
     {
-        if (!property_exists($this, 'translatableValues')) {
+        if (! property_exists($this, 'translatableValues')) {
             throw new \RuntimeException('The $translatableValues property must be defined in the class.');
         }
 
-        if (!$lang) {
+        if (! $lang) {
             $lang = app()->getLocale();
         }
 
@@ -24,7 +24,7 @@ trait HasTranslations
             }
         }
 
-        return (object)$translation;
+        return (object) $translation;
     }
 
     //    public function translation(string|null $lang = null)
