@@ -33,4 +33,18 @@ return [
     'abdallah_samy' => 'عبد الله سامي',
     'designed_and_developed_by' => 'تصميم وتطوير من قبل',
 
+    'hadith_text' => 'نص الحديث',
+    'hadith_grade' => 'درجة الحديث',
+    'hadith_category' => 'تصنيف الحديث',
+    'hadith_attribution' => 'إسناد الحديث',
+    'hadith_explanation' => 'شرح الحديث',
+    'hadith_hints' => 'دروس مستفادة من الحديث',
+    'hadith_categories' => 'فئات الحديث',
+    'hadith_translations' => 'ترجمات الحديث',
+    'hadith_words_meanings' => 'معاني الالفاظ',
+    'hadith_reference' => 'مرجع الحديث',
+    'word' => 'الكلمة',
+    'meaning' => 'المعنى',
+    'available_translations' => 'الترجمات المتوفرة',
+    'change_language' => 'تغيير اللغة'
 ];

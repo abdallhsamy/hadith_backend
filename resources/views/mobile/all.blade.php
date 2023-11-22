@@ -33,7 +33,7 @@
                             {{--                        <div class="rounded-full w-8 h-8 me-3" style="background: url(https://randomuser.me/api/portraits/women/74.jpg) center; background-size: cover;"></div>--}}
                             {{--                        <div>Gwen Thomson</div>--}}
                         </div>
-                        <div><i class="mdi mdi-eye"></i> 18</div>
+                        <div><i class="mdi mdi-eye"></i> {{ $item->views }}</div>
                     </div>
                 </a>
 

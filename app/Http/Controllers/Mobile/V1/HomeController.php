@@ -69,6 +69,12 @@ class HomeController extends Controller
         $hadiths = $category->hadiths()->get();
 
         return view('mobile.category_hadiths', compact('category', 'hadiths'));
+    }
 
+    public function showHadith(Hadith $hadith)
+    {
+        $hadith->increment('views');
+
+        return view('mobile.hadith', compact('hadith'));
     }
 }
