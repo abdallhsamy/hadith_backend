@@ -19,8 +19,8 @@ class ReshapeDataController extends Controller
 
 
         $this->setPrentCategories();
+        $this->setCategoryLanguage();
         return 'ok';
-
     }
 
     private function setPrentCategories(): void
@@ -37,6 +37,20 @@ class ReshapeDataController extends Controller
                 $category->parentCategory()->associate($parent);
             }
             $category->save();
+        }
+    }
+
+    private function setCategoryLanguage(): void
+    {
+        $categories = Category::all();
+
+        foreach ($categories as $category) {
+            if ($category->title && count($category->title) > 0) {
+                $languages = Language::whereIn('code', array_keys($category->title))->get();
+
+                $category->languages()->attach($languages);
+                $category->save();
+            }
         }
     }
 

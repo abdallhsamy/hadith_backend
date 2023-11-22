@@ -8,4 +8,11 @@ class Language extends Model
         'code',
         'native',
     ];
+
+    public function categories()
+    {
+        return $this->belongsToMany(
+            Category::class, null, 'language_ids','category_ids'
+        );
+    }
 }

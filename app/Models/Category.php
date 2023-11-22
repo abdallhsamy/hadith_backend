@@ -26,7 +26,14 @@ class Category extends Model
     public function hadiths(): \MongoDB\Laravel\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(
-            Hadith::class, null, 'hadith_ids', 'group_ids'
+            Hadith::class, null, 'hadith_ids', 'category_ids'
+        );
+    }
+
+    public function languages(): \MongoDB\Laravel\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(
+            Language::class, null, 'category_ids','language_ids',
         );
     }
 
