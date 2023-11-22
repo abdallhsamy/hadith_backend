@@ -44,7 +44,7 @@ class Hadith extends Model
     public function categoriesRel()
     {
         return $this->belongsToMany(
-            Category::class, null, 'category_ids', 'hadith_ids'
+            Category::class, null, 'hadith_ids', 'category_ids'
         );
     }
 
