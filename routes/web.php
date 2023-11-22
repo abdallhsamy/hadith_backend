@@ -16,6 +16,7 @@ Route::get('login', [HomeController::class, 'all'])->name('mobile.login');
 Route::get('login', [HomeController::class, 'all'])->name('login');
 
 Route::get('generate', \App\Http\Controllers\FetchDataController::class);
+Route::get('reshape', \App\Http\Controllers\ReshapeDataController::class);
 
 Route::get('/m', function () {
     //    return \App\Models\Category::first()->title['ar'];

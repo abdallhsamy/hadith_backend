@@ -23,10 +23,20 @@ class Category extends Model
         //        'title' => 'array'
     ];
 
-    public function hadiths()
+    public function hadiths(): \MongoDB\Laravel\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(
             Hadith::class, null, 'hadith_ids', 'group_ids'
         );
+    }
+
+    public function parentCategory(): \Illuminate\Database\Eloquent\Relations\BelongsTo|\MongoDB\Laravel\Relations\BelongsTo
+    {
+        return $this->belongsTo(__CLASS__, 'parent_id');
+    }
+
+    public function childCategories(): \Illuminate\Database\Eloquent\Relations\HasMany|\MongoDB\Laravel\Relations\HasMany
+    {
+        return $this->hasMany(__CLASS__, 'parent_id');
     }
 }
