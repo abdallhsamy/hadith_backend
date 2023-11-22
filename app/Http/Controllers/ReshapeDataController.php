@@ -3,13 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\GrabbedCatHadith;
 use App\Models\Hadith;
-use App\Models\HadithKey;
 use App\Models\Language;
-use Illuminate\Http\Client\ConnectionException;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
 class ReshapeDataController extends Controller
 {
@@ -21,6 +16,7 @@ class ReshapeDataController extends Controller
         $this->setHadithLanguage();
         $this->setHadithCategory();
         $this->addHadithCountToCategories();
+
         return 'ok';
     }
 
@@ -29,7 +25,7 @@ class ReshapeDataController extends Controller
         $categories = Category::all();
 
         foreach ($categories as $category) {
-            if (!$category->parent_id) {
+            if (! $category->parent_id) {
                 $category->unset('parent_id');
             } else {
                 $parent = Category::where('id', $category->parent_id)->first();
@@ -92,5 +88,4 @@ class ReshapeDataController extends Controller
             $category->update(['hadiths_count' => $category->hadiths()->count()]);
         }
     }
-
 }

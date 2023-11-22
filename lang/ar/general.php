@@ -46,5 +46,5 @@ return [
     'word' => 'الكلمة',
     'meaning' => 'المعنى',
     'available_translations' => 'الترجمات المتوفرة',
-    'change_language' => 'تغيير اللغة'
+    'change_language' => 'تغيير اللغة',
 ];
