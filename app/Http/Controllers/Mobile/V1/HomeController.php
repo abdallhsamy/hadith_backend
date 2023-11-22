@@ -52,11 +52,23 @@ class HomeController extends Controller
     public function categories()
     {
         $categories = Category::query()
+            ->whereNotNull('hadiths_count')
+            ->whereNot('hadiths_count', 0)
             ->select('*')
 //            ->paginate()
 //            ->withQueryString();
             ->get();
 
         return view('mobile.categories', compact('categories'));
+    }
+
+    public function showCategoryHadiths(Category $category)
+    {
+        $category->increment('views');
+
+        $hadiths = $category->hadiths()->get();
+
+        return view('mobile.category_hadiths', compact('category', 'hadiths'));
+
     }
 }

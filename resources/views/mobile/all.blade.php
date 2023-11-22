@@ -2,7 +2,7 @@
 
     <div class="mb-3 flex items-center justify-between pb-2 border-b">
         <h1 class="text-3xl font-bold">{{ __('general.all') }}</h1>
-{{--        <p class="text-sm text-gray-500 uppercase font-bold">{{ \Carbon\Carbon::today()->translatedFormat('D d, M') }}</p>--}}
+        {{--        <p class="text-sm text-gray-500 uppercase font-bold">{{ \Carbon\Carbon::today()->translatedFormat('D d, M') }}</p>--}}
 
         <div class="display-icons flex items-center justify-between gap-1 border px-2 rounded-md">
             <svg class="display-icon" data-type="grid_container" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>{{ __('general.grid_display') }}</title><g fill="#006837"><rect x="1" y="1" width="9" height="9" rx="1" ry="1" fill="#006837"></rect> <rect x="14" y="1" width="9" height="9" rx="1" ry="1"></rect> <rect x="1" y="14" width="9" height="9" rx="1" ry="1"></rect> <rect x="14" y="14" width="9" height="9" rx="1" ry="1" fill="#006837"></rect></g></svg>
@@ -13,7 +13,7 @@
     <div id="grid_container">
         @foreach($hadiths as  $item)
             <div class="mb-5">
-                <a href="#" class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95" style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
+                <a href="{{ route('mobile.hadiths.show', $item->_id) }}" class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95" style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
                     <div class="absolute top-0 right-0 -mt-3 me-3 flex gap-4">
 
                         @foreach($item->categoriesRel as $cat)
@@ -44,7 +44,7 @@
     <div id="list_container" class="hidden">
         @foreach($hadiths as $item)
             <div>
-                <a href="#" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
+                <a href="{{ route('mobile.hadiths.show', $item->_id) }}" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
                     <div class="block h-24 w-2/5 rounded overflow-hidden" style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;"></div>
                     <div class="ps-3 w-3/5">
                         <div class="text-xs text-gray-500 uppercase font-semibold flex gap-1 @if($item->categoriesRel->count() > 0) mb-2 @endif">
@@ -69,52 +69,52 @@
         @endforeach
     </div>
 
-        @push('scripts')
-            <script>
-                const toggleDisplayContainers = (type) => {
-                    ['grid_container', 'list_container'].forEach(function (containerId) {
-                        const container = document.getElementById(containerId);
-                        if (containerId === type) {
-                            container.classList.remove('hidden');
-                            localStorage.setItem('__CONFIG_ALL_DISPLAY_TYPE__', containerId);
-                        } else {
-                            container.classList.add('hidden');
-                        }
-                    });
-                };
-
-                const updateDisplayIcons = (selectedIcon) => {
-                    document.querySelectorAll('.display-icon').forEach(function (icon) {
-                        ['g', 'path', 'rect'].forEach(function (shape) {
-                            if (icon === selectedIcon) {
-                                icon.querySelectorAll(shape).forEach(function (g) {
-                                    g.setAttribute('fill', '#006837');
-                                })
-                            } else {
-                                icon.querySelectorAll(shape).forEach(function (g) {
-                                    g.setAttribute('fill', '#6B7280');
-                                })
-                            }
-                        })
-
-                    });
-                };
-
-                addEventListener('DOMContentLoaded', () => {
-                    const type = localStorage.getItem('__CONFIG_ALL_DISPLAY_TYPE__') ?? 'grid_container';
-                    toggleDisplayContainers(type);
-                    updateDisplayIcons(document.querySelector(`[data-type="${type}"]`));
+    @push('scripts')
+        <script>
+            const toggleDisplayContainers = (type) => {
+                ['grid_container', 'list_container'].forEach(function (containerId) {
+                    const container = document.getElementById(containerId);
+                    if (containerId === type) {
+                        container.classList.remove('hidden');
+                        localStorage.setItem('__CONFIG_ALL_DISPLAY_TYPE__', containerId);
+                    } else {
+                        container.classList.add('hidden');
+                    }
                 });
+            };
 
+            const updateDisplayIcons = (selectedIcon) => {
                 document.querySelectorAll('.display-icon').forEach(function (icon) {
-                    icon.addEventListener('click', function () {
-                        const type = icon.getAttribute('data-type');
-                        toggleDisplayContainers(type);
-                        updateDisplayIcons(icon);
-                    });
-                });
+                    ['g', 'path', 'rect'].forEach(function (shape) {
+                        if (icon === selectedIcon) {
+                            icon.querySelectorAll(shape).forEach(function (g) {
+                                g.setAttribute('fill', '#006837');
+                            })
+                        } else {
+                            icon.querySelectorAll(shape).forEach(function (g) {
+                                g.setAttribute('fill', '#6B7280');
+                            })
+                        }
+                    })
 
-            </script>
+                });
+            };
+
+            addEventListener('DOMContentLoaded', () => {
+                const type = localStorage.getItem('__CONFIG_ALL_DISPLAY_TYPE__') ?? 'grid_container';
+                toggleDisplayContainers(type);
+                updateDisplayIcons(document.querySelector(`[data-type="${type}"]`));
+            });
+
+            document.querySelectorAll('.display-icon').forEach(function (icon) {
+                icon.addEventListener('click', function () {
+                    const type = icon.getAttribute('data-type');
+                    toggleDisplayContainers(type);
+                    updateDisplayIcons(icon);
+                });
+            });
+
+        </script>
     @endpush
 
 </x-layouts.mobile.default>

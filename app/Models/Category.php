@@ -13,6 +13,8 @@ class Category extends Model
         'title',
         'hadeeths_count',
         'parent_id',
+        'views',
+        'hadiths_count',
     ];
 
     protected $translatableValues = [

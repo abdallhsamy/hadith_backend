@@ -1,7 +1,7 @@
 <x-layouts.mobile.default>
 
     <div class="mb-3 flex items-center justify-between pb-2 border-b">
-        <h1 class="text-3xl font-bold">{{ __('general.all') }}</h1>
+        <h1 class="text-3xl font-bold">{{ $category->translation()->title }}</h1>
         {{--        <p class="text-sm text-gray-500 uppercase font-bold">{{ \Carbon\Carbon::today()->translatedFormat('D d, M') }}</p>--}}
 
         <div class="display-icons flex items-center justify-between gap-1 border px-2 rounded-md">
@@ -11,18 +11,18 @@
     </div>
 
     <div id="grid_container">
-        @foreach($categories as  $item)
+        @foreach($hadiths as  $item)
             <div class="mb-5">
-                <a href="{{ route('mobile.category.hadiths', $item->_id) }}" class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95" style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
+                <a href="{{ route('mobile.hadiths.show', $item->_id) }}" class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95" style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
                     <div class="absolute top-0 right-0 -mt-3 me-3 flex gap-4">
 
-                        {{--                        @foreach($item->categoriesRel as $cat)--}}
-                        {{--                            <div class="rounded-full bg-primary text-white text-xs py-1 ps-2 pe-3 leading-none">--}}
-                        {{--                                <i class="mdi mdi-fire text-base align-middle"></i>--}}
-                        {{--                                <span class="align-middle">{{ $cat->translation()->title }}</span>--}}
-                        {{--                            </div>--}}
+                        @foreach($item->categoriesRel as $cat)
+                            <div class="rounded-full bg-primary text-white text-xs py-1 ps-2 pe-3 leading-none">
+                                <i class="mdi mdi-fire text-base align-middle"></i>
+                                <span class="align-middle">{{ $cat->translation()->title }}</span>
+                            </div>
 
-                        {{--                        @endforeach--}}
+                        @endforeach
                     </div>
                     <div class="h-48"></div>
                     <h2 class="text-white text-2xl font-bold leading-tight mb-3 pe-5">
@@ -30,13 +30,10 @@
                     </h2>
                     <div class="flex w-full items-center text-sm text-gray-300 font-medium">
                         <div class="flex-1 flex items-center">
-                            {{--                                                    <div class="rounded-full w-8 h-8 me-3" >--}}
-                            {{--                                                        --}}
-                            {{--                                                    </div>--}}
-
-                            <div class="flex gap-1">{{ $item->hadiths_count }}<i class="mdi mdi-newspaper-variant-outline"></i></div>
+                            {{--                        <div class="rounded-full w-8 h-8 me-3" style="background: url(https://randomuser.me/api/portraits/women/74.jpg) center; background-size: cover;"></div>--}}
+                            {{--                        <div>Gwen Thomson</div>--}}
                         </div>
-                        <div class="flex gap-1"><i class="mdi mdi-eye"></i> {{ $item->views }}</div>
+                        <div><i class="mdi mdi-eye"></i> 18</div>
                     </div>
                 </a>
 
@@ -45,33 +42,23 @@
     </div>
 
     <div id="list_container" class="hidden">
-        @foreach($categories as $item)
+        @foreach($hadiths as $item)
             <div>
-                <a href="{{ route('mobile.category.hadiths', $item->_id) }}" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
+                <a href="{{ route('mobile.hadiths.show', $item->_id) }}" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
                     <div class="block h-24 w-2/5 rounded overflow-hidden" style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;"></div>
                     <div class="ps-3 w-3/5">
-                        {{--                        <div class="text-xs text-gray-500 uppercase font-semibold flex gap-1 @if($item->hadiths_count > 0) mb-2 @endif">--}}
-                        {{--                            @foreach($item->categoriesRel as $cat)--}}
-                        {{--                                <span class="bg-gray-200 px-2 rounded-lg">--}}
-                        {{--                                {{ $cat->translation()->title }}--}}
-                        {{--                            </span>--}}
-                        {{--                            @endforeach--}}
-                        {{--                        </div>--}}
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-md font-semibold leading-tight ">{{ $item->translation()->title }}</h3>
-
-                            <div class="flex items-center justify-between gap-1">
-                                {{ $item->views }}
-                                <i class="mdi mdi-eye"></i>
-                            </div>
+                        <div class="text-xs text-gray-500 uppercase font-semibold flex gap-1 @if($item->categoriesRel->count() > 0) mb-2 @endif">
+                            @foreach($item->categoriesRel as $cat)
+                                <span class="bg-gray-200 px-2 rounded-lg">
+                                {{ $cat->translation()->title }}
+                            </span>
+                            @endforeach
                         </div>
-                        <div class="flex w-full items-center text-xs text-gray-500 font-medium">
-                            {{--                                                <div class="rounded-full w-5 h-5 me-3" style="background: url(https://randomuser.me/api/portraits/men/41.jpg) center; background-size: cover;"></div>--}}
-                            <div class="flex gap-1">{{ $item->hadiths_count }}<i class="mdi mdi-newspaper-variant-outline"></i></div>
-                        </div>
-
-
-
+                        <h3 class="text-md font-semibold leading-tight mb-3">{{ $item->translation()->title }}</h3>
+                        {{--                    <div class="flex w-full items-center text-xs text-gray-500 font-medium">--}}
+                        {{--                        <div class="rounded-full w-5 h-5 me-3" style="background: url(https://randomuser.me/api/portraits/men/41.jpg) center; background-size: cover;"></div>--}}
+                        {{--                        <div>Jack Ryan</div>--}}
+                        {{--                    </div>--}}
                     </div>
                 </a>
             </div>
