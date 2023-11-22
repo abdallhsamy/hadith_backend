@@ -54,4 +54,11 @@ class Hadith extends Model
             Language::class, null, 'hadith_ids', 'language_ids',
         );
     }
+
+    public function favoriteUsers(): \MongoDB\Laravel\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(
+            User::class, null, 'favorite_hadith_ids', 'favorite_user_ids',
+        );
+    }
 }

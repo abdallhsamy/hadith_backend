@@ -42,4 +42,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+//
+
+
+
+//    public function (): \MongoDB\Laravel\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\BelongsToMany
+//    {
+//        return $this->belongsToMany(
+//            Category::class, null, 'language_ids', 'hadith_ids'
+//        );
+//    }
+
+
+
+
+    public function favoriteHadiths(): \MongoDB\Laravel\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(
+            Hadith::class, null, 'favorite_user_ids','favorite_hadith_ids',
+        );
+    }
 }

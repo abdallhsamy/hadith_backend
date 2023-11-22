@@ -120,4 +120,21 @@ class HomeController extends Controller
 
         return view('mobile.search', compact('languages', 'results', 'query', 'language'));
     }
+
+
+
+    public function favorites()
+    {
+//        $hadiths = Hadith::query()
+//            ->select('*')
+//            ->paginate()
+//            ->withQueryString();
+
+        $hadiths = auth()->user()->favoriteHadiths()
+            ->select('*')
+            ->paginate()
+            ->withQueryString();
+
+        return view('mobile.favorites', compact('hadiths'));
+    }
 }
