@@ -21,14 +21,14 @@ class Hadith extends Model
         'words_meanings',
         'reference',
 
-        'views'
+        'views',
     ];
 
     protected $casts = [
-        'views' => 'integer'
+        'views' => 'integer',
     ];
 
-//    protected $guarded = [];
+    //    protected $guarded = [];
 
     protected $translatableValues = [
         'title',
