@@ -5,9 +5,16 @@ namespace App\Http\Controllers\Mobile\V1;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Hadith;
+use App\Models\Language;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
+    public function __construct()
+    {
+    }
+
     public function today()
     {
 
@@ -61,8 +68,16 @@ class HomeController extends Controller
         return view('mobile.categories', compact('categories'));
     }
 
-    public function showCategoryHadiths(Category $category)
+    public function showCategoryHadiths(Request $request, Category $category)
     {
+        if (
+            $request->get('lang')
+            && in_array($request->get('lang'), Language::pluck('code')->toArray())
+        ) {
+            session()->put('locale', $request->get('lang'));
+            app()->setLocale($request->get('lang'));
+        }
+
         $category->increment('views');
 
         $hadiths = $category->hadiths()->get();
@@ -70,8 +85,16 @@ class HomeController extends Controller
         return view('mobile.category_hadiths', compact('category', 'hadiths'));
     }
 
-    public function showHadith(Hadith $hadith)
+    public function showHadith(Request $request, Hadith $hadith)
     {
+        if (
+            $request->get('lang')
+            && in_array($request->get('lang'), $hadith->languages()->pluck('code')->toArray())
+        ) {
+            session()->put('locale', $request->get('lang'));
+            app()->setLocale($request->get('lang'));
+        }
+
         $hadith->increment('views');
 
         return view('mobile.hadith', compact('hadith'));

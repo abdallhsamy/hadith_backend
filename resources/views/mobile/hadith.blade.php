@@ -81,10 +81,11 @@
                 <h2 class="text-2xl mb-4">{{ __('general.available_translations') }}</h2>
                 <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
                     @foreach($hadith->languages as $translation)
-                        <div
-                            class="rounded-full bg-primary text-white flex-1 whitespace-nowrap text-center text-xs py-1 px-2 leading-none">
-                            <span class="align-middle">{{ $translation->native }}</span>
-                        </div>
+                        <a href="{{ route('mobile.hadiths.show', ['hadith' => $hadith->_id, 'lang' => $translation->code]) }}">
+                            <div class="rounded-full bg-primary text-white flex-1 whitespace-nowrap text-center text-xs py-1 px-2 leading-none">
+                                <span class="align-middle">{{ $translation->native }}</span>
+                            </div>
+                        </a>
                     @endforeach
                 </div>
             </div>
