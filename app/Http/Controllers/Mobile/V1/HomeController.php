@@ -72,7 +72,7 @@ class HomeController extends Controller
     {
         if (
             $request->get('lang')
-            && in_array($request->get('lang'), Language::pluck('code')->toArray())
+            && in_array($request->get('lang'), $category->languages()->pluck('code')->toArray())
         ) {
             session()->put('locale', $request->get('lang'));
             app()->setLocale($request->get('lang'));
