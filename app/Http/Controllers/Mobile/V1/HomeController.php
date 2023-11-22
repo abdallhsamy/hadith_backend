@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Mobile\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Mobile\V1\Search\SearchRequest;
 use App\Models\Category;
 use App\Models\Hadith;
 use App\Models\Language;
@@ -101,12 +102,22 @@ class HomeController extends Controller
 
     public function search() {
         $languages = Language::all();
+        $query = old('query');
+        $language = app()->getLocale();
 
-//        $searchFields = [
-//            'hadith',
-//            'category'
-//        ];
+        return view('mobile.search', compact('languages', 'query', 'language'));
+    }
 
-        return view('mobile.search', compact('languages'));
+    public function postSearch(SearchRequest $request) {
+
+        $language = $request->get('language');
+        $query = $request->get('query');
+        $languages = Language::all();
+
+        $results = Hadith::query()
+            ->where("hadeeth.$language", 'like', "%{$query}%")
+            ->get();
+
+        return view('mobile.search', compact('languages', 'results', 'query', 'language'));
     }
 }

@@ -49,4 +49,6 @@ return [
     'change_language' => 'Change Language',
     'select_language' => 'Select Language',
     'search_in' => 'Search In',
+    'search_results' => 'Search Results',
+    'no_search_results_for_this_query' => 'No Search Results Found For This Query',
 ];

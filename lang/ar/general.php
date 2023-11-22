@@ -49,4 +49,6 @@ return [
     'change_language' => 'تغيير اللغة',
     'select_language' => 'اختر اللغة',
     'search_in' => 'بحث في',
+    'search_results' => 'نتائج البحث',
+    'no_search_results_for_this_query' => 'لا يوجد نتائج لهذا الاستعلام'
 ];

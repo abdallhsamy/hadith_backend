@@ -30,7 +30,7 @@ class Hadith extends Model
 
     //    protected $guarded = [];
 
-    protected $translatableValues = [
+    protected array $translatableValues = [
         'title',
         'hadeeth',
         'attribution',
