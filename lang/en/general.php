@@ -51,4 +51,10 @@ return [
     'search_in' => 'Search In',
     'search_results' => 'Search Results',
     'no_search_results_for_this_query' => 'No Search Results Found For This Query',
+    'email' => 'Email',
+    'password' => 'Password',
+    'forget_password_question' => 'Forgotten Password ?',
+    'reset_password' => 'Reset Password',
+    'dont_have_account_yet_question' => 'Don\'t Have Account Yet ?',
+    'get_free_account' => 'Get a Free Account',
 ];

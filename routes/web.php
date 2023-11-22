@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Mobile\V1\HomeController;
+use App\Http\Controllers\Mobile\V1\MobileAuthController;
 use App\Http\Controllers\UtilsController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,21 +17,22 @@ Route::get('categories/{category}/hadiths', [HomeController::class, 'showCategor
 Route::get('favorites', [HomeController::class, 'favorites'])->name('mobile.favorites')->middleware('auth:web');
 Route::get('search', [HomeController::class, 'search'])->name('mobile.search');
 Route::post('search', [HomeController::class, 'postSearch'])->name('mobile.postSearch');
-Route::get('login', [HomeController::class, 'all'])->name('mobile.login');
-Route::get('login', [HomeController::class, 'all'])->name('login');
+Route::get('login', [HomeController::class, 'showLogin'])->name('mobile.login');
+Route::get('login', [MobileAuthController::class, 'showLogin'])->name('login');
+Route::post('login', [MobileAuthController::class, 'postLogin'])->name('postLogin');
 
-Route::get('generate', \App\Http\Controllers\FetchDataController::class);
-Route::get('reshape', \App\Http\Controllers\ReshapeDataController::class);
+//Route::get('generate', \App\Http\Controllers\FetchDataController::class);
+//Route::get('reshape', \App\Http\Controllers\ReshapeDataController::class);
 
-Route::get('/m', function () {
-    //    return \App\Models\Category::first()->title['ar'];
-    return \App\Models\Category::where('title.fa', 'like', '%علوم آن%')->get();
-});
+//Route::get('/m', function () {
+//    //    return \App\Models\Category::first()->title['ar'];
+//    return \App\Models\Category::where('title.fa', 'like', '%علوم آن%')->get();
+//});
 
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+//Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
-Route::prefix('dashboard')->as('dashboard.')->group(function () {
-    Route::resource('categories', CategoryController::class);
-});
+//Route::prefix('dashboard')->as('dashboard.')->group(function () {
+//    Route::resource('categories', CategoryController::class);
+//});
 
 Route::get('change-language/{locale}', [UtilsController::class, 'changeLanguage'])->name('change-language');

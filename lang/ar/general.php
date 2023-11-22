@@ -50,5 +50,11 @@ return [
     'select_language' => 'اختر اللغة',
     'search_in' => 'بحث في',
     'search_results' => 'نتائج البحث',
-    'no_search_results_for_this_query' => 'لا يوجد نتائج لهذا الاستعلام'
+    'no_search_results_for_this_query' => 'لا يوجد نتائج لهذا الاستعلام',
+    'email' => 'البريد الإلكتروني',
+    'password' => 'كلمة المرور',
+    'forget_password_question' => 'نسيت كلمة المرور ؟',
+    'reset_password' => 'إعادة تعيين كلمة المرور',
+    'dont_have_account_yet_question' => 'ليس لديك حساب حتى الآن ؟',
+    'get_free_account' => 'أحصل على حساب مجاني',
 ];
