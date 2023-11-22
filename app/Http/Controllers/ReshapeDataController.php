@@ -20,6 +20,7 @@ class ReshapeDataController extends Controller
         $this->setCategoryLanguage();
         $this->setHadithLanguage();
         $this->setHadithCategory();
+        $this->addHadithCountToCategories();
         return 'ok';
     }
 
@@ -80,6 +81,15 @@ class ReshapeDataController extends Controller
                 $hadith->categoriesRel()->attach($categories);
                 $hadith->save();
             }
+        }
+    }
+
+    private function addHadithCountToCategories(): void
+    {
+        $categories = Category::all();
+
+        foreach ($categories as $category) {
+            $category->update(['hadiths_count' => $category->hadiths()->count()]);
         }
     }
 
