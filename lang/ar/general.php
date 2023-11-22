@@ -47,4 +47,6 @@ return [
     'meaning' => 'المعنى',
     'available_translations' => 'الترجمات المتوفرة',
     'change_language' => 'تغيير اللغة',
+    'select_language' => 'اختر اللغة',
+    'search_in' => 'بحث في',
 ];

@@ -14,7 +14,7 @@ Route::get('categories', [HomeController::class, 'categories'])->name('mobile.ca
 Route::get('hadiths/{hadith}', [HomeController::class, 'showHadith'])->name('mobile.hadiths.show');
 Route::get('categories/{category}/hadiths', [HomeController::class, 'showCategoryHadiths'])->name('mobile.category.hadiths');
 Route::get('favorites', [HomeController::class, 'all'])->name('mobile.favorites')->middleware('auth:web');
-Route::get('search', [HomeController::class, 'all'])->name('mobile.search');
+Route::get('search', [HomeController::class, 'search'])->name('mobile.search');
 Route::get('login', [HomeController::class, 'all'])->name('mobile.login');
 Route::get('login', [HomeController::class, 'all'])->name('login');
 

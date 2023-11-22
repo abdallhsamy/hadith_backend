@@ -32,4 +32,21 @@ return [
     'abdallah_samy' => 'Abdallah Samy',
     'designed_and_developed_by' => 'Designed and Developed by',
 
+
+    'hadith_text' => 'Hadith Text',
+    'hadith_grade' => 'Hadith Grade',
+    'hadith_category' => 'Hadith Category',
+    'hadith_attribution' => 'Hadith Attribution',
+    'hadith_explanation' => 'Hadith Explanation',
+    'hadith_hints' => 'Hadith Hints',
+    'hadith_categories' => 'Hadith Categories',
+    'hadith_translations' => 'Hadith Translations',
+    'hadith_words_meanings' => 'Hadith Words Meanings',
+    'hadith_reference' => 'Hadith Reference',
+    'word' => 'Word',
+    'meaning' => 'Meaning',
+    'available_translations' => 'Available Translations',
+    'change_language' => 'Change Language',
+    'select_language' => 'Select Language',
+    'search_in' => 'Search In',
 ];
