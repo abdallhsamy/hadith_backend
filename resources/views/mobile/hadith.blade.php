@@ -37,7 +37,7 @@
         </div>
 
         @if(isset($hadith->translation()->hints) && count($hadith->translation()->hints) > 0)
-            <div class="py-2 border-b">
+            <div class="">
                 <h2 class="text-2xl mb-4">{{ __('general.hadith_hints') }}</h2>
                 <ul class="list-inside list-disc">
                     @foreach($hadith->translation()->hints as $hint)
@@ -77,7 +77,7 @@
 
 
         @if(isset($hadith->translations) && count($hadith->translations) > 0)
-            <div class=" py-2 border-b">
+            <div class="">
                 <h2 class="text-2xl mb-4">{{ __('general.available_translations') }}</h2>
                 <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
                     @foreach($hadith->languages as $translation)
