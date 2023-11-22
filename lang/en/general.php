@@ -32,7 +32,6 @@ return [
     'abdallah_samy' => 'Abdallah Samy',
     'designed_and_developed_by' => 'Designed and Developed by',
 
-
     'hadith_text' => 'Hadith Text',
     'hadith_grade' => 'Hadith Grade',
     'hadith_category' => 'Hadith Category',

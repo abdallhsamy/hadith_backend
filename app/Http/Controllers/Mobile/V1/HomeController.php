@@ -99,13 +99,14 @@ class HomeController extends Controller
         return view('mobile.hadith', compact('hadith'));
     }
 
-    public function search() {
+    public function search()
+    {
         $languages = Language::all();
 
-//        $searchFields = [
-//            'hadith',
-//            'category'
-//        ];
+        //        $searchFields = [
+        //            'hadith',
+        //            'category'
+        //        ];
 
         return view('mobile.search', compact('languages'));
     }
