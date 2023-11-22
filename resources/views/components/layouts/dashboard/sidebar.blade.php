@@ -57,7 +57,7 @@
 ];
         @endphp
         @foreach($items as $item)
-            <li >
+            <li>
                 <a href="{{ $item->url }}">
                     {!! $item->icon !!}
                     {{ $item->title }}

@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="{{ app()->getLocale() }}" dir="{{ getHtmlDirection() }}">
 <head>

@@ -51,7 +51,7 @@ class FetchDataController extends Controller
                 $qp .= "$key=$val";
 
             }
-            Log::channel('exception')->debug($url.$qp !== '' ? "?$url" : '');
+            Log::channel('exception')->debug($url . $qp !== '' ? "?$url" : '');
 
             Log::channel('exception')->debug($e->getMessage());
             sleep(120);
@@ -63,13 +63,13 @@ class FetchDataController extends Controller
             if ($e->getCode() === 35) {
                 // Handle cURL error 35: unexpected eof while reading
                 // Log the error, display a message, or take appropriate action
-                Log::error('cURL error 35: '.$e->getMessage());
+                Log::error('cURL error 35: ' . $e->getMessage());
                 // You can also throw a custom exception if needed
                 throw new \Exception('Custom error message for cURL error 35');
             } else {
                 // Handle other request exceptions
                 // Log the error, display a message, or take appropriate action
-                Log::error('Request exception: '.$e->getMessage());
+                Log::error('Request exception: ' . $e->getMessage());
             }
         } catch (\Exception $e) {
             $qp = '';
@@ -77,7 +77,7 @@ class FetchDataController extends Controller
                 $qp .= "$key=$val";
 
             }
-            Log::channel('exception')->debug($url.$qp !== '' ? "?{$url}" : '');
+            Log::channel('exception')->debug($url . $qp !== '' ? "?{$url}" : '');
 
             Log::channel('exception')->debug($e->getMessage());
             sleep(120);
@@ -86,7 +86,7 @@ class FetchDataController extends Controller
 
             // Handle other generic exceptions
             // Log the error, display a message, or take appropriate action
-            Log::error('Exception: '.$e->getMessage());
+            Log::error('Exception: ' . $e->getMessage());
         } finally {
         }
     }
@@ -96,7 +96,7 @@ class FetchDataController extends Controller
         $loop = 0;
         foreach (Category::all() as $category) {
 
-            Log::channel('fetch')->info($loop.' : start : category :'.$category->id);
+            Log::channel('fetch')->info($loop . ' : start : category :' . $category->id);
 
             $response = $this->getWithRateLimit('https://hadeethenc.com/api/v1/hadeeths/list/', [
                 'language' => 'ar',
@@ -105,7 +105,7 @@ class FetchDataController extends Controller
                 'per_page' => 2000000000000000,
             ]);
 
-            Log::channel('fetch')->info($loop.' : get response  : category :'.$category->id);
+            Log::channel('fetch')->info($loop . ' : get response  : category :' . $category->id);
 
             if ($response) {
                 foreach ($response->json('data') as $item) {
@@ -115,7 +115,7 @@ class FetchDataController extends Controller
                 }
             }
 
-            Log::channel('fetch')->info($loop.' : end : category :'.$category->id);
+            Log::channel('fetch')->info($loop . ' : end : category :' . $category->id);
 
             $loop++;
         }
@@ -136,14 +136,14 @@ class FetchDataController extends Controller
 
     private function getCategories(Language $savedLang)
     {
-        $categoriesUrl = 'https://hadeethenc.com/api/v1/categories/list/?language='.$savedLang->code;
+        $categoriesUrl = 'https://hadeethenc.com/api/v1/categories/list/?language=' . $savedLang->code;
 
         $response = Http::get($categoriesUrl);
 
         foreach ($response->json() as $cat) {
             $category = Category::firstWhere('id', $cat['id']);
 
-            if (! $category) {
+            if (!$category) {
                 $data = $cat;
                 $data['title'] = [];
                 $category = Category::create($data);
@@ -165,9 +165,9 @@ class FetchDataController extends Controller
         $loop = 1;
         foreach ($grabbed as $item) {
 
-            Log::channel('fetch')->info($loop.' : start : grabbed hadith :'.$item->id);
+            Log::channel('fetch')->info($loop . ' : start : grabbed hadith :' . $item->id);
             $this->getOneHadith($item);
-            Log::channel('fetch')->info($loop.' : end : grabbed hadith :'.$item->id);
+            Log::channel('fetch')->info($loop . ' : end : grabbed hadith :' . $item->id);
 
             $loop++;
         }
@@ -175,10 +175,10 @@ class FetchDataController extends Controller
 
     public function getOneHadith(GrabbedCatHadith $item)
     {
-        if (! $item->is_grabbed) {
+        if (!$item->is_grabbed) {
             foreach ($item->translations as $language) {
 
-                if (! $language || $language == '') {
+                if (!$language || $language == '') {
                     continue;
                 }
 
@@ -187,7 +187,7 @@ class FetchDataController extends Controller
                     'id' => $item->id,
                 ]);
 
-                if (! $response || $response->notFound() || $response->failed()) {
+                if (!$response || $response->notFound() || $response->failed()) {
                     return null;
                 }
 
@@ -207,14 +207,14 @@ class FetchDataController extends Controller
                 ];
 
                 foreach ($data as $key => $val) {
-                    if (! in_array($key, $arrayKeys, true)) {
+                    if (!in_array($key, $arrayKeys, true)) {
 
                         $hadith->$key = $val;
                     }
                 }
 
                 foreach ($arrayKeys as $arrayKey) {
-                    if (! array_key_exists($arrayKey, $data)) {
+                    if (!array_key_exists($arrayKey, $data)) {
                         continue;
                     }
                     if ($hadith->$arrayKey) {

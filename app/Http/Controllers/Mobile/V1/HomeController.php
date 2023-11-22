@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Mobile\V1;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Hadith;
-use App\Models\Language;
 
 class HomeController extends Controller
 {

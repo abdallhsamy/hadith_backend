@@ -41,7 +41,6 @@
     {{--    </div>--}}
 
 
-
     <div class="border-b">
         <div class="flex items center justify-between mb-4">
             <h2 class="text-2xl">{{ __('general.hadith_text') }}</h2>
@@ -106,7 +105,10 @@
             <table class="">
                 <tbody class="divide-y">
                 @foreach($hadith->translation()->words_meanings as $wordsMeaning)
-                    <tr><th class="text-start">{{ $wordsMeaning['word'] }}</th><td class="text-start">{{ $wordsMeaning['meaning'] }}</td></tr>
+                    <tr>
+                        <th class="text-start">{{ $wordsMeaning['word'] }}</th>
+                        <td class="text-start">{{ $wordsMeaning['meaning'] }}</td>
+                    </tr>
                 @endforeach
 
                 </tbody>
@@ -120,7 +122,8 @@
             <h2 class="text-2xl mb-4">{{ __('general.available_translations') }}</h2>
             <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
                 @foreach($hadith->languages as $translation)
-                    <div class="rounded-full bg-primary text-white flex-1 whitespace-nowrap text-center text-xs py-1 px-2 leading-none">
+                    <div
+                        class="rounded-full bg-primary text-white flex-1 whitespace-nowrap text-center text-xs py-1 px-2 leading-none">
                         <span class="align-middle">{{ $translation->native }}</span>
                     </div>
                 @endforeach

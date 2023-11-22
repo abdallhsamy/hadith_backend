@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Traits\Models\HasTranslations;
-
 class GrabbedCatHadith extends Model
 {
     //    use HasTranslations;

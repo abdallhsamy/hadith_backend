@@ -14,7 +14,7 @@ class CategoryCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-        return $this->collection->transform(fn ($item) => [
+        return $this->collection->transform(fn($item) => [
             '_id' => $item->_id,
             'id' => $item->id,
             'title' => $item->translation()->title,

@@ -5,15 +5,31 @@
         {{--        <p class="text-sm text-gray-500 uppercase font-bold">{{ \Carbon\Carbon::today()->translatedFormat('D d, M') }}</p>--}}
 
         <div class="display-icons flex items-center justify-between gap-1 border px-2 rounded-md">
-            <svg class="display-icon" data-type="grid_container" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>{{ __('general.grid_display') }}</title><g fill="#006837"><rect x="1" y="1" width="9" height="9" rx="1" ry="1" fill="#006837"></rect> <rect x="14" y="1" width="9" height="9" rx="1" ry="1"></rect> <rect x="1" y="14" width="9" height="9" rx="1" ry="1"></rect> <rect x="14" y="14" width="9" height="9" rx="1" ry="1" fill="#006837"></rect></g></svg>
-            <svg class="display-icon -me-1" data-type="list_container" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><title>{{ __('general.list_display') }}</title><g fill="none"><path d="M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z" fill="#6B7280"></path></g></svg>
+            <svg class="display-icon" data-type="grid_container" xmlns="http://www.w3.org/2000/svg" width="24"
+                 height="24" viewBox="0 0 24 24"><title>{{ __('general.grid_display') }}</title>
+                <g fill="#006837">
+                    <rect x="1" y="1" width="9" height="9" rx="1" ry="1" fill="#006837"></rect>
+                    <rect x="14" y="1" width="9" height="9" rx="1" ry="1"></rect>
+                    <rect x="1" y="14" width="9" height="9" rx="1" ry="1"></rect>
+                    <rect x="14" y="14" width="9" height="9" rx="1" ry="1" fill="#006837"></rect>
+                </g>
+            </svg>
+            <svg class="display-icon -me-1" data-type="list_container" xmlns="http://www.w3.org/2000/svg" width="36"
+                 height="36" viewBox="0 0 24 24"><title>{{ __('general.list_display') }}</title>
+                <g fill="none">
+                    <path d="M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z"
+                          fill="#6B7280"></path>
+                </g>
+            </svg>
         </div>
     </div>
 
     <div id="grid_container">
         @foreach($hadiths as  $item)
             <div class="mb-5">
-                <a href="{{ route('mobile.hadiths.show', $item->_id) }}" class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95" style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
+                <a href="{{ route('mobile.hadiths.show', $item->_id) }}"
+                   class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95"
+                   style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
                     <div class="absolute top-0 right-0 -mt-3 me-3 flex gap-4">
 
                         @foreach($item->categoriesRel as $cat)
@@ -44,10 +60,13 @@
     <div id="list_container" class="hidden">
         @foreach($hadiths as $item)
             <div>
-                <a href="{{ route('mobile.hadiths.show', $item->_id) }}" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
-                    <div class="block h-24 w-2/5 rounded overflow-hidden" style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;"></div>
+                <a href="{{ route('mobile.hadiths.show', $item->_id) }}"
+                   class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
+                    <div class="block h-24 w-2/5 rounded overflow-hidden"
+                         style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;"></div>
                     <div class="ps-3 w-3/5">
-                        <div class="text-xs text-gray-500 uppercase font-semibold flex gap-1 @if($item->categoriesRel->count() > 0) mb-2 @endif">
+                        <div
+                            class="text-xs text-gray-500 uppercase font-semibold flex gap-1 @if($item->categoriesRel->count() > 0) mb-2 @endif">
                             @foreach($item->categoriesRel as $cat)
                                 <span class="bg-gray-200 px-2 rounded-lg">
                                 {{ $cat->translation()->title }}

@@ -8,7 +8,7 @@ class Hadith extends Model
 {
     use HasTranslations;
 
-    protected $fillable =[
+    protected $fillable = [
         'id',
         'title',
         'hadeeth',
@@ -51,7 +51,7 @@ class Hadith extends Model
     public function languages(): \MongoDB\Laravel\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(
-            Language::class, null, 'hadith_ids','language_ids',
+            Language::class, null, 'hadith_ids', 'language_ids',
         );
     }
 }

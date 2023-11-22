@@ -1,5 +1,6 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);
 @import "gridjs/dist/theme/mermaid.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,13 +20,13 @@
 
 .sidenav > ul > li.active {
     position: relative;
-    @apply  flex gap-4 font-bold text-primary bg-shade p-2 rounded-s-full
+    @apply flex gap-4 font-bold text-primary bg-shade p-2 rounded-s-full
 }
 
 
 .sidenav > ul > li.active > a {
 
-    @apply  flex gap-4 font-bold text-primary bg-shade rounded-s-full
+    @apply flex gap-4 font-bold text-primary bg-shade rounded-s-full
 }
 
 .sidenav > ul > li.active::before {

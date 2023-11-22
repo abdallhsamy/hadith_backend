@@ -5,14 +5,14 @@ export default {
         "./resources/**/*.js",
         "./resources/**/*.vue",
     ],
-  theme: {
-    extend: {
-        colors : {
-            primary: '#006837',
-            shade: '#F1F5F9',
-        }
+    theme: {
+        extend: {
+            colors: {
+                primary: '#006837',
+                shade: '#F1F5F9',
+            }
+        },
     },
-  },
-  plugins: [],
+    plugins: [],
 }
 

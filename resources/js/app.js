@@ -1,9 +1,8 @@
 import './bootstrap';
 import feather from 'feather-icons';
 import Alpine from 'alpinejs'
-import { Grid } from "gridjs";
 // import { ar_SA, en_US } from "gridjs/l10n";
-import {html} from "gridjs";
+import {Grid, html} from "gridjs";
 
 
 feather.replace();
@@ -15,10 +14,9 @@ window.gridHtml = html
 Alpine.start()
 
 
-
-addEventListener('DOMContentLoaded', function() {
+addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.app-bar-item').forEach(function (item) {
-        if(item.getAttribute('href') === window.location.href) {
+        if (item.getAttribute('href') === window.location.href) {
             item.classList.add('text-primary');
             item.classList.remove('text-gray-500');
         } else {
