@@ -6,16 +6,16 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class SearchRequest extends FormRequest
 {
-//    public function authorize(): bool
-//    {
-//        return true;
-//    }
+    //    public function authorize(): bool
+    //    {
+    //        return true;
+    //    }
 
     public function rules(): array
     {
         return [
             'query' => 'required|string|min:3',
-            'language' => 'required|string|exists:languages,code'
+            'language' => 'required|string|exists:languages,code',
         ];
     }
 }
