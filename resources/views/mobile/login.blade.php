@@ -23,6 +23,7 @@
                 <label for="email" class="">{{ __('general.email') }}</label>
                 <div class="flex w-full">
                     <input
+                        name="email"
                         id="email"
                         type="email"
                         placeholder="your@gmail.com"
@@ -38,6 +39,7 @@
                 <label for="password" class="">{{ __('general.password') }}</label>
                 <div class="flex w-full">
                     <input
+                        name="password"
                         id="password"
                         type="password"
                         placeholder="********"
@@ -49,6 +51,17 @@
                 </div>
                 @error('password')
                 <small id="passwordHelp" class="form-text -mt-3 text-sm text-red-700 dark:text-red-400">{{ $message }}</small>
+                @enderror
+            </div>
+
+
+            <div class="flex flex-col gap-y-2 w-full">
+                <label for="remember" class="">
+                    <input type="checkbox" name="remember">
+                    {{ __('general.remember_me') }}
+                </label>
+                @error('remember')
+                <small id="rememberHelp" class="form-text -mt-3 text-sm text-red-700 dark:text-red-400">{{ $message }}</small>
                 @enderror
             </div>
 
