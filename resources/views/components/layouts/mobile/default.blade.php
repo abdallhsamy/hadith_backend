@@ -9,25 +9,13 @@
 
 </head>
 <body>
-
-
 <div class="bg-white text-gray-800 rounded-xl shadow-lg overflow-hidden relative flex" style="width:100%;height:100vh;">
     <div class="bg-white h-full w-full px-5 pt-6 pb-20 overflow-y-auto">
-        <div class="mb-3 flex items-center justify-between">
-            <x-logo class="w-24"/>
-            @guest()
-                <a href="{{ route('login') }}" class="text-white bg-primary px-2 py-1 rounded-lg">{{ __('general.login') }}</a>
-            @endguest
-            @auth()
-                <a href="#" class="text-primary border border-primary px-2 py-1 rounded-lg hover:bg-primary dark:hover:text-white">{{ auth()->user()->name }}</a>
-            @endauth
-        </div>
+        <x-layouts.mobile.top-bar/>
         {{ $slot }}
     </div>
-
-    <x-layouts.mobile.app-bar/>
+    <x-layouts.mobile.bottom-navigation-bar/>
 </div>
-
 @stack('scripts')
 </body>
 </html>
