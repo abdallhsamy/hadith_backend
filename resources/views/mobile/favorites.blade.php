@@ -5,8 +5,7 @@
         {{--        <p class="text-sm text-gray-500 uppercase font-bold">{{ \Carbon\Carbon::today()->translatedFormat('D d, M') }}</p>--}}
 
         <div class="display-icons flex items-center justify-between gap-1 border px-2 rounded-md">
-            <svg class="display-icon" data-type="grid_container" xmlns="http://www.w3.org/2000/svg" width="24"
-                 height="24" viewBox="0 0 24 24"><title>{{ __('general.grid_display') }}</title>
+            <svg class="display-icon" data-type="grid_container" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>{{ __('general.grid_display') }}</title>
                 <g fill="#006837">
                     <rect x="1" y="1" width="9" height="9" rx="1" ry="1" fill="#006837"></rect>
                     <rect x="14" y="1" width="9" height="9" rx="1" ry="1"></rect>
@@ -14,11 +13,9 @@
                     <rect x="14" y="14" width="9" height="9" rx="1" ry="1" fill="#006837"></rect>
                 </g>
             </svg>
-            <svg class="display-icon -me-1" data-type="list_container" xmlns="http://www.w3.org/2000/svg" width="36"
-                 height="36" viewBox="0 0 24 24"><title>{{ __('general.list_display') }}</title>
+            <svg class="display-icon -me-1" data-type="list_container" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><title>{{ __('general.list_display') }}</title>
                 <g fill="none">
-                    <path d="M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z"
-                          fill="#6B7280"></path>
+                    <path d="M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z" fill="#6B7280"></path>
                 </g>
             </svg>
         </div>
@@ -37,8 +34,8 @@
                                 <i class="mdi mdi-fire text-base align-middle"></i>
                                 <span class="align-middle">{{ $cat->translation()->title }}</span>
                             </div>
-
                         @endforeach
+
                     </div>
                     <div class="h-48"></div>
                     <h2 class="text-white text-2xl font-bold leading-tight mb-3 pe-5">
@@ -46,13 +43,12 @@
                     </h2>
                     <div class="flex w-full items-center text-sm text-gray-300 font-medium">
                         <div class="flex-1 flex items-center">
-                            {{--                        <div class="rounded-full w-8 h-8 me-3" style="background: url(https://randomuser.me/api/portraits/women/74.jpg) center; background-size: cover;"></div>--}}
-                            {{--                        <div>Gwen Thomson</div>--}}
+                            {{-- <div class="rounded-full w-8 h-8 me-3" style="background: url(https://randomuser.me/api/portraits/women/74.jpg) center; background-size: cover;"></div>--}}
+                            {{-- <div>Gwen Thomson</div>--}}
                         </div>
                         <div><i class="mdi mdi-eye"></i> {{ $item->views }}</div>
                     </div>
                 </a>
-
             </div>
         @endforeach
     </div>
@@ -62,11 +58,9 @@
             <div>
                 <a href="{{ route('mobile.hadiths.show', $item->_id) }}"
                    class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
-                    <div class="block h-24 w-2/5 rounded overflow-hidden"
-                         style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;"></div>
+                    <div class="block h-24 w-2/5 rounded overflow-hidden" style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;"></div>
                     <div class="ps-3 w-3/5">
-                        <div
-                            class="text-xs text-gray-500 uppercase font-semibold flex gap-1 @if($item->categoriesRel->count() > 0) mb-2 @endif">
+                        <div class="text-xs text-gray-500 uppercase font-semibold flex gap-1 @if($item->categoriesRel->count() > 0) mb-2 @endif">
                             @foreach($item->categoriesRel as $cat)
                                 <span class="bg-gray-200 px-2 rounded-lg">
                                 {{ $cat->translation()->title }}
@@ -74,16 +68,15 @@
                             @endforeach
                         </div>
                         <h3 class="text-md font-semibold leading-tight mb-3">{{ $item->translation()->title }}</h3>
-                        {{--                    <div class="flex w-full items-center text-xs text-gray-500 font-medium">--}}
-                        {{--                        <div class="rounded-full w-5 h-5 me-3" style="background: url(https://randomuser.me/api/portraits/men/41.jpg) center; background-size: cover;"></div>--}}
-                        {{--                        <div>Jack Ryan</div>--}}
-                        {{--                    </div>--}}
+                        {{-- <div class="flex w-full items-center text-xs text-gray-500 font-medium">--}}
+                        {{--     <div class="rounded-full w-5 h-5 me-3" style="background: url(https://randomuser.me/api/portraits/men/41.jpg) center; background-size: cover;"></div>--}}
+                        {{--     <div>Jack Ryan</div>--}}
+                        {{-- </div>--}}
                     </div>
                 </a>
             </div>
             @if(! $loop->last)
                 <hr class="border-gray-200 my-3">
-
             @endif
         @endforeach
     </div>
@@ -115,7 +108,6 @@
                             })
                         }
                     })
-
                 });
             };
 
