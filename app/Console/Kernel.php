@@ -13,6 +13,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+        $schedule->command('app:daily-hadith-selection')->daily();
+
+        // todo : * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
     }
 
     /**

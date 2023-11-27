@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Mobile\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Mobile\V1\Search\SearchRequest;
 use App\Models\Category;
+use App\Models\DailySelectedHadith;
 use App\Models\Hadith;
 use App\Models\Language;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,30 +19,21 @@ class HomeController extends Controller
 
     public function today()
     {
+        $today = DailySelectedHadith::query()
+            ->whereDate('date', Carbon::today())
+            ->first()
+            ->hadiths;
 
-        //        return Language::pluck('code');
-        //        foreach (Hadith::all() as $item ) {
-        //            $cats = Category::whereIn('id', $item->categories)->get();
-        //            if (count($item->categories) > 0) {
-        ////                return response()->json($cats);
-        //                $item->categoriesRel()->attach($cats);
-        //
-        //            }
-        //
-        //        }
-        $today = Hadith::query()
-            ->select('*')->take(4)->get();
-        $yesterday = Hadith::query()
-            ->select('*')->skip(4)->take(4)->get();
-        $old = Hadith::query()
-            ->select('*')->skip(4)->take(4)->get();
+        $yesterday = DailySelectedHadith::query()
+            ->whereDate('date', Carbon::today()->subDays())
+            ->first()
+            ->hadiths;
 
-        //        foreach ($top as $t) {
-        //            return $t->translation();
-        //        }
+        $old = DailySelectedHadith::query()
+            ->whereDate('date', Carbon::today()->subDays(2))
+            ->first()
+            ->hadiths;
 
-        //        return response()->json($top);
-        //        dd($top);
 
         return view('mobile.today', compact('today', 'yesterday', 'old'));
     }

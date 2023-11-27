@@ -19,7 +19,7 @@ class Language extends Model
     public function hadiths(): \MongoDB\Laravel\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(
-            Category::class, null, 'language_ids', 'hadith_ids'
+            Hadith::class, null, 'language_ids', 'hadith_ids'
         );
     }
 }

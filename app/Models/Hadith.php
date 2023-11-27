@@ -61,4 +61,11 @@ class Hadith extends Model
             User::class, null, 'bookmarked_hadith_ids', 'bookmarked_user_ids',
         );
     }
+
+    public function dailySelectedDays(): \MongoDB\Laravel\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(
+            DailySelectedHadith::class, null, 'hadith_ids', 'daily_selected_hadith_ids',
+        );
+    }
 }
