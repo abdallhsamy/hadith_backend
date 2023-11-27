@@ -6,7 +6,7 @@
     </div>
     @foreach($today as  $todayItem)
         <div class="mb-5">
-            <a href="#"
+            <a href="{{ route('mobile.hadiths.show', $todayItem->_id) }}"
                class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95"
                style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
                 <div class="absolute top-0 right-0 -mt-3 me-3 flex gap-4">
@@ -54,7 +54,7 @@
         @endforeach
         <div class="w-1/2 px-1">
             @foreach($odds as $item)
-                <a href="#"
+                <a href="{{ route('mobile.hadiths.show', $item->_id) }}"
                    class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95"
                    style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
                     <div class="{{ $loop->iteration % 2 == 0  ? 'h-32' : 'h-24' }}"></div>
@@ -72,7 +72,7 @@
         </div>
         <div class="w-1/2 px-1">
             @foreach($evens as $item)
-                <a href="#"
+                <a href="{{ route('mobile.hadiths.show', $item->_id) }}"
                    class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95"
                    style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
                     <div class="{{ $loop->iteration % 2 == 0  ? 'h-24' : 'h-32' }}"></div>
@@ -94,7 +94,7 @@
     </div>
     @foreach($old as $item)
         <div>
-            <a href="#" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
+            <a href="{{ route('mobile.hadiths.show', $item->_id) }}" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
                 <div class="block h-24 w-2/5 rounded overflow-hidden"
                      style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;"></div>
                 <div class="ps-3 w-3/5">
