@@ -41,7 +41,7 @@
                                 name="email"
                                 id="email"
                                 type="email"
-                                @if(auth()->check()) value="{{ auth()->user()->email }}" disabled readonly @endif
+                                @if(auth()->check()) value="{{ auth()->user()->email }}" readonly @endif
                                 placeholder="your@gmail.com"
                                 autocomplete="email"
                                 class="bg-shade h-12 px-2 border border-gray-300 @error('email') border-red-300 @enderror text-gray-90 rounded-md w-full" />

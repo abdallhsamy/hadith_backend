@@ -11,7 +11,7 @@ Route::redirect('/', '/today');
 Route::get('today', [HomeController::class, 'today'])->name('mobile.today');
 Route::get('all', [HomeController::class, 'all'])->name('mobile.all');
 Route::get('about', [HomeController::class, 'about'])->name('mobile.about');
-Route::get('contact', [ContactController::class, 'contact'])->name('mobile.contact');
+Route::get('contact', [ContactController::class, 'contactView'])->name('mobile.contact');
 Route::post('contact', [ContactController::class, 'postContact'])->name('mobile.postContact');
 Route::get('categories', [HomeController::class, 'categories'])->name('mobile.categories');
 Route::get('hadiths/{hadith}', [HomeController::class, 'showHadith'])->name('mobile.hadiths.show');
