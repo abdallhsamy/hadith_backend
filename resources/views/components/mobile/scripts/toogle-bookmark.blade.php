@@ -8,6 +8,19 @@
     if(toggleBookmarkButtons) {
         toggleBookmarkButtons.forEach(function(item) {
             item.addEventListener('click', function(event) {
+
+                let icon =  'info'
+                let title = "{{ __('general.something_went_wrong') }}"
+
+                const toast = swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    padding: '1em',
+                    customClass: 'sweet-alerts',
+                });
+
                 axios.get(`{{ route('mobile.hadiths.bookmark', ':hadithId') }}`.replace(':hadithId', item.getAttribute('data-id')))
                     .then(response => {
                         if (response.status == 200) {
@@ -26,11 +39,22 @@
                                         </svg>`
                             }
 
-                            // todo : add toast message
-                        } else {
-                            console.log('something went wrong');
+                            title = response.data.message
+                            icon =  'success';
                         }
-                    })
+                    }).catch((error) => {
+                    if (error.response.status === 404) {
+                        icon =  'error';
+                        title =  error.response.statusText;
+                    }
+                }).finally(function () {
+                    toast.fire({
+                        icon: icon,
+                        title: title,
+                        padding: '1em',
+                        customClass: 'sweet-alerts',
+                    });
+                })
             })
         })
     }

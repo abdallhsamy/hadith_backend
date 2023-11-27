@@ -57,4 +57,7 @@ return [
     'dont_have_account_yet_question' => 'Don\'t Have Account Yet ?',
     'get_free_account' => 'Get a Free Account',
     'remember_me' => 'Member Me',
+    'something_went_wrong' => 'Something Went Wrong',
+    'bookmarked_successfully' => 'Bookmarked Successfully',
+    'un_bookmarked_successfully' => 'Un Bookmarked Successfully',
 ];

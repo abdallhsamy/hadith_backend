@@ -57,5 +57,8 @@ return [
     'reset_password' => 'إعادة تعيين كلمة المرور',
     'dont_have_account_yet_question' => 'ليس لديك حساب حتى الآن ؟',
     'get_free_account' => 'أحصل على حساب مجاني',
-    'remember_me' => 'تذكرني'
+    'remember_me' => 'تذكرني',
+    'something_went_wrong' => 'حدث خطأ ما',
+    'bookmarked_successfully' => 'تم وضع إشارة مرجعية بنجاح',
+    'un_bookmarked_successfully' => 'تم إلغاء الإشارة المرجعية بنجاح',
 ];

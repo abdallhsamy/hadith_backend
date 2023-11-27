@@ -104,11 +104,11 @@ class HomeController extends Controller
     {
         if (in_array($hadith->_id, auth()->user()->favoriteHadiths()->pluck('_id')->toArray(), true)) {
             auth()->user()->favoriteHadiths()->detach($hadith);
-            $message = 'bookmarked_successfully';
+            $message = __('general.bookmarked_successfully');
             $bookmarked = false;
         } else {
             auth()->user()->favoriteHadiths()->attach($hadith);
-            $message = 'un_bookmarked_successfully';
+            $message = __('general.un_bookmarked_successfully');
             $bookmarked = true;
         }
         $id =  $hadith->_id;

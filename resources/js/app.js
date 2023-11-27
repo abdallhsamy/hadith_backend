@@ -3,6 +3,7 @@ import feather from 'feather-icons';
 import Alpine from 'alpinejs'
 // import { ar_SA, en_US } from "gridjs/l10n";
 import {Grid, html} from "gridjs";
+import Swal from 'sweetalert2'
 
 
 feather.replace();
@@ -11,6 +12,7 @@ window.Grid = Grid
 // window.ar_SA = ar_SA
 window.Alpine = Alpine
 window.gridHtml = html
+window.swal = Swal
 Alpine.start()
 
 
