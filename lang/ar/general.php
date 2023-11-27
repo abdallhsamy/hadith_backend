@@ -57,5 +57,5 @@ return [
     'reset_password' => 'إعادة تعيين كلمة المرور',
     'dont_have_account_yet_question' => 'ليس لديك حساب حتى الآن ؟',
     'get_free_account' => 'أحصل على حساب مجاني',
-    'remember_me' => 'تذكرني'
+    'remember_me' => 'تذكرني',
 ];

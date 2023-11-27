@@ -111,12 +111,13 @@ class HomeController extends Controller
             $message = 'un_bookmarked_successfully';
             $bookmarked = true;
         }
-        $id =  $hadith->_id;
+        $id = $hadith->_id;
 
         return response()->json(compact('id', 'message', 'bookmarked'));
     }
 
-    public function search() {
+    public function search()
+    {
         $languages = Language::all();
         $query = old('query');
         $language = app()->getLocale();
@@ -124,7 +125,8 @@ class HomeController extends Controller
         return view('mobile.search', compact('languages', 'query', 'language'));
     }
 
-    public function postSearch(SearchRequest $request) {
+    public function postSearch(SearchRequest $request)
+    {
 
         $language = $request->get('language');
         $query = $request->get('query');
@@ -137,14 +139,12 @@ class HomeController extends Controller
         return view('mobile.search', compact('languages', 'results', 'query', 'language'));
     }
 
-
-
     public function favorites()
     {
-//        $hadiths = Hadith::query()
-//            ->select('*')
-//            ->paginate()
-//            ->withQueryString();
+        //        $hadiths = Hadith::query()
+        //            ->select('*')
+        //            ->paginate()
+        //            ->withQueryString();
 
         $hadiths = auth()->user()->favoriteHadiths()
             ->select('*')

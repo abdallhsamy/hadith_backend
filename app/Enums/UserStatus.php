@@ -6,7 +6,7 @@ namespace App\Enums;
 
 enum UserStatus: string
 {
-//    use EnumTrait;
+    //    use EnumTrait;
 
     case ACTIVE = 'active';
 
