@@ -31,7 +31,7 @@
                    class="block relative rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95"
                    style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
                     <div class="absolute top-0 ltr:left-0 rtl:right-0 m-4" @click="toggleBookmark(event, `{{ $item->_id }}`)" >
-                        @if(in_array($item->_id, auth()->user()->favoriteHadiths()->pluck('_id')->toArray()))
+                        @if(in_array($item->_id, auth()->user()->bookmarkedHadiths()->pluck('_id')->toArray()))
                             <div class="rounded-md bg-white p-1 bg-opacity-25">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <g fill="none">
@@ -99,7 +99,7 @@
                     <div class="relative block h-24 w-2/5 rounded overflow-hidden"
                          style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
                         <div class="absolute top-0 ltr:left-0 rtl:right-0 m-4" @click="toggleBookmark(event, `{{ $item->_id }}`)" >
-                            @if(in_array($item->_id, auth()->user()->favoriteHadiths()->pluck('_id')->toArray()))
+                            @if(in_array($item->_id, auth()->user()->bookmarkedHadiths()->pluck('_id')->toArray()))
                                 <div class="rounded-md bg-white p-1 bg-opacity-25">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                         <g fill="none">

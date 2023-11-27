@@ -7,6 +7,7 @@ return [
     'previous' => 'Previous',
     'all' => 'All',
     'favourites' => 'Favourites',
+    'bookmarks' => 'Bookmarks',
     'categories' => 'Categories',
     'search' => 'Search',
     'grid_display' => 'Grid Display',

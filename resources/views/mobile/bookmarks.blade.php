@@ -1,7 +1,7 @@
 <x-layouts.mobile.default>
 
     <div class="mb-3 flex items-center justify-between pb-2 border-b">
-        <h1 class="text-3xl font-bold">{{ __('general.favorites') }}</h1>
+        <h1 class="text-3xl font-bold">{{ __('general.bookmarks') }}</h1>
         {{--        <p class="text-sm text-gray-500 uppercase font-bold">{{ \Carbon\Carbon::today()->translatedFormat('D d, M') }}</p>--}}
 
         <div class="display-icons flex items-center justify-between gap-1 border px-2 rounded-md">
@@ -27,7 +27,7 @@
                 <a href="{{ route('mobile.hadiths.show', $item->_id) }}"
                    class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95"
                    style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
-                    <div class="absolute top-0 right-0 -mt-3 me-3 flex gap-4">
+                    <div class="absolute top-0 ltr:right-0 rtl:left-0 -mt-3 me-3 flex gap-4">
 
                         @foreach($item->categoriesRel as $cat)
                             <div class="rounded-full bg-primary text-white text-xs py-1 ps-2 pe-3 leading-none">

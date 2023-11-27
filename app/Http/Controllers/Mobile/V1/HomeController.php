@@ -102,13 +102,13 @@ class HomeController extends Controller
 
     public function bookmark(Request $request, Hadith $hadith)
     {
-        if (in_array($hadith->_id, auth()->user()->favoriteHadiths()->pluck('_id')->toArray(), true)) {
-            auth()->user()->favoriteHadiths()->detach($hadith);
-            $message = __('general.bookmarked_successfully');
+        if (in_array($hadith->_id, auth()->user()->bookmarkedHadiths()->pluck('_id')->toArray(), true)) {
+            auth()->user()->bookmarkedHadiths()->detach($hadith);
+            $message = __('general.un_bookmarked_successfully');
             $bookmarked = false;
         } else {
-            auth()->user()->favoriteHadiths()->attach($hadith);
-            $message = __('general.un_bookmarked_successfully');
+            auth()->user()->bookmarkedHadiths()->attach($hadith);
+            $message = __('general.bookmarked_successfully');
             $bookmarked = true;
         }
         $id = $hadith->_id;
@@ -139,18 +139,18 @@ class HomeController extends Controller
         return view('mobile.search', compact('languages', 'results', 'query', 'language'));
     }
 
-    public function favorites()
+    public function bookmarks()
     {
         //        $hadiths = Hadith::query()
         //            ->select('*')
         //            ->paginate()
         //            ->withQueryString();
 
-        $hadiths = auth()->user()->favoriteHadiths()
+        $hadiths = auth()->user()->bookmarkedHadiths()
             ->select('*')
             ->paginate()
             ->withQueryString();
 
-        return view('mobile.favorites', compact('hadiths'));
+        return view('mobile.bookmarks', compact('hadiths'));
     }
 }

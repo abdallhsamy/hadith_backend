@@ -15,7 +15,7 @@ Route::get('categories', [HomeController::class, 'categories'])->name('mobile.ca
 Route::get('hadiths/{hadith}', [HomeController::class, 'showHadith'])->name('mobile.hadiths.show');
 Route::get('hadiths/{hadith}/bookmark', [HomeController::class, 'bookmark'])->name('mobile.hadiths.bookmark');
 Route::get('categories/{category}/hadiths', [HomeController::class, 'showCategoryHadiths'])->name('mobile.category.hadiths');
-Route::get('favorites', [HomeController::class, 'favorites'])->name('mobile.favorites')->middleware('auth:web');
+Route::get('bookmarks', [HomeController::class, 'bookmarks'])->name('mobile.bookmarks')->middleware('auth:web');
 Route::get('search', [HomeController::class, 'search'])->name('mobile.search');
 Route::post('search', [HomeController::class, 'postSearch'])->name('mobile.postSearch');
 Route::get('login', [HomeController::class, 'showLogin'])->name('mobile.login');

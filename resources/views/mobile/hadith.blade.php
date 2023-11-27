@@ -4,7 +4,7 @@
             <h1 class="text-xl font-bold truncate">{{ $hadith->translation()->title }}</h1>
 
             <button class=" rounded-md bg-primary p-1 toggle-bookmark" data-id="{{ $hadith->_id }}">
-                @if(in_array($hadith->_id, auth()->user()->favoriteHadiths()->pluck('_id')->toArray()))
+                @if(in_array($hadith->_id, auth()->user()->bookmarkedHadiths()->pluck('_id')->toArray()))
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <g fill="none">
                                 <path opacity=".3" d="M7 17.97l5-2.15 5 2.15V5H7v12.97z" fill="#f7f7f7"></path>

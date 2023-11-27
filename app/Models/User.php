@@ -53,10 +53,10 @@ class User extends Authenticatable
     //        );
     //    }
 
-    public function favoriteHadiths(): \MongoDB\Laravel\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function bookmarkedHadiths(): \MongoDB\Laravel\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(
-            Hadith::class, null, 'favorite_user_ids', 'favorite_hadith_ids',
+            Hadith::class, null, 'bookmarked_user_ids', 'bookmarked_hadith_ids',
         );
     }
 }

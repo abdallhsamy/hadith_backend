@@ -29,13 +29,13 @@
         </div>
     </a>
 
-    <a href="{{ route('mobile.favorites') }}"
+    <a href="{{ route('mobile.bookmarks') }}"
        class="app-bar-item flex flex-grow items-center justify-center p-2 text-gray-500 hover:text-primary">
         <div class="text-center">
                     <span class="block h-8 text-3xl leading-8">
                         <i class="mdi mdi-star-outline"></i>
                     </span>
-            <span class="block text-xs leading-none">{{ __('general.favorites') }}</span>
+            <span class="block text-xs leading-none">{{ __('general.bookmarks') }}</span>
         </div>
     </a>
 

@@ -7,6 +7,7 @@ return [
     'previous' => 'السابق',
     'all' => 'الكل',
     'favorites' => 'المفضلة',
+    'bookmarks' => 'الإشارات المرجعية',
     'categories' => 'الأقسام',
     'search' => 'بحث',
     'grid_display' => 'عرض الشبكة',

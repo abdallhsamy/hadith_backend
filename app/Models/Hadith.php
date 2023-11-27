@@ -55,10 +55,10 @@ class Hadith extends Model
         );
     }
 
-    public function favoriteUsers(): \MongoDB\Laravel\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function bookmarkedUsers(): \MongoDB\Laravel\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(
-            User::class, null, 'favorite_hadith_ids', 'favorite_user_ids',
+            User::class, null, 'bookmarked_hadith_ids', 'bookmarked_user_ids',
         );
     }
 }
