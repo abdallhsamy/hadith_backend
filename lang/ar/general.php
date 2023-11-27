@@ -68,4 +68,9 @@ return [
     'message' => 'الرسالة',
     'send' => 'إرسال',
     'message_sent_successfully_we_well_connect_you_as_soon_as_possible' => 'تم ارسال الرسالة بنجاح ، سيتم التواصل معك في أقرب وقت',
+    'name' => 'الاسم',
+    'password_confirmation' => 'تأكيد كلمة المرور',
+    'register' => 'تسجيل',
+    'already_have_account' => 'لديك حساب بالفعل',
+    'login_here' => 'سجل دخولك من هنا',
 ];

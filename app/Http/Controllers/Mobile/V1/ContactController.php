@@ -25,5 +25,9 @@ class ContactController extends Controller
         return redirect()
             ->back()
             ->with('success', __('general.message_sent_successfully_we_well_connect_you_as_soon_as_possible'));
+
+        // todo : send email to admin,
+        // todo : send email to sender
+        // todo : create admin message view
     }
 }

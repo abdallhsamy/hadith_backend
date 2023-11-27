@@ -69,4 +69,9 @@ return [
     'message' => 'Message',
     'send' => 'Send',
     'message_sent_successfully_we_well_connect_you_as_soon_as_possible' => 'message sent successfully , we well connect you as soon as possible',
+    'name' => 'Name',
+    'password_confirmation' => 'Password Confirmation',
+    'register' => 'Register',
+    'already_have_account' => 'Already have account',
+    'login_here' => 'Login here',
 ];

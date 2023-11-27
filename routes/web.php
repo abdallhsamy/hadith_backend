@@ -20,9 +20,12 @@ Route::get('categories/{category}/hadiths', [HomeController::class, 'showCategor
 Route::get('bookmarks', [HomeController::class, 'bookmarks'])->name('mobile.bookmarks')->middleware('auth:web');
 Route::get('search', [HomeController::class, 'search'])->name('mobile.search');
 Route::post('search', [HomeController::class, 'postSearch'])->name('mobile.postSearch');
+
 Route::get('login', [HomeController::class, 'showLogin'])->name('mobile.login');
 Route::get('login', [MobileAuthController::class, 'showLogin'])->name('login');
 Route::post('login', [MobileAuthController::class, 'postLogin'])->name('postLogin');
+Route::get('register', [MobileAuthController::class, 'showRegister'])->name('register')->middleware('guest');
+Route::post('register', [MobileAuthController::class, 'postRegister'])->name('postRegister')->middleware('guest');
 Route::get('logout', [MobileAuthController::class, 'logout'])->name('logout')->middleware('auth:web');
 
 //Route::get('generate', \App\Http\Controllers\FetchDataController::class);
