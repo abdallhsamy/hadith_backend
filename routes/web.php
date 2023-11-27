@@ -23,6 +23,7 @@ Route::post('search', [HomeController::class, 'postSearch'])->name('mobile.postS
 Route::get('login', [HomeController::class, 'showLogin'])->name('mobile.login');
 Route::get('login', [MobileAuthController::class, 'showLogin'])->name('login');
 Route::post('login', [MobileAuthController::class, 'postLogin'])->name('postLogin');
+Route::get('logout', [MobileAuthController::class, 'logout'])->name('logout')->middleware('auth:web');
 
 //Route::get('generate', \App\Http\Controllers\FetchDataController::class);
 //Route::get('reshape', \App\Http\Controllers\ReshapeDataController::class);
