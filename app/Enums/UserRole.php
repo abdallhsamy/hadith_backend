@@ -6,7 +6,7 @@ namespace App\Enums;
 
 enum UserRole: string
 {
-//    use EnumTrait;
+    //    use EnumTrait;
 
     case ADMIN = 'admin';
 

@@ -6,7 +6,7 @@ namespace App\Enums;
 
 enum UserGender: string
 {
-//    use EnumTrait;
+    //    use EnumTrait;
 
     case MALE = 'male';
 
