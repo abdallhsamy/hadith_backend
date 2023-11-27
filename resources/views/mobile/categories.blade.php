@@ -30,7 +30,7 @@
                 <a href="{{ route('mobile.category.hadiths', $item->_id) }}"
                    class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95"
                    style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
-                    <div class="absolute top-0 right-0 -mt-3 me-3 flex gap-4">
+                    <div class="absolute top-0 ltr:right-0 rtl:left-0 -mt-3 me-3 flex gap-4">
 
                         {{--                        @foreach($item->categoriesRel as $cat)--}}
                         {{--                            <div class="rounded-full bg-primary text-white text-xs py-1 ps-2 pe-3 leading-none">--}}

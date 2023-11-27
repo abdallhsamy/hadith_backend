@@ -100,6 +100,22 @@ class HomeController extends Controller
         return view('mobile.hadith', compact('hadith'));
     }
 
+    public function bookmark(Request $request, Hadith $hadith)
+    {
+        if (in_array($hadith->_id, auth()->user()->favoriteHadiths()->pluck('_id')->toArray(), true)) {
+            auth()->user()->favoriteHadiths()->detach($hadith);
+            $message = 'bookmarked_successfully';
+            $bookmarked = false;
+        } else {
+            auth()->user()->favoriteHadiths()->attach($hadith);
+            $message = 'un_bookmarked_successfully';
+            $bookmarked = true;
+        }
+        $id =  $hadith->_id;
+
+        return response()->json(compact('id', 'message', 'bookmarked'));
+    }
+
     public function search() {
         $languages = Language::all();
         $query = old('query');

@@ -28,9 +28,44 @@
         @foreach($hadiths as  $item)
             <div class="mb-5">
                 <a href="{{ route('mobile.hadiths.show', $item->_id) }}"
-                   class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95"
+                   class="block relative rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95"
                    style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
-                    <div class="absolute top-0 right-0 -mt-3 me-3 flex gap-4">
+                    <div class="absolute top-0 ltr:left-0 rtl:right-0 m-4" @click="toggleBookmark(event, `{{ $item->_id }}`)" >
+                        @if(in_array($item->_id, auth()->user()->favoriteHadiths()->pluck('_id')->toArray()))
+                            <div class="rounded-md bg-white p-1 bg-opacity-25">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <g fill="none">
+                                        <path opacity=".3" d="M7 17.97l5-2.15 5 2.15V5H7v12.97z" fill="#f7f7f7"></path>
+                                        <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 14.97l-5-2.14-5 2.14V5h10v12.97z" fill="#f7f7f7"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                        @else
+                            <div class="rounded-md bg-white p-1 bg-opacity-25">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <g fill="none">
+                                    <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z" fill="#f7f7f7"></path>
+                                </g>
+                            </svg>
+                            </div>
+                        @endif
+{{--                            @if($isBookmarked)--}}
+
+{{--                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">--}}
+{{--                                    <g fill="none">--}}
+{{--                                        <path opacity=".3" d="M7 17.97l5-2.15 5 2.15V5H7v12.97z" fill="#f7f7f7"></path>--}}
+{{--                                        <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 14.97l-5-2.14-5 2.14V5h10v12.97z" fill="#f7f7f7"></path>--}}
+{{--                                    </g>--}}
+{{--                                </svg>--}}
+{{--                            @else--}}
+{{--                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">--}}
+{{--                                    <g fill="none">--}}
+{{--                                        <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z" fill="#f7f7f7"></path>--}}
+{{--                                    </g>--}}
+{{--                                </svg>--}}
+{{--                            @endif--}}
+                    </div>
+                    <div class="absolute top-0 ltr:right-0 rtl:left-0 -mt-3 me-3 flex gap-4">
 
                         @foreach($item->categoriesRel as $cat)
                             <div class="rounded-full bg-primary text-white text-xs py-1 ps-2 pe-3 leading-none">
@@ -60,10 +95,46 @@
     <div id="list_container" class="hidden">
         @foreach($hadiths as $item)
             <div>
-                <a href="{{ route('mobile.hadiths.show', $item->_id) }}"
-                   class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
-                    <div class="block h-24 w-2/5 rounded overflow-hidden"
-                         style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;"></div>
+                <a href="{{ route('mobile.hadiths.show', $item->_id) }}" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
+                    <div class="relative block h-24 w-2/5 rounded overflow-hidden"
+                         style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
+                        <div class="absolute top-0 ltr:left-0 rtl:right-0 m-4" @click="toggleBookmark(event, `{{ $item->_id }}`)" >
+                            @if(in_array($item->_id, auth()->user()->favoriteHadiths()->pluck('_id')->toArray()))
+                                <div class="rounded-md bg-white p-1 bg-opacity-25">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <g fill="none">
+                                            <path opacity=".3" d="M7 17.97l5-2.15 5 2.15V5H7v12.97z" fill="#f7f7f7"></path>
+                                            <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 14.97l-5-2.14-5 2.14V5h10v12.97z" fill="#f7f7f7"></path>
+                                        </g>
+                                    </svg>
+                                </div>
+                            @else
+                                <div class="rounded-md bg-white p-1 bg-opacity-25">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <g fill="none">
+                                            <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z" fill="#f7f7f7"></path>
+                                        </g>
+                                    </svg>
+                                </div>
+                            @endif
+                            {{--                            @if($isBookmarked)--}}
+
+                            {{--                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">--}}
+                            {{--                                    <g fill="none">--}}
+                            {{--                                        <path opacity=".3" d="M7 17.97l5-2.15 5 2.15V5H7v12.97z" fill="#f7f7f7"></path>--}}
+                            {{--                                        <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 14.97l-5-2.14-5 2.14V5h10v12.97z" fill="#f7f7f7"></path>--}}
+                            {{--                                    </g>--}}
+                            {{--                                </svg>--}}
+                            {{--                            @else--}}
+                            {{--                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">--}}
+                            {{--                                    <g fill="none">--}}
+                            {{--                                        <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z" fill="#f7f7f7"></path>--}}
+                            {{--                                    </g>--}}
+                            {{--                                </svg>--}}
+                            {{--                            @endif--}}
+                        </div>
+
+                    </div>
                     <div class="ps-3 w-3/5">
                         <div
                             class="text-xs text-gray-500 uppercase font-semibold flex gap-1 @if($item->categoriesRel->count() > 0) mb-2 @endif">
@@ -78,6 +149,7 @@
                         {{--                        <div class="rounded-full w-5 h-5 me-3" style="background: url(https://randomuser.me/api/portraits/men/41.jpg) center; background-size: cover;"></div>--}}
                         {{--                        <div>Jack Ryan</div>--}}
                         {{--                    </div>--}}
+
                     </div>
                 </a>
             </div>
@@ -135,5 +207,30 @@
 
         </script>
     @endpush
+
+
+{{--    @push('scripts')--}}
+{{--        <script>--}}
+{{--            const toggleBookmark = (event, hadithId) =>{--}}
+
+{{--                event.preventDefault(); // Prevent the default link behavior--}}
+{{--                event.stopPropagation(); // Stop the event propagation--}}
+
+{{--                axios.get(`{{ route('mobile.hadiths.bookmark', ':hadithId') }}`.replace(':hadithId', hadithId))--}}
+{{--                    .then(response => {--}}
+{{--                        if (response.status == 200) {--}}
+{{--                            console.log(response.data);--}}
+{{--                            console.log(response.data.bookmarked)--}}
+{{--                            // this.isBookmarked = ! this.isBookmarked;--}}
+{{--                            // this.isBookmarked = response.data.bookmarked;--}}
+{{--                        } else {--}}
+{{--                            console.log('something went wrong');--}}
+{{--                        }--}}
+{{--                    })--}}
+{{--            }--}}
+{{--        </script>--}}
+
+{{--    @endpush--}}
+
 
 </x-layouts.mobile.default>

@@ -17,5 +17,6 @@
     <x-layouts.mobile.bottom-navigation-bar/>
 </div>
 @stack('scripts')
+<x-mobile.scripts.toogle-bookmark/>
 </body>
 </html>

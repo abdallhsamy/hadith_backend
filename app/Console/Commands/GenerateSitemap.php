@@ -11,8 +11,10 @@ class GenerateSitemap extends Command
 
     protected $description = 'Generate Sitemap';
 
-    public function handle()
+    public function handle(): void
     {
+        set_time_limit(-1);
+
         $url = config('app.url');
 
         SitemapGenerator::create($url)
