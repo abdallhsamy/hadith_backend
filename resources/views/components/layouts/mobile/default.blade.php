@@ -18,5 +18,6 @@
 </div>
 @stack('scripts')
 <x-mobile.scripts.toogle-bookmark/>
+<x-mobile.scripts.session-messges/>
 </body>
 </html>

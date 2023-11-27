@@ -66,5 +66,6 @@ return [
     'contact' => 'تواصل معنا',
     'subject' => 'الموضوع',
     'message' => 'الرسالة',
-    'send' => 'إرسال'
+    'send' => 'إرسال',
+    'message_sent_successfully_we_well_connect_you_as_soon_as_possible' => 'تم ارسال الرسالة بنجاح ، سيتم التواصل معك في أقرب وقت',
 ];

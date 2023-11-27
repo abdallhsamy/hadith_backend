@@ -24,6 +24,6 @@ class ContactController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', 'message sent successfully , we well connect you as soon as possible');
+            ->with('success', __('general.message_sent_successfully_we_well_connect_you_as_soon_as_possible'));
     }
 }
