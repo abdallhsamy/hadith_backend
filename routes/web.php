@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Mobile\V1\ContactController;
 use App\Http\Controllers\Mobile\V1\HomeController;
 use App\Http\Controllers\Mobile\V1\MobileAuthController;
 use App\Http\Controllers\UtilsController;
@@ -12,6 +11,8 @@ Route::redirect('/', '/today');
 Route::get('today', [HomeController::class, 'today'])->name('mobile.today');
 Route::get('all', [HomeController::class, 'all'])->name('mobile.all');
 Route::get('about', [HomeController::class, 'about'])->name('mobile.about');
+Route::get('contact', [ContactController::class, 'contact'])->name('mobile.contact');
+Route::post('contact', [ContactController::class, 'postContact'])->name('mobile.postContact');
 Route::get('categories', [HomeController::class, 'categories'])->name('mobile.categories');
 Route::get('hadiths/{hadith}', [HomeController::class, 'showHadith'])->name('mobile.hadiths.show');
 Route::get('hadiths/{hadith}/bookmark', [HomeController::class, 'bookmark'])->name('mobile.hadiths.bookmark');

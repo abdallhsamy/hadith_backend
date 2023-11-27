@@ -64,4 +64,7 @@ return [
     'un_bookmarked_successfully' => 'تم إلغاء الإشارة المرجعية بنجاح',
     'about' => 'عن التطبيق',
     'contact' => 'تواصل معنا',
+    'subject' => 'الموضوع',
+    'message' => 'الرسالة',
+    'send' => 'إرسال'
 ];

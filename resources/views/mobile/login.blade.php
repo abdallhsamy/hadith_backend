@@ -13,9 +13,9 @@
 {{--            <label for="email">{{ __('general.email') }}</label>--}}
 {{--            <input id="email" name="email" value="{{ old('email') }}" type="email" class=" bg-shade h-12 px-2 border border-gray-300 @error('email') border-red-300 @enderror text-gray-90 rounded-md w-full" placeholder="your@gmail.com">--}}
 
-            @error('email')
-            <small id="emailHelp" class="form-text -mt-3 text-sm text-red-700 dark:text-red-400">{{ $message }}</small>
-            @enderror
+{{--            @error('email')--}}
+{{--            <small id="emailHelp" class="form-text -mt-3 text-sm text-red-700 dark:text-red-400">{{ $message }}</small>--}}
+{{--            @enderror--}}
 
 
 

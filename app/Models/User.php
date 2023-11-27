@@ -59,4 +59,9 @@ class User extends Authenticatable
             Hadith::class, null, 'bookmarked_user_ids', 'bookmarked_hadith_ids',
         );
     }
+
+    public function contactMessages(): \Illuminate\Database\Eloquent\Relations\HasMany|\MongoDB\Laravel\Relations\HasMany
+    {
+        return $this->hasMany(ContactMessage::class, 'user_id');
+    }
 }

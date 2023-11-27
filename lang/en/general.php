@@ -64,4 +64,8 @@ return [
     'about' => 'About',
     'services' => 'Services',
     'contact' => 'Contact',
+    'subject' => 'Subject',
+    'content' => 'Content',
+    'message' => 'Message',
+    'send' => 'Send',
 ];
