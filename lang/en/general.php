@@ -61,4 +61,7 @@ return [
     'something_went_wrong' => 'Something Went Wrong',
     'bookmarked_successfully' => 'Bookmarked Successfully',
     'un_bookmarked_successfully' => 'Un Bookmarked Successfully',
+    'about' => 'About',
+    'services' => 'Services',
+    'contact' => 'Contact',
 ];

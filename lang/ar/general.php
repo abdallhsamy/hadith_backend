@@ -62,4 +62,6 @@ return [
     'something_went_wrong' => 'حدث خطأ ما',
     'bookmarked_successfully' => 'تم وضع إشارة مرجعية بنجاح',
     'un_bookmarked_successfully' => 'تم إلغاء الإشارة المرجعية بنجاح',
+    'about' => 'عن التطبيق',
+    'contact' => 'تواصل معنا',
 ];

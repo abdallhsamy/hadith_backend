@@ -11,6 +11,7 @@ Route::redirect('/', '/today');
 
 Route::get('today', [HomeController::class, 'today'])->name('mobile.today');
 Route::get('all', [HomeController::class, 'all'])->name('mobile.all');
+Route::get('about', [HomeController::class, 'about'])->name('mobile.about');
 Route::get('categories', [HomeController::class, 'categories'])->name('mobile.categories');
 Route::get('hadiths/{hadith}', [HomeController::class, 'showHadith'])->name('mobile.hadiths.show');
 Route::get('hadiths/{hadith}/bookmark', [HomeController::class, 'bookmark'])->name('mobile.hadiths.bookmark');

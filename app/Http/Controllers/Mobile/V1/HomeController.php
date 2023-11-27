@@ -153,4 +153,9 @@ class HomeController extends Controller
 
         return view('mobile.bookmarks', compact('hadiths'));
     }
+
+    public function about()
+    {
+        return view('mobile.about');
+    }
 }
