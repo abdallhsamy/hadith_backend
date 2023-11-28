@@ -85,9 +85,11 @@ class HomeController extends Controller
             app()->setLocale($request->get('lang'));
         }
 
+        $comments = $hadith->parentCommentsOnly()->verifiedOrOwned()->get();
+
         $hadith->increment('views');
 
-        return view('mobile.hadith', compact('hadith'));
+        return view('mobile.hadith', compact('hadith', 'comments'));
     }
 
     public function bookmark(Request $request, Hadith $hadith)

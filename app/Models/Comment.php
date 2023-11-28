@@ -43,6 +43,31 @@ class Comment extends Model
         return $this->belongsTo(__CLASS__, 'parent_id');
     }
 
+    public function scopeVerified($query)
+    {
+        return $query->whereNotNull('verified_at');
+    }
+
+    public function scopeOwned($query)
+    {
+        if (auth()->guest()) {
+            return $query;
+        }
+
+        return $query->where('user_id' , auth()->id());
+    }
+
+    public function scopeVerifiedOrOwned($query)
+    {
+        $query->whereNotNull('verified_at');
+
+        if (auth()->guest()) {
+            return $query;
+        }
+
+        return $query->orWhere('user_id' , auth()->id());
+    }
+
 //    public static function booted()
 //    {
 //        static::addGlobalScope(new VerifiedScope());

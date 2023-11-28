@@ -137,7 +137,7 @@
     </div>
         <x-mobile.comments
             :hadith-id="$hadith->_id"
-            :comments="$hadith->parentCommentsOnly"
+            :comments="$comments"
             class="pt-8"
         />
 
