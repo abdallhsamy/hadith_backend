@@ -3,8 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Models\DailySelectedHadith;
-use App\Models\Hadith;
-use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class DailyHadithSelection extends Command
@@ -15,14 +13,6 @@ class DailyHadithSelection extends Command
 
     public function handle(): void
     {
-        $selectedHadiths = Hadith::orderBy('views', 'asc')->take(4)->get();
-
-        $date = Carbon::today()->format('Y-m-d');
-        if (! DailySelectedHadith::whereDate('date', $date)->first()) {
-            $day = DailySelectedHadith::create(compact('date'));
-
-            $day->hadiths()->attach($selectedHadiths);
-        }
-
+        DailySelectedHadith::getHadiths();
     }
 }

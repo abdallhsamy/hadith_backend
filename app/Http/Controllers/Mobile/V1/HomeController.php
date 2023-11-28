@@ -19,20 +19,9 @@ class HomeController extends Controller
 
     public function today()
     {
-        $today = DailySelectedHadith::query()
-            ->whereDate('date', Carbon::today())
-            ->first()
-            ->hadiths;
-
-        $yesterday = DailySelectedHadith::query()
-            ->whereDate('date', Carbon::today()->subDays())
-            ->first()
-            ->hadiths;
-
-        $old = DailySelectedHadith::query()
-            ->whereDate('date', Carbon::today()->subDays(2))
-            ->first()
-            ->hadiths;
+        $today = DailySelectedHadith::getHadiths();
+        $yesterday = DailySelectedHadith::getHadiths(1);
+        $old = DailySelectedHadith::getHadiths(2);
 
         return view('mobile.today', compact('today', 'yesterday', 'old'));
     }
