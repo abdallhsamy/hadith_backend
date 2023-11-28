@@ -8,7 +8,6 @@ use App\Models\Category;
 use App\Models\DailySelectedHadith;
 use App\Models\Hadith;
 use App\Models\Language;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

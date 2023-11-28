@@ -22,7 +22,7 @@ class DailySelectedHadith extends Model
         );
     }
 
-    public static function getHadiths(int|null $subDays = 0, int|null $take = 4)
+    public static function getHadiths(?int $subDays = 0, ?int $take = 4)
     {
         $date = Carbon::today()->subDays($subDays);
 
