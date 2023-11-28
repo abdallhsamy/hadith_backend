@@ -1,4 +1,5 @@
 <x-layouts.mobile.default>
+    @section('title', __('general.search'))
 
     <div class="mb-3 flex items-center justify-between pb-2 border-b">
         <h1 class="text-3xl font-bold">{{ __('general.search') }}</h1>

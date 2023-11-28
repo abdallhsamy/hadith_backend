@@ -3,13 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name') }} | @stack('title')</title>
+    <title>{{ config('app.name') }} | @yield('title')</title>
     @stack('seo')
-    @if(isset($seo))
-        {!! seo($seo) !!}
-    @else
-    @endif
-
     @vite(['resources/css/app.css','resources/js/app.js'])
     @stack('css')
 

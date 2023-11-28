@@ -1,5 +1,6 @@
 <x-layouts.mobile.default>
-    @push('title', $hadith->translation()->title)
+    @section('title', $hadith->translation()->title)
+
     @push('seo')
         {!! seo()->for($hadith) !!}
     @endpush

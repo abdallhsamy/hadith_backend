@@ -1,4 +1,6 @@
 <x-layouts.mobile.default>
+    @section('title', __('general.about'))
+
     <div class="flex flex-col gap-4 text-justify">
         <div class="flex items-center justify-between gap-4">
             <h1 class="text-xl font-bold">{{ __('general.about') }}</h1>

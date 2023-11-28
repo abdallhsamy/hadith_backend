@@ -1,5 +1,7 @@
 <x-layouts.mobile.default>
 
+    @section('title', __('general.today'))
+
     <div class="mb-3">
         <h1 class="text-3xl font-bold">{{ __('general.today') }}</h1>
         <p class="text-sm text-gray-500 uppercase font-bold">{{ \Carbon\Carbon::today()->translatedFormat('D d, M') }}</p>
