@@ -74,4 +74,7 @@ return [
     'already_have_account' => 'لديك حساب بالفعل',
     'login_here' => 'سجل دخولك من هنا',
     'share' => 'مشاركة',
+    'upload_file' => 'رفع ملف',
+    'upload_image' => 'رفع صورة',
+    'update' => 'تحديث',
 ];

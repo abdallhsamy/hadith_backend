@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -43,6 +44,14 @@ class User extends Authenticatable
         'phone_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function avatar(): Attribute
+    {
+        return Attribute::make(
+//            get: fn (?string $value) => getModelStoredPhoto($value, $this->gender === UserGender::MALE->value ? 'assets/images/users/default_avatar_male.svg' : 'assets/images/users/default_avatar_female.svg'),
+            get: fn (?string $value) => $value ?: asset('assets/images/default-avatar.svg'),
+        );
+    }
 
     //
 

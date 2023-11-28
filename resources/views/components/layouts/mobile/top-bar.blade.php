@@ -6,7 +6,7 @@
     @auth()
         <div id="sidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#">{{ __('general.profile') }}</a>
+            <a href="{{ route('mobile.profile') }}">{{ __('general.profile') }}</a>
             <a href="{{ route('mobile.about') }}">{{ __('general.about') }}</a>
             <a href="{{ route('mobile.contact') }}">{{ __('general.contact') }}</a>
             <a href="{{ route('logout') }}">{{ __('general.logout') }}</a>

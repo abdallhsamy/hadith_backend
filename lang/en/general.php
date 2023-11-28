@@ -75,4 +75,7 @@ return [
     'already_have_account' => 'Already have account',
     'login_here' => 'Login here',
     'share' => 'Share',
+    'upload_file' => 'Upload File',
+    'upload_image' => 'Upload Image',
+    'update' => 'Update',
 ];

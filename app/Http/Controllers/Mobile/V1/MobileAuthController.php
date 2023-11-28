@@ -52,4 +52,11 @@ class MobileAuthController extends Controller
 
         return redirect()->route('login');
     }
+
+    public function profile()
+    {
+        $user = Auth::guard('web')->user();
+
+        return view('mobile.profile', compact('user'));
+    }
 }

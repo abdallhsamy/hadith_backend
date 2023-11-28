@@ -18,6 +18,7 @@ Route::get('hadiths/{hadith}', [HomeController::class, 'showHadith'])->name('mob
 Route::get('hadiths/{hadith}/bookmark', [HomeController::class, 'bookmark'])->name('mobile.hadiths.bookmark');
 Route::get('categories/{category}/hadiths', [HomeController::class, 'showCategoryHadiths'])->name('mobile.category.hadiths');
 Route::get('bookmarks', [HomeController::class, 'bookmarks'])->name('mobile.bookmarks')->middleware('auth:web');
+Route::get('profile', [MobileAuthController::class, 'profile'])->name('mobile.profile')->middleware('auth:web');
 Route::get('search', [HomeController::class, 'search'])->name('mobile.search');
 Route::post('search', [HomeController::class, 'postSearch'])->name('mobile.postSearch');
 
