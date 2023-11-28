@@ -160,6 +160,10 @@
         @endforeach
     </div>
 
+    <div class="flex items-center justify-between py-4">
+        {!! $hadiths->links() !!}
+    </div>
+
     @push('scripts')
         <script>
             const toggleDisplayContainers = (type) => {

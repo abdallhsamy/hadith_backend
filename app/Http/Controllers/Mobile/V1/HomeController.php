@@ -60,7 +60,7 @@ class HomeController extends Controller
 
         $category->increment('views');
 
-        $hadiths = $category->hadiths()->get();
+        $hadiths = $category->hadiths()->paginate();
 
         return view('mobile.category_hadiths', compact('category', 'hadiths'));
     }

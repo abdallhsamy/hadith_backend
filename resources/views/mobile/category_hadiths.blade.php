@@ -172,6 +172,10 @@
 
     </div>
 
+    <div class="flex items-center justify-between py-4">
+        {!! $hadiths->links() !!}
+    </div>
+
     <x-mobile.shareon/>
 
     @push('scripts')

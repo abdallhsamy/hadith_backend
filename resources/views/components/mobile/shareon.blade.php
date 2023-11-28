@@ -1,6 +1,6 @@
-<div class="flex flex-col items-center justify-center m-4">
+<div class="flex flex-col items-center justify-center gap-4 m-4">
     <h4 class="text-xl font-semibold">{{ __('general.share') }}</h4>
-    <div class="shareon">
+    <div class="shareon flex flex-wrap items-center justify-center">
         <a class="facebook"></a>
         <a class="linkedin"></a>
         <a class="mastodon"></a>
