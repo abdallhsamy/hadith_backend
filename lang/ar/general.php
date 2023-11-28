@@ -73,4 +73,5 @@ return [
     'register' => 'تسجيل',
     'already_have_account' => 'لديك حساب بالفعل',
     'login_here' => 'سجل دخولك من هنا',
+    'share' => 'مشاركة',
 ];

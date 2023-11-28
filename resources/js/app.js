@@ -4,7 +4,9 @@ import Alpine from 'alpinejs'
 // import { ar_SA, en_US } from "gridjs/l10n";
 import {Grid, html} from "gridjs";
 import Swal from 'sweetalert2'
+import { init } from "shareon";
 
+init();
 
 feather.replace();
 

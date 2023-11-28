@@ -74,4 +74,5 @@ return [
     'register' => 'Register',
     'already_have_account' => 'Already have account',
     'login_here' => 'Login here',
+    'share' => 'Share',
 ];

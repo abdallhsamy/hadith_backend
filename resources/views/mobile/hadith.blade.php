@@ -126,6 +126,7 @@
 
 
         {{--            <tr><th class="whitespace-nowrap">{{ __('general.hadith_categories') }}</th><td>{{ $hadith->translation()->categories }}</td></tr>--}}
+        <x-mobile.shareon/>
 
     </div>
 
