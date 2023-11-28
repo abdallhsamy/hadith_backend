@@ -80,6 +80,17 @@ class Hadith extends Model
         );
     }
 
+    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany|\MongoDB\Laravel\Relations\HasMany
+    {
+        return $this->hasMany(Comment::class, 'hadith_id');
+    }
+
+
+    public function parentCommentsOnly(): \Illuminate\Database\Eloquent\Relations\HasMany|\MongoDB\Laravel\Relations\HasMany
+    {
+        return $this->hasMany(Comment::class, 'hadith_id')->whereNull('parent_id');
+    }
+
     public function getIsBookmarkedAttribute()
     {
         return auth()->check()

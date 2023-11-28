@@ -130,11 +130,18 @@
 
 
 
+
         {{--            <tr><th class="whitespace-nowrap">{{ __('general.hadith_categories') }}</th><td>{{ $hadith->translation()->categories }}</td></tr>--}}
-        <x-mobile.shareon/>
+
 
     </div>
+        <x-mobile.comments
+            :hadith-id="$hadith->_id"
+            :comments="$hadith->parentCommentsOnly"
+            class="pt-8"
+        />
 
+    <x-mobile.shareon/>
 
 
 

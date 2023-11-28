@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Mobile\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Mobile\V1\Search\SearchRequest;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\DailySelectedHadith;
 use App\Models\Hadith;
 use App\Models\Language;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -67,6 +69,13 @@ class HomeController extends Controller
 
     public function showHadith(Request $request, Hadith $hadith)
     {
+//        $hadith->comments()->create([
+//            'content' => fake()->paragraph,
+//            'user_id' => User::firstWhere('email', 'abdallhsamy2011@gmail.com')->_id,
+//            'verified_at' => now(),
+//            'verified_by_user_id' => User::firstWhere('email', 'admin@hadith.app')->_id,
+//            'parent_id' => fake()->randomElement($hadith->comments()->pluck('_id')->toArray()),
+//        ]);
         if (
             $request->get('lang')
             && in_array($request->get('lang'), $hadith->languages()->pluck('code')->toArray())
