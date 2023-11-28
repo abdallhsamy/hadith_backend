@@ -79,4 +79,10 @@ class Hadith extends Model
             DailySelectedHadith::class, null, 'hadith_ids', 'daily_selected_hadith_ids',
         );
     }
+
+    public function getIsBookmarkedAttribute()
+    {
+        return auth()->check()
+            && in_array($this->_id, auth()->user()->bookmarkedHadiths()->pluck('_id')->toArray());
+    }
 }
