@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Mobile\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Mobile\V1\Hadith\StoreCommentRequest;
 use App\Http\Requests\Mobile\V1\Search\SearchRequest;
 use App\Models\Category;
 use App\Models\Comment;
@@ -103,6 +104,23 @@ class HomeController extends Controller
         $id = $hadith->_id;
 
         return response()->json(compact('id', 'message', 'bookmarked'));
+    }
+
+    public function postComment(StoreCommentRequest $request, Hadith $hadith): \Illuminate\Http\RedirectResponse
+    {
+        $hadith->comments()->create([
+            'content' => $request->get('comment'),
+            'user_id' => auth()->id(),
+            'verified_at' =>null,
+//            'verified_by_user_id',
+            'parent_id' => $request->get('parent_id'),
+//            'hadith_id',
+            'hide_author' => $request->filled('hide_author')
+        ]);
+
+        return redirect()
+            ->back()
+            ->with('success' , __('general.comment_added_successfully'));
     }
 
     public function search()

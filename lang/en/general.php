@@ -80,4 +80,9 @@ return [
     'update' => 'Update',
     'check_your_email' => 'Check your email',
     'profile_updated_successfully' => 'Profile updated successfully',
+    'add_comment' => 'Add Comment',
+    'comment' => 'Comment',
+    'hide_my_name' => 'Hide My Name',
+    'user' => 'User',
+    'comment_added_successfully' => 'Comment Added successfully'
 ];

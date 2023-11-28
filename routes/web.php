@@ -15,6 +15,7 @@ Route::get('contact', [ContactController::class, 'contactView'])->name('mobile.c
 Route::post('contact', [ContactController::class, 'postContact'])->name('mobile.postContact');
 Route::get('categories', [HomeController::class, 'categories'])->name('mobile.categories');
 Route::get('hadiths/{hadith}', [HomeController::class, 'showHadith'])->name('mobile.hadiths.show');
+Route::post('hadiths/{hadith}/comment', [HomeController::class, 'postComment'])->name('mobile.hadiths.postComment');
 Route::get('hadiths/{hadith}/bookmark', [HomeController::class, 'bookmark'])->name('mobile.hadiths.bookmark');
 Route::get('categories/{category}/hadiths', [HomeController::class, 'showCategoryHadiths'])->name('mobile.category.hadiths');
 Route::get('bookmarks', [HomeController::class, 'bookmarks'])->name('mobile.bookmarks')->middleware('auth:web');

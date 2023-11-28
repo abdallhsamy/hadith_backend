@@ -79,4 +79,9 @@ return [
     'update' => 'تحديث',
     'check_your_email' => 'قم مراجعة بريدك الالكتروني',
     'profile_updated_successfully' => 'تم تحديث الملف الشخصي بنجاح',
+    'add_comment' => 'إضافة تعليق',
+    'comment' => 'تعليق',
+    'hide_my_name' => 'إخفاء اسمي',
+    'user' => 'مستخدم',
+    'comment_added_successfully' => 'تم إضافة التعليق بنجاح'
 ];
