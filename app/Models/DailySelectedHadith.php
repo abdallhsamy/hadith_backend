@@ -5,7 +5,7 @@ namespace App\Models;
 class DailySelectedHadith extends Model
 {
     protected $fillable = [
-//        'hadith_id',
+        //        'hadith_id',
         'date',
     ];
 

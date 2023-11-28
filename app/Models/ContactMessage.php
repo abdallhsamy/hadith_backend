@@ -13,7 +13,7 @@ class ContactMessage extends Model
         'seen_at',
         'replied_at',
         'reply',
-        'replied_by_user_id'
+        'replied_by_user_id',
     ];
 
     protected $casts = [

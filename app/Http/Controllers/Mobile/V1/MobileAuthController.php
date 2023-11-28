@@ -16,6 +16,7 @@ class MobileAuthController extends Controller
     {
         return view('mobile.auth.login');
     }
+
     public function showRegister()
     {
         return view('mobile.auth.register');
@@ -51,5 +52,4 @@ class MobileAuthController extends Controller
 
         return redirect()->route('login');
     }
-
 }

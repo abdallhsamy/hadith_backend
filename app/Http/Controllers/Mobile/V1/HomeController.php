@@ -34,7 +34,6 @@ class HomeController extends Controller
             ->first()
             ->hadiths;
 
-
         return view('mobile.today', compact('today', 'yesterday', 'old'));
     }
 

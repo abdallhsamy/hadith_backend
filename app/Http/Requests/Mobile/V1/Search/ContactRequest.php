@@ -19,6 +19,4 @@ class ContactRequest extends FormRequest
             'message' => 'required|string|min:3',
         ];
     }
-
-
 }
