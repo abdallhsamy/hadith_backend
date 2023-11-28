@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use App\Traits\Models\HasTranslations;
+use RalphJSmit\Laravel\SEO\Support\HasSEO;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class Hadith extends Model
 {
-    use HasTranslations;
+    use HasSEO, HasTranslations;
 
     protected $fillable = [
         'id',
@@ -40,6 +42,15 @@ class Hadith extends Model
         'words_meanings',
         'reference',
     ];
+
+    public function getDynamicSEOData(): SEOData
+    {
+        return new SEOData(
+            title: $this->translation()->title,
+            description: $this->translation()->hadeeth,
+            image: asset('gradient_placeholder.png'),
+        );
+    }
 
     public function categoriesRel()
     {

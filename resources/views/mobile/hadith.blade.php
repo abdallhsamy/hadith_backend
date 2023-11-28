@@ -1,4 +1,8 @@
 <x-layouts.mobile.default>
+    @push('title', $hadith->translation()->title)
+    @push('seo')
+        {!! seo()->for($hadith) !!}
+    @endpush
     <div class="flex flex-col gap-4 divide-y">
         <div class="flex items-center justify-between gap-4">
             <h1 class="text-xl font-bold truncate">{{ $hadith->translation()->title }}</h1>

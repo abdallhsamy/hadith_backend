@@ -10,6 +10,7 @@ use App\Models\Hadith;
 use App\Models\Language;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class HomeController extends Controller
 {
