@@ -21,7 +21,15 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
+        'role',
+        'status',
+        'gender',
+        'avatar',
+        'email_verified_at',
+        'phone_verified_at',
         'password',
+        'update_email',
     ];
 
     /**
@@ -48,8 +56,7 @@ class User extends Authenticatable
     public function avatar(): Attribute
     {
         return Attribute::make(
-//            get: fn (?string $value) => getModelStoredPhoto($value, $this->gender === UserGender::MALE->value ? 'assets/images/users/default_avatar_male.svg' : 'assets/images/users/default_avatar_female.svg'),
-            get: fn (?string $value) => $value ?: asset('assets/images/default-avatar.svg'),
+            get: fn (?string $value) => getModelStoredPhoto($value, asset('assets/images/default-avatar.svg')),
         );
     }
 

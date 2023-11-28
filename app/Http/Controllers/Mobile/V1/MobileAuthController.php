@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Mobile\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Mobile\V1\Auth\LoginRequest;
 use App\Http\Requests\Mobile\V1\Auth\RegisterRequest;
+use App\Http\Requests\Mobile\V1\Auth\UpdateProfileRequest;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -58,5 +59,33 @@ class MobileAuthController extends Controller
         $user = Auth::guard('web')->user();
 
         return view('mobile.profile', compact('user'));
+    }
+
+    public function updateProfile(UpdateProfileRequest $request)
+    {
+        $data = $request->only('name');
+
+        if ($request->get('email') !== auth()->user()->email) {
+            $data['update_email'] = $request->get('email');
+        }
+
+        if ($request->file('avatar')) {
+            $data['avatar'] = request()->file('avatar')->store(path: 'users');
+        }
+
+        auth()->user()->update($data);
+
+        if ($request->get('email') !== auth()->user()->email) {
+            // todo : send verification email
+
+
+            return redirect()->route('mobile.profile')
+                ->with('success', __(__('general.check_your_email')));
+        }
+
+        return redirect()->route('mobile.profile')
+            ->with('success', __('general.profile_updated_successfully'));
+
+        // todo  : make update password form
     }
 }

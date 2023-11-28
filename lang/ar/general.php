@@ -77,4 +77,6 @@ return [
     'upload_file' => 'رفع ملف',
     'upload_image' => 'رفع صورة',
     'update' => 'تحديث',
+    'check_your_email' => 'قم مراجعة بريدك الالكتروني',
+    'profile_updated_successfully' => 'تم تحديث الملف الشخصي بنجاح',
 ];

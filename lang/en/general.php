@@ -78,4 +78,6 @@ return [
     'upload_file' => 'Upload File',
     'upload_image' => 'Upload Image',
     'update' => 'Update',
+    'check_your_email' => 'Check your email',
+    'profile_updated_successfully' => 'Profile updated successfully',
 ];

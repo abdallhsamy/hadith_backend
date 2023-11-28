@@ -7,7 +7,7 @@
 
 
         <div class="flex flex-col gap-4">
-            <form  action="{{ route('mobile.profile') }}" method="post" class="my-4">
+            <form  action="{{ route('mobile.updateProfile') }}" method="post" enctype="multipart/form-data" class="my-4">
                 @csrf
                 <div class="flex flex-col gap-4">
 
@@ -34,6 +34,8 @@
                                     type="file"
                                     autocomplete="avatar"
                                     value="{{ old('avatar', $user->avatar) }}"
+                                    x-on:change="imageSrc = URL.createObjectURL($refs.avatar.files[0])"
+                                    x-ref="avatar"
                                     class="bg-shade h-12 px-2 border border-gray-300 @error('avatar') border-red-300 @enderror text-gray-90 rounded-md w-full" />
                             </div>
                             @error('avatar')
@@ -41,7 +43,7 @@
                             @enderror
                         </div>
 
-                        <img src="{{ $user->avatar }}" alt="{{ $user->name }}" class="w-20 rounded-lg">
+                        <img x-bind:src="imageSrc" alt="{{ $user->name }}" class="w-20 h-20 rounded-full">
                     </div>
 
                 <div class="flex flex-col gap-y-2 w-full">
@@ -134,6 +136,7 @@
         <script>
             document.addEventListener("alpine:init", () => {
                 Alpine.data("profile", () => ({
+                    imageSrc: '{{ $user->avatar }}',
                     togglePasswordShow() {
                         ['#password', '#password_confirmation'].forEach(function (item) {
                             const passwordField = document.querySelector(item)
