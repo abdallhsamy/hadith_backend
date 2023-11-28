@@ -36,6 +36,10 @@
                     <small id="hide_authorHelp" class="form-text -mt-3 text-sm text-red-700 dark:text-red-400">{{ $message }}</small>
                     @enderror
                 </div>
+
+                @if($parentId)
+                    <input type="hidden" name="parent_id" value="{{ $parentId }}">
+                @endif
                 <button class="text-white bg-primary py-2 px-4 rounded-xl " type="submit">{{ __('general.comment') }}</button>
 
             </div>
