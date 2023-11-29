@@ -84,5 +84,17 @@ return [
     'comment' => 'Comment',
     'hide_my_name' => 'Hide My Name',
     'user' => 'User',
-    'comment_added_successfully' => 'Comment Added successfully'
+    'comment_added_successfully' => 'Comment Added successfully',
+    'verify_your_email' => 'Verify Your Email',
+
+    'hello' => 'Hello',
+    'you_have_registered_for_hadith_app_using' => 'You Have Registered For Hadith App Using',
+    'please_click_here_to_verify_your_account' => 'Please Click Here To Verify Your Account',
+    'confirm_registration' => 'Confirm Registration',
+    'go_to_home_page' => 'Go to Home Page',
+    'hash_is_not_valid_please__use_another_one_or_contact_us' => 'Hash is not valid please use another one or contact us',
+    'this_account_is_already_verified' => 'this account is already verified',
+    'account_verified_successfully' => 'Account verified successfully',
+    'thank_you' => 'Thank you',
+
 ];

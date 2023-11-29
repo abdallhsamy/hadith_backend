@@ -30,6 +30,7 @@ Route::post('login', [MobileAuthController::class, 'postLogin'])->name('postLogi
 Route::get('register', [MobileAuthController::class, 'showRegister'])->name('register')->middleware('guest');
 Route::post('register', [MobileAuthController::class, 'postRegister'])->name('postRegister')->middleware('guest');
 Route::get('logout', [MobileAuthController::class, 'logout'])->name('logout')->middleware('auth:web');
+Route::get('verify-registration-email/{user}/{hash}', [MobileAuthController::class, 'verifyRegistrationEmail'])->name('verifyRegistrationEmail');
 
 //Route::get('generate', \App\Http\Controllers\FetchDataController::class);
 //Route::get('reshape', \App\Http\Controllers\ReshapeDataController::class);

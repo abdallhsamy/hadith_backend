@@ -1,9 +1,10 @@
 @props([
     'class' => '',
     'color' => '#006837',
+    'style' => ''
 ])
 
-<div {{ $attributes->merge(compact('class')) }}>
+<div {{ $attributes->merge(compact('class' , 'style')) }}>
     <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216.29 113.18">
         <defs>
             <style>

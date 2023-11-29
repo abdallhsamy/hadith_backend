@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers\Mobile\V1;
 
+use App\Enums\UserStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Mobile\V1\Auth\LoginRequest;
 use App\Http\Requests\Mobile\V1\Auth\RegisterRequest;
 use App\Http\Requests\Mobile\V1\Auth\UpdateProfileRequest;
+use App\Mail\VerifyRegisteredUserEmail;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class MobileAuthController extends Controller
 {
@@ -23,15 +27,39 @@ class MobileAuthController extends Controller
         return view('mobile.auth.register');
     }
 
-    public function postRegister(RegisterRequest $request)
+    public function postRegister(RegisterRequest $request): \Illuminate\Http\RedirectResponse
     {
         User::create($request->validated());
 
         Auth::attempt($request->only('email', 'password'), true);
 
-        // todo : send email verification email
+        auth()->user()->sendEmailVerificationNotification();
 
         return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
+    public function verifyRegistrationEmail(User $user, string $hash)
+    {
+        if ($user->email_verification_code != $hash) {
+            return view('mobile.auth.emails.invalid_email_verification_code', compact('user'));
+        }
+
+        if ($user->email_verified_at) {
+            return view('mobile.auth.emails.already_verified', compact('user'));
+        }
+
+        $user->update([
+            'email_verified_at' => date(now()),
+            'status' => UserStatus::ACTIVE,
+            'email_verification_code' => null,
+            //            '$unset' => ['email_verification_code' => 1]
+        ]);
+
+        DB::collection('users')->where('_id', $user->id)->update([
+            '$unset' => ['email_verification_code' => 1],
+        ]);
+
+        return view('mobile.auth.verified_successfully', compact('user'));
     }
 
     public function postLogin(LoginRequest $request): \Illuminate\Http\RedirectResponse

@@ -34,10 +34,20 @@ return [
             'driver' => 'sync',
         ],
 
+//        'database' => [
+//            'driver' => 'database',
+//            'table' => 'jobs',
+//            'queue' => 'default',
+//            'retry_after' => 90,
+//            'after_commit' => false,
+//        ],
+
         'database' => [
-            'driver' => 'database',
+            'driver' => 'mongodb',
+            'connection' => 'mongodb',
             'table' => 'jobs',
             'queue' => 'default',
+            'expire' => 60,
             'retry_after' => 90,
             'after_commit' => false,
         ],
@@ -100,8 +110,14 @@ return [
     |
     */
 
+//    'failed' => [
+//        'driver' => env('QUEUE_FAILED_DRIVER', 'database-uuids'),
+//        'database' => env('DB_CONNECTION', 'mysql'),
+//        'table' => 'failed_jobs',
+//    ],
+
     'failed' => [
-        'driver' => env('QUEUE_FAILED_DRIVER', 'database-uuids'),
+        'driver' => 'mongodb',
         'database' => env('DB_CONNECTION', 'mysql'),
         'table' => 'failed_jobs',
     ],

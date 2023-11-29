@@ -83,5 +83,16 @@ return [
     'comment' => 'تعليق',
     'hide_my_name' => 'إخفاء اسمي',
     'user' => 'مستخدم',
-    'comment_added_successfully' => 'تم إضافة التعليق بنجاح'
+    'comment_added_successfully' => 'تم إضافة التعليق بنجاح',
+    'verify_your_email' => 'تأكيد بريدك الإلكتروني',
+    'hello' => 'مرحبا',
+    'you_have_registered_for_hadith_app_using' => 'لقد قمت بالتسجيل في تطبيق حديث عن طريق',
+    'please_click_here_to_verify_your_account' => 'من فضلك اضغط هنا لتفعيل حسابك',
+    'confirm_registration' => 'تأكيد التسجيل',
+    'hash_is_not_valid_please__use_another_one_or_contact_us' => 'كود التفعيل غير صالح، يرجى استخدام واحد آخر  أو الاتصال بنا',
+    'go_to_home_page' => 'توجه إلى الصفحة الرئيسية',
+    'this_account_is_already_verified' => 'تم تفعيل هذا الحساب بالفعل',
+    'account_verified_successfully' => 'تم تفعيل الحساب بنجاح',
+    'thank_you' => 'شكرا لك',
+
 ];
