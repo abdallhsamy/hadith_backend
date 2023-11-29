@@ -57,7 +57,7 @@ return [
     'reset_password' => 'Reset Password',
     'dont_have_account_yet_question' => 'Don\'t Have Account Yet ?',
     'get_free_account' => 'Get a Free Account',
-    'remember_me' => 'Member Me',
+    'remember_me' => 'Remember Me',
     'something_went_wrong' => 'Something Went Wrong',
     'bookmarked_successfully' => 'Bookmarked Successfully',
     'un_bookmarked_successfully' => 'Un Bookmarked Successfully',
@@ -96,5 +96,6 @@ return [
     'this_account_is_already_verified' => 'this account is already verified',
     'account_verified_successfully' => 'Account verified successfully',
     'thank_you' => 'Thank you',
+    'this_translation_is_not_provided_yet_but_we_are_working_hard_to_add_it_as_soon_as_possible' => 'This Translation Is Not Provided Yet But We Are Working Hard To Add It As Soon As Possible',
 
 ];

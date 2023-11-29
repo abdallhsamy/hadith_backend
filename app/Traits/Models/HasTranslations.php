@@ -4,7 +4,7 @@ namespace App\Traits\Models;
 
 trait HasTranslations
 {
-    public function translation(string $lang = null): object
+    public function translation(string|null $lang = null): object
     {
         if (! property_exists($this, 'translatableValues')) {
             throw new \RuntimeException('The $translatableValues property must be defined in the class.');
@@ -25,6 +25,25 @@ trait HasTranslations
         }
 
         return (object) $translation;
+    }
+
+    public function hasTranslation(string|null $lang = null): bool
+    {
+        if (! property_exists($this, 'translatableValues')) {
+            throw new \RuntimeException('The $translatableValues property must be defined in the class.');
+        }
+
+        if (! $lang) {
+            $lang = app()->getLocale();
+        }
+
+        foreach ($this->translatableValues as $key) {
+            if (array_key_exists($lang, $this->$key)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     //    public function translation(string|null $lang = null)

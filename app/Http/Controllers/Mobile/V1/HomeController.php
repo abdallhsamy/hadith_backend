@@ -88,6 +88,17 @@ class HomeController extends Controller
 
         $hadith->increment('views');
 
+        if (! $hadith->hasTranslation()) {
+            $message = __('general.this_translation_is_not_provided_yet_but_we_are_working_hard_to_add_it_as_soon_as_possible');
+
+            session()->put('locale', 'ar');
+            app()->setLocale('ar');
+
+            return view('mobile.hadith', compact('hadith', 'comments'))
+                ->with('success', $message);
+
+        }
+
         return view('mobile.hadith', compact('hadith', 'comments'));
     }
 
