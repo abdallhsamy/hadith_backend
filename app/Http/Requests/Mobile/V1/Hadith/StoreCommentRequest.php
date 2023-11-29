@@ -15,8 +15,8 @@ class StoreCommentRequest extends FormRequest
     {
         return [
             'comment' => 'required|string|min:3',
-//            'hide_author'
-            'parent_id' => 'nullable|exists:comments,_id'
+            //            'hide_author'
+            'parent_id' => 'nullable|exists:comments,_id',
         ];
     }
 }

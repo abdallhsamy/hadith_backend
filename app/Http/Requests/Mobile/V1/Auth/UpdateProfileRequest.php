@@ -2,12 +2,7 @@
 
 namespace App\Http\Requests\Mobile\V1\Auth;
 
-use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\Str;
-use Illuminate\Validation\ValidationException;
 
 class UpdateProfileRequest extends FormRequest
 {
@@ -27,13 +22,13 @@ class UpdateProfileRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            "email" => 'required|email',
+            'email' => 'required|email',
             'name' => 'required|string',
             'avatar' => 'nullable|file|mimes:jpg,jpeg,png,svg,aviv,gif|max:20480',
         ];
 
         if ($this->email !== $this->user()->email) {
-            $rules['email'] = "required|email|unique:users,email";
+            $rules['email'] = 'required|email|unique:users,email';
         }
 
         return $rules;

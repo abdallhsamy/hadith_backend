@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Mobile\V1\Hadith\StoreCommentRequest;
 use App\Http\Requests\Mobile\V1\Search\SearchRequest;
 use App\Models\Category;
-use App\Models\Comment;
 use App\Models\DailySelectedHadith;
 use App\Models\Hadith;
 use App\Models\Language;
@@ -70,13 +69,13 @@ class HomeController extends Controller
 
     public function showHadith(Request $request, Hadith $hadith)
     {
-//        $hadith->comments()->create([
-//            'content' => fake()->paragraph,
-//            'user_id' => User::firstWhere('email', 'abdallhsamy2011@gmail.com')->_id,
-//            'verified_at' => now(),
-//            'verified_by_user_id' => User::firstWhere('email', 'admin@hadith.app')->_id,
-//            'parent_id' => fake()->randomElement($hadith->comments()->pluck('_id')->toArray()),
-//        ]);
+        //        $hadith->comments()->create([
+        //            'content' => fake()->paragraph,
+        //            'user_id' => User::firstWhere('email', 'abdallhsamy2011@gmail.com')->_id,
+        //            'verified_at' => now(),
+        //            'verified_by_user_id' => User::firstWhere('email', 'admin@hadith.app')->_id,
+        //            'parent_id' => fake()->randomElement($hadith->comments()->pluck('_id')->toArray()),
+        //        ]);
         if (
             $request->get('lang')
             && in_array($request->get('lang'), $hadith->languages()->pluck('code')->toArray())
@@ -113,16 +112,16 @@ class HomeController extends Controller
         $hadith->comments()->create([
             'content' => $request->get('comment'),
             'user_id' => auth()->id(),
-            'verified_at' =>null,
-//            'verified_by_user_id',
+            'verified_at' => null,
+            //            'verified_by_user_id',
             'parent_id' => $request->get('parent_id'),
-//            'hadith_id',
-            'hide_author' => $request->filled('hide_author')
+            //            'hadith_id',
+            'hide_author' => $request->filled('hide_author'),
         ]);
 
         return redirect()
             ->back()
-            ->with('success' , __('general.comment_added_successfully'));
+            ->with('success', __('general.comment_added_successfully'));
     }
 
     public function search()

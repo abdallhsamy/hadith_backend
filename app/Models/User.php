@@ -4,12 +4,9 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Jobs\SendVerifyRegisteredUserEmailJob;
-use App\Mail\VerifyRegisteredUserEmail;
-use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Mail;
 use Laravel\Sanctum\HasApiTokens;
 use MongoDB\Laravel\Auth\User as Authenticatable;
 
@@ -46,7 +43,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
 
     public function sendEmailVerificationNotification(): void
     {

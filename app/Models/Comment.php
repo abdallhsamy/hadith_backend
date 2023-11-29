@@ -16,11 +16,11 @@ class Comment extends Model
         'verified_by_user_id',
         'parent_id',
         'hadith_id',
-        'hide_author'
+        'hide_author',
     ];
 
     protected $casts = [
-        'verified_at' => 'datetime'
+        'verified_at' => 'datetime',
     ];
 
     public function author(): \Illuminate\Database\Eloquent\Relations\BelongsTo|\MongoDB\Laravel\Relations\BelongsTo
@@ -54,7 +54,7 @@ class Comment extends Model
             return $query;
         }
 
-        return $query->where('user_id' , auth()->id());
+        return $query->where('user_id', auth()->id());
     }
 
     public function scopeVerifiedOrOwned($query)
@@ -65,12 +65,12 @@ class Comment extends Model
             return $query;
         }
 
-        return $query->orWhere('user_id' , auth()->id());
+        return $query->orWhere('user_id', auth()->id());
     }
 
-//    public static function booted()
-//    {
-//        static::addGlobalScope(new VerifiedScope());
-//    }
+    //    public static function booted()
+    //    {
+    //        static::addGlobalScope(new VerifiedScope());
+    //    }
 
 }

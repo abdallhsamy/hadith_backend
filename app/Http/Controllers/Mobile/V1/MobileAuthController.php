@@ -7,13 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Mobile\V1\Auth\LoginRequest;
 use App\Http\Requests\Mobile\V1\Auth\RegisterRequest;
 use App\Http\Requests\Mobile\V1\Auth\UpdateProfileRequest;
-use App\Mail\VerifyRegisteredUserEmail;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 
 class MobileAuthController extends Controller
 {
@@ -105,7 +103,6 @@ class MobileAuthController extends Controller
 
         if ($request->get('email') !== auth()->user()->email) {
             // todo : send verification email
-
 
             return redirect()->route('mobile.profile')
                 ->with('success', __(__('general.check_your_email')));

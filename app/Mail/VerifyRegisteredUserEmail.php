@@ -16,7 +16,9 @@ class VerifyRegisteredUserEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(private User $user){}
+    public function __construct(private User $user)
+    {
+    }
 
     public function envelope(): Envelope
     {
@@ -45,5 +47,4 @@ class VerifyRegisteredUserEmail extends Mailable
             with: ['user' => $this->user]
         );
     }
-
 }

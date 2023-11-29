@@ -2,9 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Enums\UserGender;
-use App\Enums\UserRole;
-use App\Enums\UserStatus;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
