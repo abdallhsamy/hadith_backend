@@ -1,5 +1,5 @@
 @if(count($availableLanguages) > 0 && !\Illuminate\Support\Facades\Route::is('mobile.hadiths.show'))
-
+<!-- todo : close menu if click anywhere-->
 <div class="relative inline-block w-auto">
     <button id="languageBtn" class="text-primary bg-white px-2 py-1 rounded-lg border border-primary hover:bg-shade">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

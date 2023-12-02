@@ -26,6 +26,8 @@ Route::post('profile', [MobileAuthController::class, 'updateProfile'])->name('mo
 Route::get('search', [HomeController::class, 'search'])->name('mobile.search');
 Route::post('search', [HomeController::class, 'postSearch'])->name('mobile.postSearch');
 
+Route::get('change-language/{locale}', [UtilsController::class, 'changeLanguage'])->name('change-language');
+
 Route::get('login', [HomeController::class, 'showLogin'])->name('mobile.login');
 Route::get('login', [MobileAuthController::class, 'showLogin'])->name('login');
 Route::post('login', [MobileAuthController::class, 'postLogin'])->name('postLogin');
@@ -48,5 +50,3 @@ Route::middleware('auth:web')->prefix('dashboard')->as('dashboard.')->group(func
 
     Route::resource('categories', CategoryController::class);
 });
-
-Route::get('change-language/{locale}', [UtilsController::class, 'changeLanguage'])->name('change-language');
