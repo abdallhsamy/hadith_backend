@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Mobile\V1\ContactController;
 use App\Http\Controllers\Mobile\V1\HomeController;
 use App\Http\Controllers\Mobile\V1\MobileAuthController;
@@ -40,10 +42,11 @@ Route::get('verify-registration-email/{user}/{hash}', [MobileAuthController::cla
 //    return \App\Models\Category::where('title.fa', 'like', '%علوم آن%')->get();
 //});
 
-//Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
-//Route::prefix('dashboard')->as('dashboard.')->group(function () {
-//    Route::resource('categories', CategoryController::class);
-//});
+Route::middleware('auth:web')->prefix('dashboard')->as('dashboard.')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
+
+    Route::resource('categories', CategoryController::class);
+});
 
 Route::get('change-language/{locale}', [UtilsController::class, 'changeLanguage'])->name('change-language');
