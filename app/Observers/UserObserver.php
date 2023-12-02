@@ -11,11 +11,11 @@ class UserObserver
      */
     public function creating(User $user): void
     {
-        if (!$user->role) {
+        if (! $user->role) {
             $user->role = User::getDefaultRole();
         }
 
-        if (!$user->status) {
+        if (! $user->status) {
             $user->status = User::getDefaultStatus();
         }
     }

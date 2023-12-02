@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Dashboard\Category\CategoryCollection;
-use App\Models\Category;
 use App\Models\Language;
 use Illuminate\Support\Facades\Request;
 
@@ -22,15 +21,15 @@ class LanguageController extends Controller
             ->paginate()
             ->withQueryString();
 
-//        if (request()->wantsJson()) {
-//            return new CategoryCollection($categories);
-//        }
+        //        if (request()->wantsJson()) {
+        //            return new CategoryCollection($categories);
+        //        }
 
         return view('dashboard.languages.index', compact('languages'));
     }
 
     public function create()
     {
-        
+
     }
 }

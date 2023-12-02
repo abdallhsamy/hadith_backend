@@ -14,16 +14,15 @@ class UserController extends Controller
             ->select(
                 '_id',
                 'name',
-//                'email',
-//                'phone',
+                //                'email',
+                //                'phone',
                 'role',
                 'status',
-//                'gender',
-//                'avatar',
+                //                'gender',
+                //                'avatar',
             )
             ->paginate()
             ->withQueryString();
-
 
         return view('dashboard.users.index', compact('users'));
     }
