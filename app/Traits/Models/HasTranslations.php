@@ -4,7 +4,7 @@ namespace App\Traits\Models;
 
 trait HasTranslations
 {
-    public function translation(string|null $lang = null): object
+    public function translation(string $lang = null): object
     {
         if (! property_exists($this, 'translatableValues')) {
             throw new \RuntimeException('The $translatableValues property must be defined in the class.');
@@ -27,7 +27,7 @@ trait HasTranslations
         return (object) $translation;
     }
 
-    public function hasTranslation(string|null $lang = null): bool
+    public function hasTranslation(string $lang = null): bool
     {
         if (! property_exists($this, 'translatableValues')) {
             throw new \RuntimeException('The $translatableValues property must be defined in the class.');
