@@ -44,7 +44,6 @@ Route::get('verify-registration-email/{user}/{hash}', [MobileAuthController::cla
 //    return \App\Models\Category::where('title.fa', 'like', '%علوم آن%')->get();
 //});
 
-
 Route::middleware('auth:web')->prefix('dashboard')->as('dashboard.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
 
