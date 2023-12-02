@@ -11,7 +11,7 @@
                 ],
                 (object) [
                     'title' => __('general.languages'),
-                    'url' => '#',
+                    'url' => route('dashboard.languages.index'),
                     'icon' => '<i data-feather="globe"></i>'
                 ],
                 (object) [

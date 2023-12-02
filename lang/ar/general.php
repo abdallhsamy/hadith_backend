@@ -95,4 +95,7 @@ return [
     'account_verified_successfully' => 'تم تفعيل الحساب بنجاح',
     'thank_you' => 'شكرا لك',
     'this_translation_is_not_provided_yet_but_we_are_working_hard_to_add_it_as_soon_as_possible' => 'لم يتم توفير هذه الترجمة حتى الآن ولكننا نعمل جاهدين من أجل إضافتها في أقرب وقت',
+    'code' => 'كود',
+    'language_list' => 'قائمة اللغات',
+    'add_new_language' => 'إضافة لغة جديدة',
 ];

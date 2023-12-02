@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Mobile\V1\ContactController;
 use App\Http\Controllers\Mobile\V1\HomeController;
@@ -48,4 +49,5 @@ Route::middleware('auth:web')->prefix('dashboard')->as('dashboard.')->group(func
     Route::get('/', [DashboardController::class, 'index'])->name('index');
 
     Route::resource('categories', CategoryController::class);
+    Route::resource('languages', LanguageController::class);
 });

@@ -97,5 +97,7 @@ return [
     'account_verified_successfully' => 'Account verified successfully',
     'thank_you' => 'Thank you',
     'this_translation_is_not_provided_yet_but_we_are_working_hard_to_add_it_as_soon_as_possible' => 'This Translation Is Not Provided Yet But We Are Working Hard To Add It As Soon As Possible',
-
+    'code' => 'Code',
+    'language_list' => 'Language List',
+    'add_new_language'  => 'Add New Language',
 ];
