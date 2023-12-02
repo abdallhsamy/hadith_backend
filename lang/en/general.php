@@ -100,4 +100,8 @@ return [
     'code' => 'Code',
     'language_list' => 'Language List',
     'add_new_language'  => 'Add New Language',
+    'user_list' => 'User List',
+    'add_new_user'  => 'Add New User',
+    'role' => 'Role',
+    'status' => 'Status',
 ];

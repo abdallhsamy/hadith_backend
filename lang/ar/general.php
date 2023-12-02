@@ -98,4 +98,8 @@ return [
     'code' => 'كود',
     'language_list' => 'قائمة اللغات',
     'add_new_language' => 'إضافة لغة جديدة',
+    'user_list' => 'قائمة المستخدمين',
+    'add_new_user' => 'إضافة مستخدم جديد',
+    'role' => 'الدور',
+    'status' => 'الحالة',
 ];

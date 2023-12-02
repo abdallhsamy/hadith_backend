@@ -12,5 +12,6 @@ class ObserverServiceProvider extends ServiceProvider
     public function boot(): void
     {
         \App\Models\ContactMessage::observe(\App\Observers\ContactMessageObserver::class);
+        \App\Models\User::observe(\App\Observers\UserObserver::class);
     }
 }

@@ -41,7 +41,7 @@
                 ],
                 (object) [
                     'title' => __('general.users'),
-                    'url' => '#',
+                    'url' => route('dashboard.users.index'),
                     'icon' => '<i data-feather="users"></i>'
                 ],
                 (object) [

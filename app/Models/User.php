@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\UserRole;
+use App\Enums\UserStatus;
 use App\Jobs\SendVerifyRegisteredUserEmailJob;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -33,6 +35,16 @@ class User extends Authenticatable
         'update_email',
         'email_verification_code',
     ];
+
+    public static function getDefaultRole(): UserRole
+    {
+        return UserRole::USER;
+    }
+
+    public static function getDefaultStatus(): UserStatus
+    {
+        return UserStatus::PENDING;
+    }
 
     /**
      * The attributes that should be hidden for serialization.
