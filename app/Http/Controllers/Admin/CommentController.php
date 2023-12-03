@@ -16,7 +16,7 @@ class CommentController extends Controller
                 '_id',
                 'title',
             )
-                ->whereHas('comments', function($q){
+            ->whereHas('comments', function ($q) {
                 $q->whereNull('verified_at');
             })
             ->paginate()

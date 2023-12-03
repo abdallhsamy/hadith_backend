@@ -55,7 +55,7 @@ Route::middleware('auth:web')->prefix('dashboard')->as('dashboard.')->group(func
     Route::resource('languages', LanguageController::class);
     Route::resource('users', UserController::class);
     Route::resource('hadiths', HadithController::class);
-//    Route::resource('comments', CommentController::class);
+    //    Route::resource('comments', CommentController::class);
     Route::get('hadiths-with-unverified-comments', [CommentController::class, 'hadithsWithUnverifiedComments'])->name('comments.hadithsWithUnverifiedComments');
     Route::get('hadiths-with-unverified-comments/{hadith}', [CommentController::class, 'hadithWithComments'])->name('comments.hadithsWithUnverifiedComments.show');
     Route::get('comments/{comment}/verify', [CommentController::class, 'verify'])->name('comments.verify');
