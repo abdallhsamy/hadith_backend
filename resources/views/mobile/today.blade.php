@@ -10,7 +10,7 @@
         <div class="mb-5">
             <a href="{{ route('mobile.hadiths.show', $todayItem->_id) }}"
                class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95"
-               style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
+               style="background: url({{ asset('assets/images/gradient_placeholder.png') }}) center; background-size: cover;">
                 <div class="absolute top-0 right-0 -mt-3 me-3 flex gap-4">
 
                     @foreach($todayItem->categoriesRel as $cat)
@@ -58,7 +58,7 @@
             @foreach($odds as $item)
                 <a href="{{ route('mobile.hadiths.show', $item->_id) }}"
                    class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95"
-                   style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
+                   style="background: url({{ asset('assets/images/gradient_placeholder.png') }}) center; background-size: cover;">
                     <div class="{{ $loop->iteration % 2 == 0  ? 'h-32' : 'h-24' }}"></div>
                     <h3 class="text-lg font-bold text-white leading-tight">{{ $item->translation()->title }}</h3>
                 </a>
@@ -76,7 +76,7 @@
             @foreach($evens as $item)
                 <a href="{{ route('mobile.hadiths.show', $item->_id) }}"
                    class="block mb-2 p-5 rounded overflow-hidden transform transition-all duration-300 scale-100 hover:scale-95"
-                   style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
+                   style="background: url({{ asset('assets/images/gradient_placeholder.png') }}) center; background-size: cover;">
                     <div class="{{ $loop->iteration % 2 == 0  ? 'h-24' : 'h-32' }}"></div>
                     <h3 class="text-lg font-bold text-white leading-tight">{{ $item->translation()->title }}</h3>
                 </a>
@@ -98,7 +98,7 @@
         <div>
             <a href="{{ route('mobile.hadiths.show', $item->_id) }}" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
                 <div class="block h-24 w-2/5 rounded overflow-hidden"
-                     style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;"></div>
+                     style="background: url({{ asset('assets/images/gradient_placeholder.png') }}) center; background-size: cover;"></div>
                 <div class="ps-3 w-3/5">
                     <div
                         class="text-xs text-gray-500 uppercase font-semibold flex gap-1 @if($item->categoriesRel->count() > 0) mb-2 @endif">

@@ -27,7 +27,7 @@
             <div class="mb-5">
                 <a href="{{ route('mobile.hadiths.show', $item->_id) }}"
                    class="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95"
-                   style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
+                   style="background: url({{ asset('assets/images/gradient_placeholder.png') }}) center; background-size: cover;">
                     <div class="absolute top-0 ltr:right-0 rtl:left-0 -mt-3 me-3 flex gap-4">
 
                         @foreach($item->categoriesRel as $cat)
@@ -59,7 +59,7 @@
             <div>
                 <a href="{{ route('mobile.hadiths.show', $item->_id) }}"
                    class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
-                    <div class="block h-24 w-2/5 rounded overflow-hidden" style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;"></div>
+                    <div class="block h-24 w-2/5 rounded overflow-hidden" style="background: url({{ asset('assets/images/gradient_placeholder.png') }}) center; background-size: cover;"></div>
                     <div class="ps-3 w-3/5">
                         <div class="text-xs text-gray-500 uppercase font-semibold flex gap-1 @if($item->categoriesRel->count() > 0) mb-2 @endif">
                             @foreach($item->categoriesRel as $cat)

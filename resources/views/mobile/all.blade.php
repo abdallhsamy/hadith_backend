@@ -30,7 +30,7 @@
             <div class="mb-5">
                 <a href="{{ route('mobile.hadiths.show', $item->_id) }}"
                    class="block relative rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95"
-                   style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
+                   style="background: url({{ asset('assets/images/gradient_placeholder.png') }}) center; background-size: cover;">
                     <div class="absolute top-0 ltr:left-0 rtl:right-0 m-4" @click="toggleBookmark(event, `{{ $item->_id }}`)" >
                         @if($item->is_bookmarked)
                             <div class="rounded-md bg-white p-1 bg-opacity-25">
@@ -98,7 +98,7 @@
             <div>
                 <a href="{{ route('mobile.hadiths.show', $item->_id) }}" class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95">
                     <div class="relative block h-24 w-2/5 rounded overflow-hidden"
-                         style="background: url({{ asset('gradient_placeholder.png') }}) center; background-size: cover;">
+                         style="background: url({{ asset('assets/images/gradient_placeholder.png') }}) center; background-size: cover;">
                         <div class="absolute top-0 ltr:left-0 rtl:right-0 m-4" @click="toggleBookmark(event, `{{ $item->_id }}`)" >
                             @if($item->is_bookmarked)
                                 <div class="rounded-md bg-white p-1 bg-opacity-25">

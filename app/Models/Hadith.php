@@ -48,7 +48,7 @@ class Hadith extends Model
         return new SEOData(
             title: $this->translation()->title,
             description: $this->translation()->hadeeth,
-            image: asset('gradient_placeholder.png'),
+            image: asset('assets/images/gradient_placeholder.png'),
         );
     }
 
