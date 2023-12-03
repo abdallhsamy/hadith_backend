@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HadithController;
 use App\Http\Controllers\Admin\LanguageController;
@@ -54,4 +55,9 @@ Route::middleware('auth:web')->prefix('dashboard')->as('dashboard.')->group(func
     Route::resource('languages', LanguageController::class);
     Route::resource('users', UserController::class);
     Route::resource('hadiths', HadithController::class);
+//    Route::resource('comments', CommentController::class);
+    Route::get('hadiths-with-unverified-comments', [CommentController::class, 'hadithsWithUnverifiedComments'])->name('comments.hadithsWithUnverifiedComments');
+    Route::get('hadiths-with-unverified-comments/{hadith}', [CommentController::class, 'hadithWithComments'])->name('comments.hadithsWithUnverifiedComments.show');
+    Route::get('comments/{comment}/verify', [CommentController::class, 'verify'])->name('comments.verify');
+    Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 });

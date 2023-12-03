@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use App\Models\Scopes\VerifiedScope;
+use MongoDB\Laravel\Eloquent\SoftDeletes;
 use RalphJSmit\Helpers\Laravel\Concerns\HasFactory;
 
 class Comment extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'content',
@@ -46,6 +47,11 @@ class Comment extends Model
     public function scopeVerified($query)
     {
         return $query->whereNotNull('verified_at');
+    }
+
+    public function scopeUnverified($query)
+    {
+        return $query->whereNull('verified_at');
     }
 
     public function scopeOwned($query)

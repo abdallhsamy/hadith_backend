@@ -9,6 +9,7 @@ import { init } from "shareon";
 init();
 
 feather.replace();
+window.feather = feather
 
 window.Grid = Grid
 // window.ar_SA = ar_SA

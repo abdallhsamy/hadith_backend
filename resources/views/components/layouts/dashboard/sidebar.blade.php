@@ -24,11 +24,11 @@
                     'url' => route('dashboard.hadiths.index'),
                     'icon' => '<i data-feather="file-text"></i>'
                 ],
-                (object) [
-                    'title' => __('general.searches'),
-                    'url' => '#',
-                    'icon' => '<i data-feather="search"></i>'
-                ],
+//                (object) [
+//                    'title' => __('general.searches'),
+//                    'url' => '#',
+//                    'icon' => '<i data-feather="search"></i>'
+//                ],
                 (object) [
                     'title' => __('general.settings'),
                     'url' => '#',
@@ -46,7 +46,7 @@
                 ],
                 (object) [
                     'title' => __('general.comments'),
-                    'url' => '#',
+                    'url' => route('dashboard.comments.hadithsWithUnverifiedComments'),
                     'icon' => '<i data-feather="message-square"></i>'
                 ],
                 (object) [
