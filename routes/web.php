@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HadithController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Mobile\V1\ContactController;
 use App\Http\Controllers\Mobile\V1\HomeController;
 use App\Http\Controllers\Mobile\V1\MobileAuthController;
