@@ -27,7 +27,7 @@
                     <td class="px-6 py-2 whitespace-nowrap text-sm font-medium ">{{ $category->id }}</td>
                     <td class="px-6 py-2 whitespace-nowrap text-sm font-medium ">{{ $category->translation()->title }}</td>
                     <td class="px-6 py-2 whitespace-nowrap text-sm font-medium ">{{ $category->hadeeths_count }}</td>
-                    <td class="px-6 py-2 whitespace-nowrap text-sm font-medium ">#</td>
+                    <td class="px-6 py-2 text-end whitespace-nowrap text-sm font-medium ">#</td>
                 </tr>
             @endforeach
             </tbody>

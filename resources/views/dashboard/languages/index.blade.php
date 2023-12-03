@@ -27,8 +27,8 @@
                     <td class="px-6 py-2 whitespace-nowrap text-sm font-medium ">{{ $loop->iteration }}</td>
                     <td class="px-6 py-2 whitespace-nowrap text-sm font-medium ">{{ $language->code }}</td>
                     <td class="px-6 py-2 whitespace-nowrap text-sm font-medium ">{{ $language->native }}</td>
-                    <td class="px-6 py-2 whitespace-nowrap text-sm font-medium ">{{ $language->hadeeths_count }}</td>
-                    <td class="px-6 py-2 whitespace-nowrap text-sm font-medium ">#</td>
+{{--                    <td class="px-6 py-2 whitespace-nowrap text-sm font-medium ">{{ $language->hadeeths_count }}</td>--}}
+                    <td class="px-6 py-2 text-end whitespace-nowrap text-sm font-medium ">#</td>
                 </tr>
             @endforeach
             </tbody>
