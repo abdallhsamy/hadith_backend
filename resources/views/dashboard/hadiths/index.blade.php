@@ -24,7 +24,7 @@
             @foreach($hadiths as $hadith)
                 <tr class="hover:bg-shade">
                     <td class="px-6 py-2 whitespace-nowrap text-sm font-medium">{{ $loop->iteration }}</td>
-                    <td class=" px-6 py-2 whitespace-nowrap text-sm font-medium">{{ $hadith->translation()->title }}</td>
+                    <td class=" px-6 py-2 max-w-[30%] text-sm font-medium">{{ $hadith->translation()->title }}</td>
                     <td class="px-6 py-2 whitespace-nowrap text-sm font-medium">{{ $hadith->translation()->grade }}</td>
                     <td class="px-6 py-2 whitespace-nowrap text-sm font-medium">{{ $hadith->languages->count() }}</td>
                     <td class="px-6 py-2 whitespace-nowrap text-sm font-medium">{{ $hadith->views }}</td>
