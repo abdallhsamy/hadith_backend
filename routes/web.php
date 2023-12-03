@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\HadithController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DashboardController;
@@ -52,4 +53,5 @@ Route::middleware('auth:web')->prefix('dashboard')->as('dashboard.')->group(func
     Route::resource('categories', CategoryController::class);
     Route::resource('languages', LanguageController::class);
     Route::resource('users', UserController::class);
+    Route::resource('hadiths', HadithController::class);
 });

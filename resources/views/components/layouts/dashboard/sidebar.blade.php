@@ -21,7 +21,7 @@
                 ],
                 (object) [
                     'title' => __('general.hadith_list'),
-                    'url' => '#',
+                    'url' => route('dashboard.hadiths.index'),
                     'icon' => '<i data-feather="file-text"></i>'
                 ],
                 (object) [
@@ -58,7 +58,7 @@
         @endphp
         @foreach($items as $item)
             <li>
-                <a href="{{ $item->url }}">
+                <a class="whitespace-nowrap" href="{{ $item->url }}">
                     {!! $item->icon !!}
                     {{ $item->title }}
                 </a>

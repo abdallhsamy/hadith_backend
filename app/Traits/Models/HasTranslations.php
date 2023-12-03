@@ -17,7 +17,7 @@ trait HasTranslations
         $translation = [];
 
         foreach ($this->translatableValues as $key) {
-            if (array_key_exists($lang, $this->$key)) {
+            if (is_array($this->$key) && array_key_exists($lang, $this->$key)) {
                 $translation[$key] = $this->$key[$lang];
             } else {
                 $translation[$key] = null;

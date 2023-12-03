@@ -102,6 +102,8 @@ return [
     'add_new_language' => 'Add New Language',
     'user_list' => 'User List',
     'add_new_user' => 'Add New User',
+    'add_new_hadith' => 'Add New Hadith',
     'role' => 'Role',
     'status' => 'Status',
+    'views' => 'Views',
 ];
