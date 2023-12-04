@@ -53,6 +53,7 @@ return [
     'no_search_results_for_this_query' => 'No Search Results Found For This Query',
     'email' => 'Email',
     'password' => 'Password',
+    'new_password' => 'New Password',
     'forget_password_question' => 'Forgotten Password ?',
     'remember_password_question' => 'Remember Password ?',
     'reset_password' => 'Reset Password',
@@ -112,4 +113,9 @@ return [
     'you_requested_to_reset_your_password' => 'You requested to reset your password',
     'please_click_here_to_reset_your_password' => 'Please click here to reset your password',
     'use_this_code_if_autofill_not_working' => 'use this code if autofill not working',
+    'password_changed_successfully' => 'Password changed successfully',
+    'invalid_token_please_request_another_one' => 'Invalid token please request another one',
+    'token_is_expired_please_request_another_one' => 'Token is expired please request another one',
+    'hash' => 'hash',
+    'token' => 'token',
 ];

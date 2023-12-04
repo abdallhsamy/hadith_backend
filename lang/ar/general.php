@@ -54,6 +54,7 @@ return [
     'no_search_results_for_this_query' => 'لا يوجد نتائج لهذا الاستعلام',
     'email' => 'البريد الإلكتروني',
     'password' => 'كلمة المرور',
+    'new_password' => 'كلمة المرور الجديدة',
     'forget_password_question' => 'نسيت كلمة المرور ؟',
     'remember_password_question' => 'تذكرت كلمة المرور ؟',
     'reset_password' => 'إعادة تعيين كلمة المرور',
@@ -110,4 +111,9 @@ return [
     'you_requested_to_reset_your_password' => 'لقد طلبت إعادة تعيين كلمة المرور الخاصة بك',
     'please_click_here_to_reset_your_password' => 'الرجاء الضغط هنا لإعادة تعيين كلمة المرور الخاصة بك',
     'use_this_code_if_autofill_not_working' => 'استخدم هذا الرمز إذا لم يعمل الملء التلقائي',
+    'password_changed_successfully' => 'تم تغيير كلمة المرور بنجاح',
+    'invalid_token_please_request_another_one' => 'الرمز المميز غير صالح، يرجى طلب رمز آخر',
+    'token_is_expired_please_request_another_one' => 'الرمز منتهي الصلاحية، يرجى طلب رمز آخر',
+    'hash' => 'هاش',
+    'token' => 'الأمارة',
 ];

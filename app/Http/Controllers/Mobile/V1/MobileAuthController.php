@@ -8,9 +8,11 @@ use App\Http\Requests\Mobile\V1\Auth\ForgetPasswordRequest;
 use App\Http\Requests\Mobile\V1\Auth\LoginRequest;
 use App\Http\Requests\Mobile\V1\Auth\RegisterRequest;
 use App\Http\Requests\Mobile\V1\Auth\UpdateProfileRequest;
+use App\Models\PasswordReset;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -135,8 +137,44 @@ class MobileAuthController extends Controller
         return redirect()->back()->with('success', __('general.check_your_email'));
     }
 
-    public function showResetPassword()
+    public function showResetPassword(Request $request, User $user, string $hash)
     {
+        $passwordReset = PasswordReset::query()
+            ->where('user_id', $user->_id)
+            ->where('token', $hash)
+            ->first();
 
+        if (!$passwordReset) {
+            return redirect()->route('forgetPassword')->with('success', __('general.invalid_token_please_request_another_one'));
+        }
+
+        if (Carbon::now()->diffInMinutes($passwordReset->created_at) > 60) {
+            return redirect()->route('forgetPassword')->with('success', __('general.token_is_expired_please_request_another_one'));
+        }
+
+        return view('mobile.auth.reset_password', compact('user', 'hash'));
+    }
+
+    public function resetPassword(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $passwordReset = PasswordReset::query()
+            ->where('token', $request->get('hash'))
+            ->first();
+
+        if (!$passwordReset) {
+            return redirect()->back()->withErrors(['hash' =>  __('general.invalid_token_please_request_another_one')]);
+        }
+
+        if (Carbon::now()->diffInMinutes($passwordReset->created_at) > 60) {
+            return redirect()->back()->withErrors(['hash' =>  __('general.token_is_expired_please_request_another_one')]);
+        }
+
+        $user =  $passwordReset->user;
+
+        $user->update($request->only('password'));
+
+        $user->passwordResets()->delete();
+
+        return redirect()->route('login')->with('success', __('general.password_changed_successfully'));
     }
 }

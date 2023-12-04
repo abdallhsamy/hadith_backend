@@ -44,12 +44,8 @@ Route::controller(MobileAuthController::class)->group(function () {
 
     Route::get('verify-registration-email/{user}/{hash}', 'verifyRegistrationEmail')->name('verifyRegistrationEmail');
     Route::get('reset-password/{user}/{hash}', 'showResetPassword')->name('resetPassword');
+    Route::post('reset-password', 'resetPassword')->name('postResetPassword');
     Route::get('logout', 'logout')->name('logout')->middleware('auth:web');
-});
-
-Route::get('test', function () {
-    $passwordReset = \App\Models\PasswordReset::latest()->first();
-    return view('emails.forget_password_email', compact('passwordReset'));
 });
 
 //Route::get('generate', \App\Http\Controllers\FetchDataController::class);
