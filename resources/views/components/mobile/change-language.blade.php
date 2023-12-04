@@ -1,5 +1,4 @@
 @if(count($availableLanguages) > 0 && !\Illuminate\Support\Facades\Route::is('mobile.hadiths.show'))
-<!-- todo : close menu if click anywhere-->
 <div class="relative inline-block w-auto">
     <button id="languageBtn" class="text-primary bg-white px-2 py-1 rounded-lg border border-primary hover:bg-shade">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -59,6 +58,17 @@
                         .catch(error => console.log(error))
                 })
             })
+
+            // Close language menu when clicking outside
+            document.body.addEventListener('click', function (event) {
+                var target = event.target;
+                var languageBtn = document.querySelector('#languageBtn');
+                var languageMenu = document.querySelector('#languageMenu');
+
+                if (!languageBtn.contains(target) && !languageMenu.contains(target)) {
+                    languageMenu.classList.add('hidden');
+                }
+            });
         </script>
     @endpush
 @endif
