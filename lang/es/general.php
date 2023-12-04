@@ -119,4 +119,3 @@ return [
     'hash' => 'Hash',
     'token' => 'Token',
 ];
-

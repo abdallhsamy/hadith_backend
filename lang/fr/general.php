@@ -119,4 +119,3 @@ return [
     'hash' => 'Hachage',
     'token' => 'Jeton',
 ];
-
