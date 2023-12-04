@@ -144,7 +144,7 @@ class MobileAuthController extends Controller
             ->where('token', $hash)
             ->first();
 
-        if (!$passwordReset) {
+        if (! $passwordReset) {
             return redirect()->route('forgetPassword')->with('success', __('general.invalid_token_please_request_another_one'));
         }
 
@@ -161,15 +161,15 @@ class MobileAuthController extends Controller
             ->where('token', $request->get('hash'))
             ->first();
 
-        if (!$passwordReset) {
-            return redirect()->back()->withErrors(['hash' =>  __('general.invalid_token_please_request_another_one')]);
+        if (! $passwordReset) {
+            return redirect()->back()->withErrors(['hash' => __('general.invalid_token_please_request_another_one')]);
         }
 
         if (Carbon::now()->diffInMinutes($passwordReset->created_at) > 60) {
-            return redirect()->back()->withErrors(['hash' =>  __('general.token_is_expired_please_request_another_one')]);
+            return redirect()->back()->withErrors(['hash' => __('general.token_is_expired_please_request_another_one')]);
         }
 
-        $user =  $passwordReset->user;
+        $user = $passwordReset->user;
 
         $user->update($request->only('password'));
 

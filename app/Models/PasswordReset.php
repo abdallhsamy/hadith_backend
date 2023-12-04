@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 use App\Jobs\SendForgetPasswordEmailJob;
 
 class PasswordReset extends Model
@@ -34,11 +33,11 @@ class PasswordReset extends Model
         });
     }
 
-//    protected static function booted() {
-//        parent::booted();
-//
-//        static::creating(function ($passwordReset) {
-//
-//        });
-//    }
+    //    protected static function booted() {
+    //        parent::booted();
+    //
+    //        static::creating(function ($passwordReset) {
+    //
+    //        });
+    //    }
 }
