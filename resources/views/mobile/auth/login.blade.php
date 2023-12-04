@@ -76,7 +76,7 @@
 
     <div class="flex flex-col gap-2 ">
         <div>
-            {{ __('general.forget_password_question') }} <a href="#" class="font-semibold">{{ __('general.reset_password') }}</a>
+            {{ __('general.forget_password_question') }} <a href="{{ route('forgetPassword') }}" class="font-semibold">{{ __('general.reset_password') }}</a>
         </div>
         <div>
             {{ __('general.dont_have_account_yet_question') }} <a href="{{ route('register') }}" class="font-bold">{{ __('general.get_free_account') }}</a>

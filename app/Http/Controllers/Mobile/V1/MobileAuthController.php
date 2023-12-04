@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Mobile\V1;
 
 use App\Enums\UserStatus;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Mobile\V1\Auth\ForgetPasswordRequest;
 use App\Http\Requests\Mobile\V1\Auth\LoginRequest;
 use App\Http\Requests\Mobile\V1\Auth\RegisterRequest;
 use App\Http\Requests\Mobile\V1\Auth\UpdateProfileRequest;
@@ -18,6 +19,15 @@ class MobileAuthController extends Controller
     public function showLogin()
     {
         return view('mobile.auth.login');
+    }
+
+    public function postLogin(LoginRequest $request): \Illuminate\Http\RedirectResponse
+    {
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     public function showRegister()
@@ -60,15 +70,6 @@ class MobileAuthController extends Controller
         return view('mobile.auth.verified_successfully', compact('user'));
     }
 
-    public function postLogin(LoginRequest $request): \Illuminate\Http\RedirectResponse
-    {
-        $request->authenticate();
-
-        $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::HOME);
-    }
-
     public function logout(Request $request): \Illuminate\Http\RedirectResponse
     {
         Auth::guard('web')->logout();
@@ -87,7 +88,7 @@ class MobileAuthController extends Controller
         return view('mobile.profile', compact('user'));
     }
 
-    public function updateProfile(UpdateProfileRequest $request)
+    public function updateProfile(UpdateProfileRequest $request): \Illuminate\Http\RedirectResponse
     {
         $data = $request->only('name');
 
@@ -112,5 +113,30 @@ class MobileAuthController extends Controller
             ->with('success', __('general.profile_updated_successfully'));
 
         // todo  : make update password form
+    }
+
+    public function showForgetPassword()
+    {
+        return view('mobile.auth.forget_password');
+    }
+
+    public function postForgetPassword(ForgetPasswordRequest $request): \Illuminate\Http\RedirectResponse
+    {
+        $user = User::firstWhere($request->only('email'));
+
+        if (! $user) {
+            return redirect()->back()->withErrors([
+                'email' => __('general.this_email_is_not_exists_in_our_database'),
+            ]);
+        }
+
+        $user->passwordResets()->create();
+
+        return redirect()->back()->with('success', __('general.check_your_email'));
+    }
+
+    public function showResetPassword()
+    {
+
     }
 }

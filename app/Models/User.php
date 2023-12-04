@@ -107,4 +107,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class, 'user_id');
     }
+
+    public function passwordResets(): \Illuminate\Database\Eloquent\Relations\HasMany|\MongoDB\Laravel\Relations\HasMany
+    {
+        return $this->hasMany(PasswordReset::class, 'user_id');
+    }
 }

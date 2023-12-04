@@ -55,6 +55,7 @@ return [
     'email' => 'البريد الإلكتروني',
     'password' => 'كلمة المرور',
     'forget_password_question' => 'نسيت كلمة المرور ؟',
+    'remember_password_question' => 'تذكرت كلمة المرور ؟',
     'reset_password' => 'إعادة تعيين كلمة المرور',
     'dont_have_account_yet_question' => 'ليس لديك حساب حتى الآن ؟',
     'get_free_account' => 'أحصل على حساب مجاني',
@@ -104,4 +105,9 @@ return [
     'role' => 'الدور',
     'status' => 'الحالة',
     'views' => ' مشاهدات',
+    'forget_password' => 'نسيت كلمة المرور',
+    'this_email_is_not_exists_in_our_database' => 'هذا البريد الإلكتروني غير موجود في قاعدة بياناتنا',
+    'you_requested_to_reset_your_password' => 'لقد طلبت إعادة تعيين كلمة المرور الخاصة بك',
+    'please_click_here_to_reset_your_password' => 'الرجاء الضغط هنا لإعادة تعيين كلمة المرور الخاصة بك',
+    'use_this_code_if_autofill_not_working' => 'استخدم هذا الرمز إذا لم يعمل الملء التلقائي',
 ];

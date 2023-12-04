@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\PasswordReset;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -12,11 +13,11 @@ use Illuminate\Queue\SerializesModels;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\Header\UnstructuredHeader;
 
-class VerifyRegisteredUserEmail extends Mailable
+class ForgetPasswordEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(private User $user)
+    public function __construct(private PasswordReset $passwordReset)
     {
     }
 
@@ -43,8 +44,8 @@ class VerifyRegisteredUserEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.verify_registration_email',
-            with: ['user' => $this->user]
+            view: 'emails.forget_password_email',
+            with: ['passwordReset' => $this->passwordReset]
         );
     }
 }

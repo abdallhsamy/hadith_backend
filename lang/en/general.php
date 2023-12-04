@@ -54,6 +54,7 @@ return [
     'email' => 'Email',
     'password' => 'Password',
     'forget_password_question' => 'Forgotten Password ?',
+    'remember_password_question' => 'Remember Password ?',
     'reset_password' => 'Reset Password',
     'dont_have_account_yet_question' => 'Don\'t Have Account Yet ?',
     'get_free_account' => 'Get a Free Account',
@@ -106,4 +107,9 @@ return [
     'role' => 'Role',
     'status' => 'Status',
     'views' => 'Views',
+    'forget_password' => 'Forget Password',
+    'this_email_is_not_exists_in_our_database' => 'This email is not exists in our database',
+    'you_requested_to_reset_your_password' => 'You requested to reset your password',
+    'please_click_here_to_reset_your_password' => 'Please click here to reset your password',
+    'use_this_code_if_autofill_not_working' => 'use this code if autofill not working',
 ];
