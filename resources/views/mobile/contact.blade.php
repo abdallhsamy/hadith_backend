@@ -19,7 +19,7 @@
         <p>
             يُمكنكم التواصل مع المالك مباشرة عبر البريد الإلكتروني. يرجى إرسال استفساراتكم أو مقترحاتكم إلى
             <span class="font-bold">
-                contact[at]hadith.app
+                contact[at]hadith-app.com
             </span>
         </p>
 
