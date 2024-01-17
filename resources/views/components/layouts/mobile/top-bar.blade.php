@@ -9,9 +9,7 @@
         @guest()
             <a href="{{ route('login') }}" class="text-white bg-primary px-2 py-1 rounded-lg">{{ __('general.login') }}</a>
         @endguest
-        @auth()
-            <x-mobile.sidenav/>
-        @endauth
+        <x-mobile.sidenav/>
 
 
 
