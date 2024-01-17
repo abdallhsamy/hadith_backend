@@ -119,6 +119,22 @@
 
         </p>
 
+        <h2 class="text-lg font-semibold">
+            قنوات التواصل الاجتماعي
+        </h2>
+
+        <div class="flex flex-wrap items-center justify-center gap-4">
+
+            <a href="https://t.me/hadith_app" title="hadith app official page on telegram">
+                <img src="{{ asset('assets/images/telegram/icon_2.png') }}" class="rounded-full w-6 h-6" alt="hadith app official page on telegram">
+            </a>
+            <a href="https://t.me/hadith_app_group" title="hadith app group on telegram">
+                <img src="{{ asset('assets/images/telegram/icon_3.svg.webp') }}" class="rounded-full w-6 h-6" alt="hadith app group on telegram">
+            </a>
+
+
+        </div>
+
         <p>
             شكرًا لاهتمامكم بتطبيق "حديث". نحن هنا لخدمتكم والاستماع إلى ملاحظاتكم واقتراحاتكم.
         </p>
