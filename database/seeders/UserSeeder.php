@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         $users = [
             [
                 'name' => 'Admin',
-                'email' => 'admin@hadith.app',
+                'email' => 'admin@hadith-app.com',
                 'phone' => '966566502430',
                 'role' => UserRole::ADMIN,
                 'status' => UserStatus::ACTIVE,

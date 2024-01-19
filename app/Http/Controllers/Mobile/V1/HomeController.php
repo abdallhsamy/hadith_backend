@@ -73,7 +73,7 @@ class HomeController extends Controller
         //            'content' => fake()->paragraph,
         //            'user_id' => User::firstWhere('email', 'abdallhsamy2011@gmail.com')->_id,
         //            'verified_at' => now(),
-        //            'verified_by_user_id' => User::firstWhere('email', 'admin@hadith.app')->_id,
+        //            'verified_by_user_id' => User::firstWhere('email', 'admin@hadith-app.com')->_id,
         //            'parent_id' => fake()->randomElement($hadith->comments()->pluck('_id')->toArray()),
         //        ]);
         if (
