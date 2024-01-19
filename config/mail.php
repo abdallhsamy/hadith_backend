@@ -100,7 +100,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@hadith.app'),
+        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@hadith-app.com'),
         'name' => env('MAIL_FROM_NAME', 'Hadith App'),
     ],
 
