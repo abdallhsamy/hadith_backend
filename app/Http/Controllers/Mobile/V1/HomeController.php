@@ -153,12 +153,12 @@ class HomeController extends Controller
         $regexPattern = '';
         for ($i = 0; $i < mb_strlen($query); $i++) {
             $char = mb_substr($query, $i, 1);
-            $regexPattern .= preg_quote($char) . "[\p{M}]";
+            $regexPattern .= preg_quote($char) . "[\p{M}]*";
         }
         $results = Hadith::query()
             ->where(function ($q) use ($language, $query, $regexPattern) {
                 $q->where("hadeeth.{$language}", 'like', "%{$query}%")
-                    ->orWhere("hadeeth.{$language}", 'REGEXP', $regexPattern);
+                    ->orWhere("hadeeth.{$language}", 'REGEXP', '/' . $regexPattern . '/');
             })
             ->get();
 
