@@ -4,7 +4,7 @@
 MONGODB_SERVICE="mongod"
 
 check_mongodb_status() {
-    if systemctl is-active --quiet $MONGODB_SERVICE; then
+    if sudo systemctl is-active --quiet $MONGODB_SERVICE; then
         return 0  # MongoDB is running
     else
         return 1  # MongoDB is not running
@@ -13,13 +13,18 @@ check_mongodb_status() {
 
 # Function to restart MongoDB service
 restart_mongodb() {
-    systemctl restart $MONGODB_SERVICE
+    sudo systemctl restart $MONGODB_SERVICE
+}
+
+# Function to start MongoDB service
+start_mongodb() {
+    sudo systemctl start $MONGODB_SERVICE
 }
 
 while true; do
     if ! check_mongodb_status; then
         echo "MongoDB is down. Restarting..."
-        restart_mongodb
+        start_mongodb
         echo "MongoDB restarted."
     fi
 
